@@ -65,20 +65,26 @@ def store_exchange_rates(exchange_rates: Dict[datetime, "RecordExchangeRate"]):
     rates_file = Path("rates.json")
     rates_file_content = get_rates_file_content(file_content=rates_file.read_text())
 
-    items_to_store: List[Dict[str, Any]] = []
+    items_to_store: List[RecordExchangeRate] = []
     for exchange_rate_key, exchange_rate in exchange_rates.items():
         if (rate_file_item := rates_file_content.get(exchange_rate_key)) and (
             rate_file_item := rate_file_item.get(exchange_rate.base)
         ):
             print("found")
-            items_to_store.append(rate_file_item.to_dict())
+            items_to_store.append(rate_file_item)
         else:
             print("adding new")
-            items_to_store.append(exchange_rate.to_dict())
+            items_to_store.append(exchange_rate)
             for calculate_rate in exchange_rate.calculate_rates():
-                items_to_store.append(calculate_rate.to_dict())
+                items_to_store.append(calculate_rate)
 
-    rates_file.write_text(json.dumps(items_to_store, indent=2))
+    content_to_write = list(
+        map(
+            lambda x: x.to_dict(),
+            sorted(items_to_store, key=lambda x: x.date, reverse=True),
+        )
+    )
+    rates_file.write_text(json.dumps(content_to_write, indent=2))
 
 
 def get_rates_file_content(file_content: str):
