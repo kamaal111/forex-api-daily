@@ -75,6 +75,8 @@ def store_exchange_rates(exchange_rates: Dict[datetime, "RecordExchangeRate"]):
         else:
             print("adding new")
             items_to_store.append(exchange_rate.to_dict())
+            for calculate_rate in exchange_rate.calculate_rates():
+                items_to_store.append(calculate_rate.to_dict())
 
     rates_file.write_text(json.dumps(items_to_store, indent=2))
 
@@ -138,6 +140,28 @@ class RecordExchangeRate:
             "base": self.base,
             "rates": self.rates,
         }
+
+    def calculate_rates(self):
+        new_exchange_rates: List[RecordExchangeRate] = []
+        for new_base_currency in CURRENCIES:
+            rates = self.rates.keys()
+            if new_base_currency != "EUR" and new_base_currency in rates:
+                new_exchange_rate = RecordExchangeRate(
+                    date=self.date,
+                    base=new_base_currency,
+                    rates={"EUR": 1 / float(self.rates[new_base_currency])},
+                )
+                for currency in CURRENCIES:
+                    if currency in rates and currency != new_base_currency:
+                        new_exchange_rate.add_rate(
+                            currency=currency,
+                            value=float(self.rates[currency])
+                            / float(self.rates[new_base_currency]),
+                        )
+
+                new_exchange_rates.append(new_exchange_rate)
+
+        return new_exchange_rates
 
     def add_rate(self, currency: str, value: float):
         self.rates[currency] = value
