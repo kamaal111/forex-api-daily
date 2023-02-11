@@ -33,7 +33,7 @@ CURRENCIES = [
     "ISK",
     "NOK",
     "HRK",
-    "RUB",
+    # "RUB",
     "TRL",
     "TRY",
     "AUD",
@@ -73,10 +73,11 @@ def store_exchange_rates(exchange_rates: Dict[datetime, "RecordExchangeRate"]):
             print("found")
             items_to_store.append(rate_file_item)
         else:
-            print("adding new")
-            items_to_store.append(exchange_rate)
-            for calculate_rate in exchange_rate.calculate_rates():
-                items_to_store.append(calculate_rate)
+            if not exchange_rate.rates_are_empty:
+                print("adding new")
+                items_to_store.append(exchange_rate)
+                for calculate_rate in exchange_rate.calculate_rates():
+                    items_to_store.append(calculate_rate)
 
     content_to_write = list(
         map(
@@ -115,9 +116,10 @@ def fetch_exchange_rates(urls: List[str]):
                     date=item.date, base=item.statistics.base, rates={}
                 )
 
-            exchange_rates[item.date].add_rate(
-                currency=item.statistics.target, value=item.statistics.value
-            )
+            if item.statistics.target in CURRENCIES:
+                exchange_rates[item.date].add_rate(
+                    currency=item.statistics.target, value=item.statistics.value
+                )
 
     return exchange_rates
 
@@ -139,6 +141,10 @@ class RecordExchangeRate:
     date: datetime
     base: str
     rates: Dict[str, float]
+
+    @property
+    def rates_are_empty(self):
+        return len(self.rates) == 0
 
     def to_dict(self):
         return {
