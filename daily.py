@@ -57,7 +57,7 @@ CURRENCIES = [
 
 
 def main(*args, **kwargs):
-    print(f"{args=}\n{kwargs}")
+    print(f"{args=}\n{kwargs=}")
     project_id = os.getenv("GCP_PROJECT_ID")
     if not project_id:
         raise Exception("Failed to read GCP_PROJECT_ID environment variable")

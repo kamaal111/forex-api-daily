@@ -2,3 +2,4 @@
 rates.json
 .env
 service-account.json
+__pycache__
