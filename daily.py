@@ -1,11 +1,12 @@
-import json
+import asyncio
+import os
 import requests
 import xmltodict
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Any, Dict, List, TypedDict
 from bs4 import BeautifulSoup
-from pathlib import Path
+from google.cloud import firestore
 
 
 BASE_FOREX_URL = "https://www.ecb.europa.eu"
@@ -55,49 +56,55 @@ CURRENCIES = [
 ]
 
 
-def main():
+def main(*args, **kwargs):
+    print(f"{args=}\n{kwargs}")
+    project_id = os.getenv("GCP_PROJECT_ID")
+    if not project_id:
+        raise Exception("Failed to read GCP_PROJECT_ID environment variable")
+
     forex_urls = get_forex_urls()
     exchange_rates = fetch_exchange_rates(urls=forex_urls)
-    store_exchange_rates(exchange_rates=exchange_rates)
+
+    db = firestore.AsyncClient(project=project_id)
+    asyncio.run(store_exchange_rates(db=db, exchange_rates=exchange_rates))
+
+    return "SUCCESS"  # to indicate success to cloud function
 
 
-def store_exchange_rates(exchange_rates: Dict[datetime, "RecordExchangeRate"]):
-    rates_file = Path("rates.json")
-    rates_file_content = get_rates_file_content(file_content=rates_file.read_text())
+async def store_exchange_rates(
+    db: firestore.AsyncClient, exchange_rates: Dict[datetime, "RecordExchangeRate"]
+):
+    exchange_rates_collection = db.collection("exchange_rates")
 
     items_to_store: List[RecordExchangeRate] = []
-    for exchange_rate_key, exchange_rate in exchange_rates.items():
-        if (rate_file_item := rates_file_content.get(exchange_rate_key)) and (
-            rate_file_item := rate_file_item.get(exchange_rate.base)
-        ):
-            print("found")
-            items_to_store.append(rate_file_item)
-        else:
-            if not exchange_rate.rates_are_empty:
-                print("adding new")
-                items_to_store.append(exchange_rate)
-                for calculate_rate in exchange_rate.calculate_rates():
-                    items_to_store.append(calculate_rate)
+    for exchange_rate in exchange_rates.values():
+        if exchange_rate.rates_are_empty:
+            continue
 
-    content_to_write = list(
-        map(
-            lambda x: x.to_dict(),
-            sorted(items_to_store, key=lambda x: x.date, reverse=True),
-        )
-    )
-    rates_file.write_text(json.dumps(content_to_write, indent=2))
+        exchange_rate_document = await exchange_rates_collection.document(
+            exchange_rate.document_key
+        ).get()
+        if exchange_rate_document.exists:
+            continue
 
+        items_to_store.append(exchange_rate)
+        for calculated_rate in exchange_rate.calculate_rates():
+            if not calculated_rate.rates_are_empty:
+                items_to_store.append(calculated_rate)
 
-def get_rates_file_content(file_content: str):
-    rates_mapped_by_date: Dict[datetime, Dict[str, RecordExchangeRate]] = {}
-    for content in json.loads(file_content):
-        exchange_rate = RecordExchangeRate.from_dict(data=content)
-        if rates_mapped_by_date.get(exchange_rate.date) is None:
-            rates_mapped_by_date[exchange_rate.date] = {}
+    if len(items_to_store) == 0:
+        print("no new data found to save")
+        return
 
-        rates_mapped_by_date[exchange_rate.date][exchange_rate.base] = exchange_rate
+    print(f"saving {len(items_to_store)} items to firestore in batch")
+    batch_operations = db.batch()
+    for item_to_store in items_to_store:
+        new_document = exchange_rates_collection.document(item_to_store.document_key)
+        batch_operations.set(new_document, item_to_store.to_dict())
+        batch_operations.update(new_document, {"rates": item_to_store.rates})
 
-    return rates_mapped_by_date
+    await batch_operations.commit()
+    print(f"saved all items in firestore")
 
 
 def fetch_exchange_rates(urls: List[str]):
@@ -146,9 +153,17 @@ class RecordExchangeRate:
     def rates_are_empty(self):
         return len(self.rates) == 0
 
+    @property
+    def document_key(self):
+        return f"{self.base}-{self.date_string}"
+
+    @property
+    def date_string(self):
+        return self.date.strftime(self.date_time_decoding_key())
+
     def to_dict(self):
         return {
-            "date": self.date.strftime("%Y-%m-%dT%H:%M:%S"),
+            "date": self.date_string,
             "base": self.base,
             "rates": self.rates,
         }
@@ -179,9 +194,15 @@ class RecordExchangeRate:
         self.rates[currency] = value
 
     def from_dict(data: Dict[str, Any]) -> "RecordExchangeRate":
-        date = datetime.strptime(data["date"], "%Y-%m-%dT%H:%M:%S")
+        date = datetime.strptime(
+            data["date"], RecordExchangeRate.date_time_decoding_key()
+        )
 
         return RecordExchangeRate(date=date, base=data["base"], rates=data["rates"])
+
+    @staticmethod
+    def date_time_decoding_key():
+        return "%Y-%m-%d"
 
 
 @dataclass
@@ -237,6 +258,3 @@ ForexItemDictStatistics = TypedDict(
 ForexItemDict = TypedDict(
     "ForexItemDict", {"cb:statistics": ForexItemDictStatistics, "dc:date": str}
 )
-
-
-main()

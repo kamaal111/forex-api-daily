@@ -1,2 +1,4 @@
 .venv
 rates.json
+.env
+service-account.json
