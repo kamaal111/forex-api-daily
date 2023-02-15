@@ -11,25 +11,25 @@ jobs:
   deploy:
     name: Deploy
     timeout-minutes: 10
-    runs-on: 'ubuntu-latest'
+    runs-on: ubuntu-latest
     steps:
       - name: Git - Checkout
         uses: actions/checkout@v2
 
-      - id: 'auth'
-        name: 'Authenticate to Google Cloud'
-        uses: 'google-github-actions/auth@v1'
+      - id: auth
+        name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v1
         with:
-          credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
+          credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}
 
-      - id: 'deploy'
-        uses: 'google-github-actions/deploy-cloud-functions@v1'
+      - id: deploy
+        uses: google-github-actions/deploy-cloud-functions@v1
         with:
-          name: '${{ secrets.FUNCTION_NAME }}'
-          runtime: 'Python 3.11'
-          entry_point: 'main'
-          region: '${{ secrets.REGION }}'
-          env_vars: 'GCP_PROJECT_ID=${{ secrets.GCP_PROJECT_ID }}'
+          name: ${{ secrets.FUNCTION_NAME }}
+          runtime: Python 3.11
+          entry_point: main
+          region: ${{ secrets.REGION }}
+          env_vars: GCP_PROJECT_ID=${{ secrets.GCP_PROJECT_ID }}
           timeout: 540
           min_instances: 0
           max_instances: 1
