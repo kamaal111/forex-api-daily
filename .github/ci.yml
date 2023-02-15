@@ -14,7 +14,7 @@ jobs:
     runs-on: 'ubuntu-latest'
     steps:
       - name: Git - Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - id: 'auth'
         name: 'Authenticate to Google Cloud'
