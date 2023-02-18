@@ -5,4 +5,4 @@ run-dev:
 
     export GCP_PROJECT_ID=forex-api-daily
 
-    python3 -c 'import daily; daily.main()'
+    node -e 'require("./index.js").main()'

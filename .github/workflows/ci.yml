@@ -28,7 +28,7 @@ jobs:
         uses: google-github-actions/deploy-cloud-functions@v1
         with:
           name: ${{ secrets.FUNCTION_NAME }}
-          runtime: python311
+          runtime: nodejs18
           entry_point: main
           region: ${{ secrets.REGION }}
           env_vars: GCP_PROJECT_ID=${{ secrets.GCP_PROJECT_ID }}
