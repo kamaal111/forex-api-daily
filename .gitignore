@@ -4,3 +4,6 @@ rates.json
 service-account.json
 __pycache__
 node_modules
+firestore-debug.log
+firebase-debug.log
+coverage

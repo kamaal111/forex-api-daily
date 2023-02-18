@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF  xmlns = "http://purl.org/rss/1.0/" xmlns:cb = "http://www.cbwiki.net/wiki/index.php/Specification_1.1" xmlns:dc = "http://purl.org/dc/elements/1.1/" xmlns:dcterms = "http://purl.org/dc/terms/" xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation = "http://www.w3.org/1999/02/22-rdf-syntax-ns# rdf.xsd" >
+<channel  rdf:about = "http://www.ecb.europa.eu/rss/nzd.html">
+<title>ECB | New Zealand dollar (NZD) - Euro foreign exchange reference rates</title>  
+<link>http://www.ecb.europa.eu/home/html/rss.en.html</link>
+<description>The reference rates are based on the regular daily concertation procedure between central banks within and outside the European System of Central Banks, which normally takes place at 2.15 p.m. (14:15) ECB time.</description>
+<items>
+<rdf:Seq>
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-nzd.en.html?date=2023-02-17&amp;rate=1.7123" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-nzd.en.html?date=2023-02-16&amp;rate=1.7033" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-nzd.en.html?date=2023-02-15&amp;rate=1.7063" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-nzd.en.html?date=2023-02-14&amp;rate=1.6962" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-nzd.en.html?date=2023-02-13&amp;rate=1.6846" />
+</rdf:Seq>
+</items>
+<dc:publisher>European Central Bank</dc:publisher>
+<dcterms:license>http://www.ecb.europa.eu/home/html/disclaimer.en.html</dcterms:license>
+</channel>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-nzd.en.html?date=2023-02-17&amp;rate=1.7123">
+<title xml:lang="en">1.7123 NZD = 1 EUR 2023-02-17 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-nzd.en.html?date=2023-02-17&amp;rate=1.7123</link>
+<description xml:lang="en">1 EUR buys 1.7123 New Zealand dollar (NZD) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2023-02-17T14:15:00+01:00</dc:date>
+<dc:language>en</dc:language>
+<cb:statistics>
+<cb:country>U2</cb:country>
+<cb:institutionAbbrev>ECB</cb:institutionAbbrev>
+<cb:exchangeRate>
+<cb:value frequency="daily" decimals="4">1.7123</cb:value>
+<cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
+<cb:targetCurrency>NZD</cb:targetCurrency>
+<cb:rateType>Reference rate</cb:rateType>
+</cb:exchangeRate>
+</cb:statistics>
+</item>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-nzd.en.html?date=2023-02-16&amp;rate=1.7033">
+<title xml:lang="en">1.7033 NZD = 1 EUR 2023-02-16 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-nzd.en.html?date=2023-02-16&amp;rate=1.7033</link>
+<description xml:lang="en">1 EUR buys 1.7033 New Zealand dollar (NZD) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2023-02-16T14:15:00+01:00</dc:date>
+<dc:language>en</dc:language>
+<cb:statistics>
+<cb:country>U2</cb:country>
+<cb:institutionAbbrev>ECB</cb:institutionAbbrev>
+<cb:exchangeRate>
+<cb:value frequency="daily" decimals="4">1.7033</cb:value>
+<cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
+<cb:targetCurrency>NZD</cb:targetCurrency>
+<cb:rateType>Reference rate</cb:rateType>
+</cb:exchangeRate>
+</cb:statistics>
+</item>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-nzd.en.html?date=2023-02-15&amp;rate=1.7063">
+<title xml:lang="en">1.7063 NZD = 1 EUR 2023-02-15 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-nzd.en.html?date=2023-02-15&amp;rate=1.7063</link>
+<description xml:lang="en">1 EUR buys 1.7063 New Zealand dollar (NZD) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2023-02-15T14:15:00+01:00</dc:date>
+<dc:language>en</dc:language>
+<cb:statistics>
+<cb:country>U2</cb:country>
+<cb:institutionAbbrev>ECB</cb:institutionAbbrev>
+<cb:exchangeRate>
+<cb:value frequency="daily" decimals="4">1.7063</cb:value>
+<cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
+<cb:targetCurrency>NZD</cb:targetCurrency>
+<cb:rateType>Reference rate</cb:rateType>
+</cb:exchangeRate>
+</cb:statistics>
+</item>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-nzd.en.html?date=2023-02-14&amp;rate=1.6962">
+<title xml:lang="en">1.6962 NZD = 1 EUR 2023-02-14 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-nzd.en.html?date=2023-02-14&amp;rate=1.6962</link>
+<description xml:lang="en">1 EUR buys 1.6962 New Zealand dollar (NZD) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2023-02-14T14:15:00+01:00</dc:date>
+<dc:language>en</dc:language>
+<cb:statistics>
+<cb:country>U2</cb:country>
+<cb:institutionAbbrev>ECB</cb:institutionAbbrev>
+<cb:exchangeRate>
+<cb:value frequency="daily" decimals="4">1.6962</cb:value>
+<cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
+<cb:targetCurrency>NZD</cb:targetCurrency>
+<cb:rateType>Reference rate</cb:rateType>
+</cb:exchangeRate>
+</cb:statistics>
+</item>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-nzd.en.html?date=2023-02-13&amp;rate=1.6846">
+<title xml:lang="en">1.6846 NZD = 1 EUR 2023-02-13 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-nzd.en.html?date=2023-02-13&amp;rate=1.6846</link>
+<description xml:lang="en">1 EUR buys 1.6846 New Zealand dollar (NZD) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2023-02-13T14:15:00+01:00</dc:date>
+<dc:language>en</dc:language>
+<cb:statistics>
+<cb:country>U2</cb:country>
+<cb:institutionAbbrev>ECB</cb:institutionAbbrev>
+<cb:exchangeRate>
+<cb:value frequency="daily" decimals="4">1.6846</cb:value>
+<cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
+<cb:targetCurrency>NZD</cb:targetCurrency>
+<cb:rateType>Reference rate</cb:rateType>
+</cb:exchangeRate>
+</cb:statistics>
+</item>
+</rdf:RDF>
