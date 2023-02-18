@@ -62,7 +62,7 @@ async function main(...args) {
   const db = new Firestore({ projectId });
   await storeExchangeRates(db, fetchedExchangeRates);
 
-  return Promise.resolve(); // to indicate success to cloud function
+  return 1; // to indicate success to cloud function
 }
 
 async function storeExchangeRates(db, exchangeRates) {
