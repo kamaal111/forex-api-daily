@@ -76,7 +76,13 @@ async function storeExchangeRates(db, exchangeRates) {
     const exchangeRateDocument = await exchangeRatesCollection
       .doc(exchangeRate.documentKey)
       .get();
-    if (exchangeRateDocument.exists) {
+    if (
+      exchangeRateDocument.exists &&
+      !ratesIncludeChanges(
+        exchangeRateDocument.data(),
+        exchangeRate.toDocumentObject()
+      )
+    ) {
       continue;
     }
 
@@ -102,6 +108,26 @@ async function storeExchangeRates(db, exchangeRates) {
     batchOperations.set(newDocument, itemToStore.toDocumentObject());
   }
   await batchOperations.commit();
+}
+
+function ratesIncludeChanges(ratesA, ratesB) {
+  if (ratesA.base !== ratesB.base || ratesA.date !== ratesB.date) {
+    return true;
+  }
+
+  const ratesARatesEntries = Object.entries(ratesA.rates);
+  const ratesBRatesKeys = Object.keys(ratesB.rates);
+  if (ratesARatesEntries.length !== ratesBRatesKeys.length) {
+    return true;
+  }
+
+  for (const [key, value] of ratesARatesEntries) {
+    if (ratesB.rates[key] !== value) {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 async function fetchExchangeRates(urls) {
