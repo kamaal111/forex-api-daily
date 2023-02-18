@@ -49,20 +49,19 @@ const CURRENCIES = [
   "ZAR",
 ];
 
-functions.http("main", (req, res) => {
+functions.http("main", async (_req, res) => {
   const projectId = process.env.GCP_PROJECT_ID;
   if (!projectId) {
-    res.status(400).send("Failed to read GCP_PROJECT_ID environment variable");
-    return;
+    throw new Error("Failed to read GCP_PROJECT_ID environment variable");
   }
 
-  getForexURLs()
-    .then((forexURLs) => fetchExchangeRates(forexURLs))
-    .then((fetchedExchangeRates) => {
-      const db = new Firestore({ projectId });
-      return storeExchangeRates(db, fetchedExchangeRates);
-    })
-    .finally(() => res.send("SUCCESS"));
+  const forexURLs = await getForexURLs();
+  const fetchedExchangeRates = await fetchExchangeRates(forexURLs);
+
+  const db = new Firestore({ projectId });
+  await storeExchangeRates(db, fetchedExchangeRates);
+
+  res.send("SUCCESS");
 });
 
 async function storeExchangeRates(db, exchangeRates) {
