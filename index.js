@@ -2,6 +2,7 @@ const functions = require("@google-cloud/functions-framework");
 const Firestore = require("@google-cloud/firestore");
 const cheerio = require("cheerio");
 const { parseStringPromise } = require("xml2js");
+const fs = require("fs/promises");
 
 const BASE_FOREX_URL = "https://www.ecb.europa.eu";
 const HOME_URL = `${BASE_FOREX_URL}/home/html/rss.en.html`;
@@ -49,19 +50,22 @@ const CURRENCIES = [
   "ZAR",
 ];
 
-functions.http("main", async (_req, res) => {
+functions.http("main", async (req, res) => {
   const projectId = process.env.GCP_PROJECT_ID;
   if (!projectId) {
     throw new Error("Failed to read GCP_PROJECT_ID environment variable");
   }
 
-  const forexURLs = await getForexURLs();
-  const fetchedExchangeRates = await fetchExchangeRates(forexURLs);
+  const forexURLs = await getForexURLs(req);
+  const fetchedExchangeRates = await fetchExchangeRates(req, forexURLs);
 
   const db = new Firestore({ projectId });
-  await storeExchangeRates(db, fetchedExchangeRates);
+  const amountOfRatesStored = await storeExchangeRates(
+    db,
+    fetchedExchangeRates
+  );
 
-  res.send("SUCCESS");
+  res.status(200).send(`SUCCESS ${amountOfRatesStored}`);
 });
 
 async function storeExchangeRates(db, exchangeRates) {
@@ -98,7 +102,7 @@ async function storeExchangeRates(db, exchangeRates) {
 
   if (itemsToStore.length === 0) {
     console.log("no new data found to save");
-    return;
+    return 0;
   }
 
   console.log(`saving ${itemsToStore.length} items to firestore in batch`);
@@ -108,6 +112,8 @@ async function storeExchangeRates(db, exchangeRates) {
     batchOperations.set(newDocument, itemToStore.toDocumentObject());
   }
   await batchOperations.commit();
+
+  return itemsToStore.length;
 }
 
 function ratesIncludeChanges(ratesA, ratesB) {
@@ -130,12 +136,19 @@ function ratesIncludeChanges(ratesA, ratesB) {
   return false;
 }
 
-async function fetchExchangeRates(urls) {
+async function fetchExchangeRates(req, urls) {
   const spreadExchangeRates = await Promise.all(
     urls.map(async (url) => {
       console.log(`getting data from url='${url}'`);
-      const response = await fetch(url);
-      const content = await response.text();
+      let content;
+      if (!process.env.TEST) {
+        const response = await fetch(url);
+        content = await response.text();
+      } else {
+        content = await fs.readFile(
+          `test/samples/${url.split("/").at(-1).split(".")[0]}.xml`
+        );
+      }
       const contentObject = await parseStringPromise(content);
 
       const exchangeRates = {};
@@ -180,9 +193,14 @@ async function fetchExchangeRates(urls) {
   return combinedExchangeRates;
 }
 
-async function getForexURLs() {
-  const response = await fetch(HOME_URL);
-  const content = await response.text();
+async function getForexURLs(req) {
+  let content;
+  if (!process.env.TEST) {
+    const response = await fetch(HOME_URL);
+    content = await response.text();
+  } else {
+    content = await fs.readFile("test/samples/home");
+  }
 
   let urls = [];
   cheerio
