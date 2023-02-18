@@ -1,3 +1,4 @@
+const functions = require("@google-cloud/functions-framework");
 const Firestore = require("@google-cloud/firestore");
 const cheerio = require("cheerio");
 const { parseStringPromise } = require("xml2js");
@@ -48,22 +49,21 @@ const CURRENCIES = [
   "ZAR",
 ];
 
-async function main(...args) {
-  console.log(`args='${args}'`);
-
+functions.http("main", (req, res) => {
   const projectId = process.env.GCP_PROJECT_ID;
   if (!projectId) {
-    throw new Error("Failed to read GCP_PROJECT_ID environment variable");
+    res.status(400).send("Failed to read GCP_PROJECT_ID environment variable");
+    return;
   }
 
-  const forexURLs = await getForexURLs();
-  const fetchedExchangeRates = await fetchExchangeRates(forexURLs);
-
-  const db = new Firestore({ projectId });
-  await storeExchangeRates(db, fetchedExchangeRates);
-
-  return 1; // to indicate success to cloud function
-}
+  getForexURLs()
+    .then((forexURLs) => fetchExchangeRates(forexURLs))
+    .then((fetchedExchangeRates) => {
+      const db = new Firestore({ projectId });
+      return storeExchangeRates(db, fetchedExchangeRates);
+    })
+    .finally(() => res.send("SUCCESS"));
+});
 
 async function storeExchangeRates(db, exchangeRates) {
   const exchangeRatesCollection = db.collection("exchange_rates");
@@ -306,5 +306,3 @@ class ForexItemExchangeRate {
     return new ForexItemExchangeRate({ value, base, target });
   }
 }
-
-exports.main = main;
