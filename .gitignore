@@ -7,3 +7,7 @@ node_modules
 firestore-debug.log
 firebase-debug.log
 coverage
+test/**.test.d.ts
+**.d.ts
+index.js
+index.js.map
