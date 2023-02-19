@@ -19,10 +19,10 @@ jobs:
   #     - uses: actions/setup-node@v1
   #       with:
   #         node-version: '18'
-      
+
   #     - name: Install NPM packages
   #       run: yarn
-      
+
   #     - name: Test
   #       run: yarn test
 
@@ -40,6 +40,13 @@ jobs:
         uses: google-github-actions/auth@v1
         with:
           credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '18'
+
+      - name: Install NPM packages and compile
+        run: yarn
 
       - name: Deploy
         uses: google-github-actions/deploy-cloud-functions@v1
