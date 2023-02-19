@@ -1,6 +1,6 @@
 import * as functions from '@google-cloud/functions-framework';
 import {Firestore} from '@google-cloud/firestore';
-import cheerio from 'cheerio';
+import {load as cheerioLoad} from 'cheerio';
 import {parseStringPromise} from 'xml2js';
 import * as fs from 'fs/promises';
 
@@ -65,7 +65,7 @@ type ForexItemECPResponse = {
   ];
 };
 
-functions.http('main', async (req, res) => {
+functions.http('main', async (_req, res) => {
   const projectId = process.env.GCP_PROJECT_ID;
   if (!projectId) {
     throw new Error('Failed to read GCP_PROJECT_ID environment variable');
@@ -98,17 +98,7 @@ async function storeExchangeRates(
     const exchangeRateDocument = await exchangeRatesCollection
       .doc(exchangeRate.documentKey)
       .get();
-    if (
-      exchangeRateDocument.exists &&
-      !ratesIncludeChanges(
-        exchangeRateDocument.data() as {
-          date: string;
-          base: string;
-          rates: Record<string, number>;
-        },
-        exchangeRate.toDocumentObject()
-      )
-    ) {
+    if (exchangeRateDocument.exists) {
       continue;
     }
 
@@ -136,37 +126,6 @@ async function storeExchangeRates(
   await batchOperations.commit();
 
   return itemsToStore.length;
-}
-
-function ratesIncludeChanges(
-  ratesA: {
-    date: string;
-    base: string;
-    rates: Record<string, number>;
-  },
-  ratesB: {
-    date: string;
-    base: string;
-    rates: Record<string, number>;
-  }
-) {
-  if (ratesA.base !== ratesB.base || ratesA.date !== ratesB.date) {
-    return true;
-  }
-
-  const ratesARatesEntries = Object.entries(ratesA.rates);
-  const ratesBRatesKeys = Object.keys(ratesB.rates);
-  if (ratesARatesEntries.length !== ratesBRatesKeys.length) {
-    return true;
-  }
-
-  for (const [key, value] of ratesARatesEntries) {
-    if (ratesB.rates[key] !== value) {
-      return true;
-    }
-  }
-
-  return false;
 }
 
 async function fetchExchangeRates(urls: string[]) {
@@ -216,10 +175,7 @@ async function fetchExchangeRates(urls: string[]) {
 
   const combinedExchangeRates: Record<string, ExchangeRateRecord> = {};
   for (const exchangeRates of spreadExchangeRates) {
-    for (const entry of Object.entries(exchangeRates)) {
-      const key = entry[0];
-      const exchangeRate = entry[1] as ExchangeRateRecord;
-
+    for (const [key, exchangeRate] of Object.entries(exchangeRates)) {
       if (combinedExchangeRates[key] === undefined) {
         combinedExchangeRates[key] = exchangeRate;
       } else {
@@ -243,15 +199,13 @@ async function getForexURLs() {
   }
 
   const urls: string[] = [];
-  cheerio
-    .load(content)('a')
-    .each((_index, element) => {
-      const link = element.attribs.href;
-      if (!link || !link.includes('/rss/fxref') || link.includes('eek')) {
-        return;
-      }
-      urls.push(`${BASE_FOREX_URL}${link}`);
-    });
+  cheerioLoad(content)('a').each((_index, element) => {
+    const link = element.attribs.href;
+    if (!link || !link.includes('/rss/fxref') || link.includes('eek')) {
+      return;
+    }
+    urls.push(`${BASE_FOREX_URL}${link}`);
+  });
   return urls;
 }
 
