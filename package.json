@@ -13,7 +13,8 @@
     "pretest": "yarn run compile",
     "posttest": "yarn run lint",
     "start-db": "gcloud emulators firestore start",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "start": "GCP_PROJECT_ID=forex-api-daily functions-framework --target=main --signature-type=http --port=8081"
   },
   "repository": {
     "type": "git",

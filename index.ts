@@ -132,7 +132,7 @@ async function fetchExchangeRates(urls: string[]) {
   const spreadExchangeRates = await Promise.all(
     urls.map(async url => {
       console.log(`getting data from url='${url}'`);
-      let content;
+      let content: Awaited<string | Buffer>;
       if (!process.env.TEST) {
         const response = await fetch(url);
         content = await response.text();
@@ -141,7 +141,8 @@ async function fetchExchangeRates(urls: string[]) {
           `test/samples/${url.split('/').at(-1)!.split('.')[0]}.xml`
         );
       }
-      const contentObject = await parseStringPromise(content);
+      const contentObject: {'rdf:RDF'?: {item?: ForexItemECPResponse[]}} =
+        await parseStringPromise(content);
 
       const exchangeRates: Record<string, ExchangeRateRecord> = {};
       for (const contentItem of contentObject['rdf:RDF']?.item ?? []) {
