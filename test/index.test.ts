@@ -33,7 +33,10 @@ describe('main', () => {
     const response = await httpInvocation('main', PORT);
 
     const itemsStoredCount = 30;
-    expect(await response.text()).toEqual(`SUCCESS ${itemsStoredCount}`);
+    const itemsRemovedCount = 0;
+    expect(await response.text()).toEqual(
+      `SUCCESS ${itemsStoredCount}-${itemsRemovedCount}`
+    );
     expect(response.status).toEqual(200);
 
     const db = new Firestore({projectId: gcpProjectID});

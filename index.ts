@@ -4,6 +4,7 @@ import {load as cheerioLoad} from 'cheerio';
 import {parseStringPromise} from 'xml2js';
 import * as fs from 'fs/promises';
 
+const EXCHANGE_RATES_COLLECTION_KEY = 'exchange_rates';
 const BASE_FOREX_URL = 'https://www.ecb.europa.eu';
 const HOME_URL = `${BASE_FOREX_URL}/home/html/rss.en.html`;
 const CURRENCIES = [
@@ -72,43 +73,101 @@ functions.http('main', async (_req, res) => {
   }
 
   const db = new Firestore({projectId});
-  const ratesStored = await fetchAndStoreExchangeRates(db);
-  res.status(200).send(`SUCCESS ${ratesStored.length}`);
+  const batchOperations = db.batch();
+  const exchangeRatesCollection = db.collection(EXCHANGE_RATES_COLLECTION_KEY);
+  const ratesStored = await fetchAndStoreExchangeRates(
+    batchOperations,
+    exchangeRatesCollection
+  );
+  const ratesRemoved = await cleanStaleRates(
+    ratesStored,
+    batchOperations,
+    exchangeRatesCollection
+  );
+
+  if (ratesStored.length > 0 || ratesRemoved.length > 0) {
+    await batchOperations.commit();
+  }
+
+  res.status(200).send(`SUCCESS ${ratesStored.length}-${ratesRemoved.length}`);
 });
 
-async function fetchAndStoreExchangeRates(db: Firestore) {
+async function cleanStaleRates(
+  ratesStored: ExchangeRateRecord[],
+  batchOperations: FirebaseFirestore.WriteBatch,
+  exchangeRatesCollection: FirebaseFirestore.CollectionReference<FirebaseFirestore.DocumentData>
+) {
+  if (ratesStored.length === 0) {
+    return [];
+  }
+
+  const previouslyStoredItems = await exchangeRatesCollection
+    .where(
+      'date',
+      'not-in',
+      [...new Set(ratesStored.map(rate => rate.dateString))].splice(0, 4)
+    )
+    .limit(100)
+    .get();
+  const previouslyStoredItemsToDelete = previouslyStoredItems.docs.filter(
+    document =>
+      new Date(document.data().data).getTime() < ratesStored[0].date.getTime()
+  );
+  if (previouslyStoredItemsToDelete.length === 0) {
+    return [];
+  }
+
+  for (const itemToDelete of previouslyStoredItemsToDelete) {
+    batchOperations.delete(itemToDelete.ref);
+  }
+
+  return previouslyStoredItemsToDelete;
+}
+
+async function fetchAndStoreExchangeRates(
+  batchOperations: FirebaseFirestore.WriteBatch,
+  exchangeRatesCollection: FirebaseFirestore.CollectionReference<FirebaseFirestore.DocumentData>
+) {
   const forexURLs = await getForexURLs();
   const fetchedExchangeRates = await fetchExchangeRates(forexURLs);
   if (!fetchedExchangeRates || fetchedExchangeRates.ratesAreEmpty) {
     return [];
   }
 
-  const ratesStored = await storeExchangeRates(db, fetchedExchangeRates);
+  const ratesStored = await storeExchangeRates(
+    fetchedExchangeRates,
+    batchOperations,
+    exchangeRatesCollection
+  );
   return ratesStored;
 }
 
 async function storeExchangeRates(
-  db: Firestore,
-  exchangeRate: ExchangeRateRecord
+  exchangeRate: ExchangeRateRecord,
+  batchOperations: FirebaseFirestore.WriteBatch,
+  exchangeRatesCollection: FirebaseFirestore.CollectionReference<FirebaseFirestore.DocumentData>
 ) {
-  const exchangeRatesCollection = db.collection('exchange_rates');
+  const itemsToStore = (
+    await Promise.all(
+      exchangeRate
+        .calculateRates()
+        .concat([exchangeRate])
+        .map(async calculatedRate => {
+          if (calculatedRate.ratesAreEmpty) {
+            return;
+          }
 
-  const itemsToStore: ExchangeRateRecord[] = [];
-  const exchangeRateDocument = await exchangeRatesCollection
-    .doc(exchangeRate.documentKey)
-    .get();
-  if (exchangeRateDocument.exists) {
-    return [];
-  }
+          const calculatedRateDocument = await exchangeRatesCollection
+            .doc(calculatedRate.documentKey)
+            .get();
+          if (calculatedRateDocument.exists) {
+            return;
+          }
 
-  itemsToStore.push(exchangeRate);
-  for (const calculatedRate of exchangeRate.calculateRates()) {
-    if (calculatedRate.ratesAreEmpty) {
-      continue;
-    }
-
-    itemsToStore.push(calculatedRate);
-  }
+          return calculatedRate;
+        })
+    )
+  ).filter(rate => rate) as ExchangeRateRecord[];
 
   if (itemsToStore.length === 0) {
     console.log('no new data found to save');
@@ -116,12 +175,10 @@ async function storeExchangeRates(
   }
 
   console.log(`saving ${itemsToStore.length} items to firestore in batch`);
-  const batchOperations = db.batch();
   for (const itemToStore of itemsToStore) {
     const newDocument = exchangeRatesCollection.doc(itemToStore.documentKey);
     batchOperations.set(newDocument, itemToStore.toDocumentObject());
   }
-  await batchOperations.commit();
 
   return itemsToStore;
 }
