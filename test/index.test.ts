@@ -1,48 +1,50 @@
-import {ChildProcess, exec} from 'child_process';
-// eslint-disable-next-line node/no-unpublished-import
-import * as waitPort from 'wait-port';
+import {Firestore} from '@google-cloud/firestore';
 
-type Targets = 'main';
-
-async function startFunctionFramework(
-  target: Targets,
-  signature: 'http',
-  port: number
-) {
-  const functionFramework = exec(
-    `TEST=1 GCP_PROJECT_ID=forex-api-daily-${new Date().getTime()} npx functions-framework --target=${target} --signature-type=${signature} --port=${port}`
-  );
-  await waitPort({host: 'localhost', port});
-  return functionFramework;
-}
-
-function httpInvocation(target: Targets, port: number) {
-  const baseUrl = `http://localhost:${port}`;
-  return fetch(`${baseUrl}/${target}`);
-}
+import {
+  httpInvocation,
+  startFunctionFramework,
+} from './utils/functionFramework';
+import uniques from './utils/uniques';
 
 jest.setTimeout(20_000);
 
 describe('main', () => {
   const PORT = 8081;
-  let functionFrameworkProcess: ChildProcess | undefined;
+
+  let functionFrameworkProcess:
+    | Awaited<ReturnType<typeof startFunctionFramework>>
+    | undefined;
+  let gcpProjectID: string | undefined;
 
   beforeAll(async () => {
+    gcpProjectID = `forex-api-daily-${new Date().getTime()}`;
     functionFrameworkProcess = await startFunctionFramework(
       'main',
-      'http',
+      gcpProjectID,
       PORT
     );
   });
 
   afterAll(() => {
-    functionFrameworkProcess?.kill();
+    functionFrameworkProcess!.kill();
   });
 
   it('successfully saves all documents', async () => {
     const response = await httpInvocation('main', PORT);
 
+    const itemsStoredCount = 30;
+    expect(await response.text()).toEqual(`SUCCESS ${itemsStoredCount}`);
     expect(response.status).toEqual(200);
-    expect(await response.text()).toEqual('SUCCESS 150');
+
+    const db = new Firestore({projectId: gcpProjectID});
+    const exchangeRates = await db.collection('exchange_rates').get();
+    const exchangeRateObjects = exchangeRates.docs.map(doc => doc.data());
+    expect(exchangeRates.size).toEqual(itemsStoredCount);
+    expect(exchangeRateObjects.map(({date}) => date)).toEqual(
+      [...Array(exchangeRates.size)].fill('2023-02-17')
+    );
+    expect(uniques(exchangeRateObjects.map(({base}) => base)).length).toEqual(
+      itemsStoredCount
+    );
   });
 });

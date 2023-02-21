@@ -71,50 +71,48 @@ functions.http('main', async (_req, res) => {
     throw new Error('Failed to read GCP_PROJECT_ID environment variable');
   }
 
+  const db = new Firestore({projectId});
+  const ratesStored = await fetchAndStoreExchangeRates(db);
+  res.status(200).send(`SUCCESS ${ratesStored.length}`);
+});
+
+async function fetchAndStoreExchangeRates(db: Firestore) {
   const forexURLs = await getForexURLs();
   const fetchedExchangeRates = await fetchExchangeRates(forexURLs);
+  if (!fetchedExchangeRates || fetchedExchangeRates.ratesAreEmpty) {
+    return [];
+  }
 
-  const db = new Firestore({projectId});
-  const amountOfRatesStored = await storeExchangeRates(
-    db,
-    fetchedExchangeRates
-  );
-
-  res.status(200).send(`SUCCESS ${amountOfRatesStored}`);
-});
+  const ratesStored = await storeExchangeRates(db, fetchedExchangeRates);
+  return ratesStored;
+}
 
 async function storeExchangeRates(
   db: Firestore,
-  exchangeRates: Record<string, ExchangeRateRecord>
+  exchangeRate: ExchangeRateRecord
 ) {
   const exchangeRatesCollection = db.collection('exchange_rates');
 
   const itemsToStore: ExchangeRateRecord[] = [];
-  for (const exchangeRate of Object.values(exchangeRates)) {
-    if (exchangeRate.ratesAreEmpty) {
+  const exchangeRateDocument = await exchangeRatesCollection
+    .doc(exchangeRate.documentKey)
+    .get();
+  if (exchangeRateDocument.exists) {
+    return [];
+  }
+
+  itemsToStore.push(exchangeRate);
+  for (const calculatedRate of exchangeRate.calculateRates()) {
+    if (calculatedRate.ratesAreEmpty) {
       continue;
     }
 
-    const exchangeRateDocument = await exchangeRatesCollection
-      .doc(exchangeRate.documentKey)
-      .get();
-    if (exchangeRateDocument.exists) {
-      continue;
-    }
-
-    itemsToStore.push(exchangeRate);
-    for (const calculatedRate of exchangeRate.calculateRates()) {
-      if (calculatedRate.ratesAreEmpty) {
-        continue;
-      }
-
-      itemsToStore.push(calculatedRate);
-    }
+    itemsToStore.push(calculatedRate);
   }
 
   if (itemsToStore.length === 0) {
     console.log('no new data found to save');
-    return 0;
+    return [];
   }
 
   console.log(`saving ${itemsToStore.length} items to firestore in batch`);
@@ -125,7 +123,7 @@ async function storeExchangeRates(
   }
   await batchOperations.commit();
 
-  return itemsToStore.length;
+  return itemsToStore;
 }
 
 async function fetchExchangeRates(urls: string[]) {
@@ -155,28 +153,29 @@ async function fetchExchangeRates(urls: string[]) {
           continue;
         }
 
-        if (exchangeRates[item.date.getTime().toString()] === undefined) {
-          exchangeRates[item.date.getTime().toString()] =
-            new ExchangeRateRecord({
-              date: item.date,
-              base: item.rate.base,
-              rates: {},
-            });
+        const dateKey = item.date.getTime().toString();
+        if (exchangeRates[dateKey] === undefined) {
+          exchangeRates[dateKey] = new ExchangeRateRecord({
+            date: item.date,
+            base: item.rate.base,
+            rates: {},
+          });
         }
 
-        exchangeRates[item.date.getTime().toString()].addRate(
-          item.rate.target,
-          item.rate.value
-        );
+        exchangeRates[dateKey].addRate(item.rate.target, item.rate.value);
       }
 
       return exchangeRates;
     })
   );
 
+  let latestDate: Date | undefined;
   const combinedExchangeRates: Record<string, ExchangeRateRecord> = {};
   for (const exchangeRates of spreadExchangeRates) {
     for (const [key, exchangeRate] of Object.entries(exchangeRates)) {
+      if (exchangeRate.date.getTime() > (latestDate?.getTime() ?? 0)) {
+        latestDate = exchangeRate.date;
+      }
       if (combinedExchangeRates[key] === undefined) {
         combinedExchangeRates[key] = exchangeRate;
       } else {
@@ -187,7 +186,12 @@ async function fetchExchangeRates(urls: string[]) {
       }
     }
   }
-  return combinedExchangeRates;
+
+  if (!latestDate) {
+    return;
+  }
+
+  return combinedExchangeRates[latestDate.getTime().toString()];
 }
 
 async function getForexURLs() {
