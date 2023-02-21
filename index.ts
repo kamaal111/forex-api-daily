@@ -85,11 +85,13 @@ functions.http('main', async (_req, res) => {
     exchangeRatesCollection
   );
 
-  if (ratesStored.length > 0 || ratesRemoved.length > 0) {
+  if (ratesStored.length > 0 || (ratesRemoved?.size ?? 0) > 0) {
     await batchOperations.commit();
   }
 
-  res.status(200).send(`SUCCESS ${ratesStored.length}-${ratesRemoved.length}`);
+  res
+    .status(200)
+    .send(`SUCCESS ${ratesStored.length}-${ratesRemoved?.size ?? 0}`);
 });
 
 async function cleanStaleRates(
@@ -98,7 +100,7 @@ async function cleanStaleRates(
   exchangeRatesCollection: FirebaseFirestore.CollectionReference<FirebaseFirestore.DocumentData>
 ) {
   if (ratesStored.length === 0) {
-    return [];
+    return null;
   }
 
   const previouslyStoredItems = await exchangeRatesCollection
@@ -109,19 +111,12 @@ async function cleanStaleRates(
     )
     .limit(100)
     .get();
-  const previouslyStoredItemsToDelete = previouslyStoredItems.docs.filter(
-    document =>
-      new Date(document.data().data).getTime() < ratesStored[0].date.getTime()
-  );
-  if (previouslyStoredItemsToDelete.length === 0) {
-    return [];
-  }
 
-  for (const itemToDelete of previouslyStoredItemsToDelete) {
+  for (const itemToDelete of previouslyStoredItems.docs) {
     batchOperations.delete(itemToDelete.ref);
   }
 
-  return previouslyStoredItemsToDelete;
+  return previouslyStoredItems;
 }
 
 async function fetchAndStoreExchangeRates(
