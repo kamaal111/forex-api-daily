@@ -45,8 +45,14 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install NPM packages and compile
+      - name: Install NPM packages
         run: yarn
+
+      - name: Compile
+        run: yarn compile
+
+      - name: Install production NPM packages
+        run: yarn --production=true
 
       - name: Deploy
         uses: google-github-actions/deploy-cloud-functions@v1
