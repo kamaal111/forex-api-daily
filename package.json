@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx firebase emulators:exec --only firestore jest",
+    "test": "firebase emulators:exec --only firestore \"jest --detectOpenHandles --forceExit\"",
     "lint": "gts lint",
     "clean": "gts clean",
     "compile": "tsc",

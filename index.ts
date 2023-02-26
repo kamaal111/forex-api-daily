@@ -89,9 +89,9 @@ functions.http('main', async (_req, res) => {
     await batchOperations.commit();
   }
 
-  res
-    .status(200)
-    .send(`SUCCESS ${ratesStored.length}-${ratesRemoved?.size ?? 0}`);
+  const message = `SUCCESS ${ratesStored.length}-${ratesRemoved?.size ?? 0}`;
+  console.log(message);
+  res.status(200).send(message);
 });
 
 async function cleanStaleRates(
@@ -181,7 +181,6 @@ async function storeExchangeRates(
 async function fetchExchangeRates(urls: string[]) {
   const spreadExchangeRates = await Promise.all(
     urls.map(async url => {
-      console.log(`getting data from url='${url}'`);
       let content: Awaited<string | Buffer>;
       if (!process.env.TEST) {
         const response = await fetch(url);
