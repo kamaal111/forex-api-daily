@@ -51,5 +51,6 @@ describe('main', () => {
     expect(uniques(exchangeRateObjects.map(({base}) => base)).length).toEqual(
       itemsStoredCount
     );
+    expect(true).toBeFalsy();
   });
 });
