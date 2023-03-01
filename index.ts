@@ -89,7 +89,9 @@ functions.http('main', async (_req, res) => {
     await batchOperations.commit();
   }
 
-  const message = `SUCCESS ${ratesStored.length}-${ratesRemoved?.size ?? 0}`;
+  const message = `SUCCESS ${ratesStored.at(0)?.dateString ?? ''} ${
+    ratesStored.length
+  }-${ratesRemoved?.size ?? 0}`;
   console.log(message);
   res.status(200).send(message);
 });

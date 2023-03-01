@@ -34,8 +34,10 @@ describe('main', () => {
 
     const itemsStoredCount = 30;
     const itemsRemovedCount = 0;
+    const dateSaved = '2023-02-17';
+
     expect(await response.text()).toEqual(
-      `SUCCESS ${itemsStoredCount}-${itemsRemovedCount}`
+      `SUCCESS ${dateSaved} ${itemsStoredCount}-${itemsRemovedCount}`
     );
     expect(response.status).toEqual(200);
 
@@ -44,7 +46,7 @@ describe('main', () => {
     const exchangeRateObjects = exchangeRates.docs.map(doc => doc.data());
     expect(exchangeRates.size).toEqual(itemsStoredCount);
     expect(exchangeRateObjects.map(({date}) => date)).toEqual(
-      [...Array(exchangeRates.size)].fill('2023-02-17')
+      [...Array(exchangeRates.size)].fill(dateSaved)
     );
     expect(uniques(exchangeRateObjects.map(({base}) => base)).length).toEqual(
       itemsStoredCount
