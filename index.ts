@@ -109,7 +109,7 @@ async function cleanStaleRates(
     .where(
       'date',
       'not-in',
-      [...new Set(ratesStored.map(rate => rate.dateString))].splice(0, 4)
+      uniques(ratesStored.map(rate => rate.dateString)).splice(0, 4)
     )
     .limit(100)
     .get();
@@ -267,6 +267,9 @@ async function getForexURLs() {
   return urls;
 }
 
+export function uniques<Element>(array: Element[]) {
+  return [...new Set(array)];
+}
 class ExchangeRateRecord {
   date: Date;
   base: string;

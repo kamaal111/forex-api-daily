@@ -4,7 +4,7 @@ import {
   httpInvocation,
   startFunctionFramework,
 } from './utils/functionFramework';
-import uniques from './utils/uniques';
+import {uniques} from '../index';
 
 jest.setTimeout(20_000);
 
