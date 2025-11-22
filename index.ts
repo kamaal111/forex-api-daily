@@ -163,7 +163,7 @@ async function storeExchangeRates(
 }
 
 async function fetchExchangeRates(urls: string[]) {
-  const spreadExchangeRates = await Promise.all(
+  const spreadExchangeRatesResults = await Promise.allSettled(
     urls.map(async url => {
       let content: Awaited<string | Buffer>;
       if (!process.env.TEST) {
@@ -207,7 +207,13 @@ async function fetchExchangeRates(urls: string[]) {
 
   let latestDate: Date | undefined;
   const combinedExchangeRates: Record<string, ExchangeRateRecord> = {};
-  for (const exchangeRates of spreadExchangeRates) {
+  for (const exchangeRatesResult of spreadExchangeRatesResults) {
+    if (exchangeRatesResult.status === 'rejected') {
+      console.warn(`Failed to get exchange rates;`, exchangeRatesResult.reason);
+      continue;
+    }
+
+    const exchangeRates = exchangeRatesResult.value;
     for (const [key, exchangeRate] of Object.entries(exchangeRates)) {
       if (exchangeRate.date.getTime() > (latestDate?.getTime() ?? 0)) {
         latestDate = exchangeRate.date;
