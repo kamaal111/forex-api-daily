@@ -259,7 +259,8 @@ async function getForexURLs() {
 export function uniques<Element>(array: Element[]) {
   return [...new Set(array)];
 }
-class ExchangeRateRecord {
+
+export class ExchangeRateRecord {
   date: Date;
   base: string;
   rates: Record<string, number>;
@@ -326,7 +327,7 @@ class ExchangeRateRecord {
   }
 }
 
-class ForexItem {
+export class ForexItem {
   rate: ForexItemExchangeRate;
   date: Date;
 
@@ -361,7 +362,7 @@ class ForexItem {
   }
 }
 
-class ForexItemExchangeRate {
+export class ForexItemExchangeRate {
   value: number;
   base: string;
   target: string;

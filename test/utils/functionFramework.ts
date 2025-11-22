@@ -11,13 +11,9 @@ const WAIT_PORT_TIMEOUT = ONE_SECOND_IN_MS * 10;
 
 export async function startFunctionFramework(target: Targets, gcpProjectID: string, port: number) {
   const projectRoot = process.cwd();
-  const files = await fs.readdir(projectRoot);
-  console.log('📁 Files in project root:', files);
-
   const indexJsPath = path.join(projectRoot, 'index.js');
   try {
     await fs.access(indexJsPath);
-    console.log('✅ index.js exists');
   } catch {
     throw new Error(`❌ index.js does not exist at ${indexJsPath}. Did the compilation step fail?`);
   }
