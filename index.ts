@@ -1,8 +1,9 @@
+import fs from 'node:fs/promises';
+
 import * as functions from '@google-cloud/functions-framework';
-import {Firestore} from '@google-cloud/firestore';
-import {load as cheerioLoad} from 'cheerio';
-import {parseStringPromise} from 'xml2js';
-import * as fs from 'fs/promises';
+import { Firestore } from '@google-cloud/firestore';
+import { load as cheerioLoad } from 'cheerio';
+import { parseStringPromise } from 'xml2js';
 
 const EXCHANGE_RATES_COLLECTION_KEY = 'exchange_rates';
 const BASE_FOREX_URL = 'https://www.ecb.europa.eu';
@@ -30,7 +31,7 @@ const CURRENCIES = [
   'ISK',
   'NOK',
   'HRK',
-  // "RUB",
+  'RUB',
   'TRL',
   'TRY',
   'AUD',
@@ -51,20 +52,20 @@ const CURRENCIES = [
   'ZAR',
 ];
 
-type ForexItemExchangeRateECBResponse = {
-  'cb:value': [{_: string}];
-  'cb:baseCurrency': [{_: string}];
+interface ForexItemExchangeRateECBResponse {
+  'cb:value': [{ _: string }];
+  'cb:baseCurrency': [{ _: string }];
   'cb:targetCurrency': [string];
-};
+}
 
-type ForexItemECPResponse = {
+interface ForexItemECPResponse {
   'dc:date': [string];
   'cb:statistics': [
     {
       'cb:exchangeRate': [ForexItemExchangeRateECBResponse];
-    }
+    },
   ];
-};
+}
 
 functions.http('main', async (_req, res) => {
   const projectId = process.env.GCP_PROJECT_ID;
@@ -72,26 +73,17 @@ functions.http('main', async (_req, res) => {
     throw new Error('Failed to read GCP_PROJECT_ID environment variable');
   }
 
-  const db = new Firestore({projectId});
+  const db = new Firestore({ projectId });
   const batchOperations = db.batch();
   const exchangeRatesCollection = db.collection(EXCHANGE_RATES_COLLECTION_KEY);
-  const ratesStored = await fetchAndStoreExchangeRates(
-    batchOperations,
-    exchangeRatesCollection
-  );
-  const ratesRemoved = await cleanStaleRates(
-    ratesStored,
-    batchOperations,
-    exchangeRatesCollection
-  );
+  const ratesStored = await fetchAndStoreExchangeRates(batchOperations, exchangeRatesCollection);
+  const ratesRemoved = await cleanStaleRates(ratesStored, batchOperations, exchangeRatesCollection);
 
   if (ratesStored.length > 0 || (ratesRemoved?.size ?? 0) > 0) {
     await batchOperations.commit();
   }
 
-  const message = `SUCCESS ${ratesStored.at(0)?.dateString ?? ''} ${
-    ratesStored.length
-  }-${ratesRemoved?.size ?? 0}`;
+  const message = `SUCCESS ${ratesStored.at(0)?.dateString ?? ''} ${ratesStored.length}-${ratesRemoved?.size ?? 0}`;
   console.log(message);
   res.status(200).send(message);
 });
@@ -99,18 +91,14 @@ functions.http('main', async (_req, res) => {
 async function cleanStaleRates(
   ratesStored: ExchangeRateRecord[],
   batchOperations: FirebaseFirestore.WriteBatch,
-  exchangeRatesCollection: FirebaseFirestore.CollectionReference<FirebaseFirestore.DocumentData>
+  exchangeRatesCollection: FirebaseFirestore.CollectionReference<FirebaseFirestore.DocumentData>,
 ) {
   if (ratesStored.length === 0) {
     return null;
   }
 
   const previouslyStoredItems = await exchangeRatesCollection
-    .where(
-      'date',
-      'not-in',
-      uniques(ratesStored.map(rate => rate.dateString)).splice(0, 4)
-    )
+    .where('date', 'not-in', uniques(ratesStored.map(rate => rate.dateString)).splice(0, 4))
     .limit(100)
     .get();
 
@@ -123,7 +111,7 @@ async function cleanStaleRates(
 
 async function fetchAndStoreExchangeRates(
   batchOperations: FirebaseFirestore.WriteBatch,
-  exchangeRatesCollection: FirebaseFirestore.CollectionReference<FirebaseFirestore.DocumentData>
+  exchangeRatesCollection: FirebaseFirestore.CollectionReference<FirebaseFirestore.DocumentData>,
 ) {
   const forexURLs = await getForexURLs();
   const fetchedExchangeRates = await fetchExchangeRates(forexURLs);
@@ -131,18 +119,14 @@ async function fetchAndStoreExchangeRates(
     return [];
   }
 
-  const ratesStored = await storeExchangeRates(
-    fetchedExchangeRates,
-    batchOperations,
-    exchangeRatesCollection
-  );
+  const ratesStored = await storeExchangeRates(fetchedExchangeRates, batchOperations, exchangeRatesCollection);
   return ratesStored;
 }
 
 async function storeExchangeRates(
   exchangeRate: ExchangeRateRecord,
   batchOperations: FirebaseFirestore.WriteBatch,
-  exchangeRatesCollection: FirebaseFirestore.CollectionReference<FirebaseFirestore.DocumentData>
+  exchangeRatesCollection: FirebaseFirestore.CollectionReference<FirebaseFirestore.DocumentData>,
 ) {
   const itemsToStore = (
     await Promise.all(
@@ -154,15 +138,13 @@ async function storeExchangeRates(
             return;
           }
 
-          const calculatedRateDocument = await exchangeRatesCollection
-            .doc(calculatedRate.documentKey)
-            .get();
+          const calculatedRateDocument = await exchangeRatesCollection.doc(calculatedRate.documentKey).get();
           if (calculatedRateDocument.exists) {
             return;
           }
 
           return calculatedRate;
-        })
+        }),
     )
   ).filter(rate => rate) as ExchangeRateRecord[];
 
@@ -188,12 +170,13 @@ async function fetchExchangeRates(urls: string[]) {
         const response = await fetch(url);
         content = await response.text();
       } else {
-        content = await fs.readFile(
-          `test/samples/${url.split('/').at(-1)!.split('.')[0]}.xml`
-        );
+        const urlPart = url.split('/').at(-1);
+        if (!urlPart) {
+          throw new Error('Invalid URL format');
+        }
+        content = await fs.readFile(`test/samples/${urlPart.split('.')[0]}.xml`);
       }
-      const contentObject: {'rdf:RDF'?: {item?: ForexItemECPResponse[]}} =
-        await parseStringPromise(content);
+      const contentObject = (await parseStringPromise(content)) as { 'rdf:RDF'?: { item?: ForexItemECPResponse[] } };
 
       const exchangeRates: Record<string, ExchangeRateRecord> = {};
       for (const contentItem of contentObject['rdf:RDF']?.item ?? []) {
@@ -219,7 +202,7 @@ async function fetchExchangeRates(urls: string[]) {
       }
 
       return exchangeRates;
-    })
+    }),
   );
 
   let latestDate: Date | undefined;
@@ -275,15 +258,7 @@ class ExchangeRateRecord {
   base: string;
   rates: Record<string, number>;
 
-  constructor({
-    date,
-    base,
-    rates,
-  }: {
-    date: Date;
-    base: string;
-    rates: Record<string, number>;
-  }) {
+  constructor({ date, base, rates }: { date: Date; base: string; rates: Record<string, number> }) {
     this.date = date;
     this.base = base;
     this.rates = rates;
@@ -328,20 +303,14 @@ class ExchangeRateRecord {
       const newExchangeRate = new ExchangeRateRecord({
         date: this.date,
         base: newBaseCurrency,
-        rates: {EUR: 1 / this.rates[newBaseCurrency]},
+        rates: { EUR: 1 / this.rates[newBaseCurrency] },
       });
       for (const currency of CURRENCIES) {
-        if (
-          !ratesCurrencies.includes(currency) ||
-          currency === newBaseCurrency
-        ) {
+        if (!ratesCurrencies.includes(currency) || currency === newBaseCurrency) {
           continue;
         }
 
-        newExchangeRate.addRate(
-          currency,
-          this.rates[currency] / this.rates[newBaseCurrency]
-        );
+        newExchangeRate.addRate(currency, this.rates[currency] / this.rates[newBaseCurrency]);
       }
 
       newExchangeRates.push(newExchangeRate);
@@ -355,7 +324,7 @@ class ForexItem {
   rate: ForexItemExchangeRate;
   date: Date;
 
-  constructor({rate, date}: {rate: ForexItemExchangeRate; date: Date}) {
+  constructor({ rate, date }: { rate: ForexItemExchangeRate; date: Date }) {
     this.rate = rate;
     this.date = date;
   }
@@ -372,9 +341,7 @@ class ForexItem {
       return;
     }
 
-    const rawRate = response['cb:statistics']
-      ?.at(0)
-      ?.['cb:exchangeRate']?.at(0);
+    const rawRate = response['cb:statistics']?.at(0)?.['cb:exchangeRate']?.at(0);
     if (!rawRate) {
       return;
     }
@@ -384,7 +351,7 @@ class ForexItem {
       return;
     }
 
-    return new ForexItem({rate, date});
+    return new ForexItem({ rate, date });
   }
 }
 
@@ -393,15 +360,7 @@ class ForexItemExchangeRate {
   base: string;
   target: string;
 
-  constructor({
-    value,
-    base,
-    target,
-  }: {
-    value: number;
-    base: string;
-    target: string;
-  }) {
+  constructor({ value, base, target }: { value: number; base: string; target: string }) {
     this.value = value;
     this.base = base;
     this.target = target;
@@ -428,6 +387,6 @@ class ForexItemExchangeRate {
       return;
     }
 
-    return new ForexItemExchangeRate({value, base, target});
+    return new ForexItemExchangeRate({ value, base, target });
   }
 }

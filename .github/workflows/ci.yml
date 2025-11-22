@@ -14,17 +14,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Git - Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v6
 
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v6
         with:
-          node-version: '18'
+          node-version-file: ".nvmrc"
 
       - name: Install NPM packages
         run: yarn
-
-      - name: Compile
-        run: yarn compile
 
       - name: Test
         run: yarn test
@@ -37,16 +34,16 @@ jobs:
     if: github.ref == 'refs/heads/main'
     steps:
       - name: Git - Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v6
 
       - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@v1
+        uses: google-github-actions/auth@v3
         with:
           credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}
 
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v6
         with:
-          node-version: '18'
+          node-version-file: ".nvmrc"
 
       - name: Install NPM packages
         run: yarn
@@ -58,14 +55,15 @@ jobs:
         run: yarn --production=true
 
       - name: Deploy
-        uses: google-github-actions/deploy-cloud-functions@v1
+        uses: google-github-actions/deploy-cloud-functions@v4
+        env:
+          GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
         with:
           name: ${{ secrets.FUNCTION_NAME }}
-          runtime: nodejs18
+          runtime: nodejs22
           entry_point: main
           region: ${{ secrets.REGION }}
-          env_vars: GCP_PROJECT_ID=${{ secrets.GCP_PROJECT_ID }}
-          timeout: 540
-          min_instances: 0
-          max_instances: 1
-          memory_mb: 128
+          service_timeout: 300
+          min_instance_count: 0
+          max_instance_count: 1
+          memory: 128M

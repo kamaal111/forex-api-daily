@@ -1,9 +1,18 @@
 {
-  "extends": "./node_modules/gts/tsconfig-google.json",
   "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "lib": ["ES2020", "DOM"],
     "rootDir": ".",
     "outDir": ".",
-    "lib": ["DOM"]
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "noEmit": false
   },
-  "include": ["*.ts"]
+  "include": ["*.ts", "test/**/*.ts"],
+  "exclude": ["node_modules"]
 }
