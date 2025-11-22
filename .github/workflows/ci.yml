@@ -3,6 +3,9 @@ name: CI
 on:
   push:
 
+env:
+  PNPM_VERSION: 10.23.0
+
 concurrency:
   group: ${{ github.ref }}
   cancel-in-progress: true
@@ -16,15 +19,21 @@ jobs:
       - name: Git - Checkout
         uses: actions/checkout@v6
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
       - uses: actions/setup-node@v6
         with:
           node-version-file: .nvmrc
+          cache: pnpm
 
       - name: Install NPM packages
-        run: yarn
+        run: pnpm install
 
       - name: Test
-        run: yarn test
+        run: pnpm test
 
   deploy:
     name: Deploy
@@ -41,18 +50,24 @@ jobs:
         with:
           credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
       - uses: actions/setup-node@v6
         with:
           node-version-file: .nvmrc
+          cache: pnpm
 
       - name: Install NPM packages
-        run: yarn
+        run: pnpm install
 
       - name: Compile
-        run: yarn compile
+        run: pnpm compile
 
       - name: Install production NPM packages
-        run: yarn --production=true
+        run: pnpm install --prod
 
       - name: Deploy
         uses: google-github-actions/deploy-cloud-functions@v4
