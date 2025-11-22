@@ -18,7 +18,7 @@ jobs:
 
       - uses: actions/setup-node@v6
         with:
-          node-version-file: ".nvmrc"
+          node-version-file: .nvmrc
 
       - name: Install NPM packages
         run: yarn
@@ -43,7 +43,7 @@ jobs:
 
       - uses: actions/setup-node@v6
         with:
-          node-version-file: ".nvmrc"
+          node-version-file: .nvmrc
 
       - name: Install NPM packages
         run: yarn
@@ -61,6 +61,7 @@ jobs:
         with:
           name: ${{ secrets.FUNCTION_NAME }}
           runtime: nodejs22
+          environment: GEN_1
           entry_point: main
           region: ${{ secrets.REGION }}
           service_timeout: 300
