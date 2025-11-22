@@ -6,7 +6,7 @@ import eslintConfigPrettier from 'eslint-config-prettier/flat';
 
 export default defineConfig([
   {
-    ignores: ['node_modules/**', 'eslint.config.mjs', 'index.js', 'index.d.ts', 'babel.config.js'],
+    ignores: ['node_modules/**', 'eslint.config.mjs', 'index.js', 'index.d.ts', 'babel.config.js', 'coverage'],
   },
   {
     files: ['**/*.{js,mjs,cjs,ts}'],

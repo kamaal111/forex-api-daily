@@ -4,10 +4,9 @@ import path from 'node:path';
 
 import waitPort from 'wait-port';
 
-import { ONE_SECOND_IN_MS } from '../constants';
-
 type Targets = 'main';
 
+const ONE_SECOND_IN_MS = 1000;
 const WAIT_PORT_TIMEOUT = ONE_SECOND_IN_MS * 10;
 
 export async function startFunctionFramework(target: Targets, gcpProjectID: string, port: number) {
@@ -25,7 +24,7 @@ export async function startFunctionFramework(target: Targets, gcpProjectID: stri
 
   console.log('🚀 Starting function-framework server');
   const functionFramework = childProcess.exec(
-    `TEST=1 GCP_PROJECT_ID=${gcpProjectID} npx functions-framework --target=${target} --signature-type=http --port=${port} --source=./index.js`,
+    `TEST=1 GCP_PROJECT_ID=${gcpProjectID} npx functions-framework --target=${target} --signature-type=http --port=${port}`,
   );
   functionFramework.stdout?.on('data', data => {
     console.log(`📤 [function-framework stdout]: ${data}`);
