@@ -1,16 +1,22 @@
 # Repository Guidelines
 
+## Agent Execution Requirements
+- Always validate locally before declaring completion.
+- Only claim a task is complete when all quality checks are green: `pnpm compile`, `pnpm test`, and `pnpm lint` must all pass with zero errors/failures.
+- If you cannot run these commands (e.g., sandboxed environment), do not mark the task complete; instead, state what you changed and what remains to be validated.
+- When reporting completion, mention which commands were run and confirm their green status.
+
 ## Project Structure & Modules
 - `index.ts`: Main Cloud Function (HTTP `main`) that scrapes ECB, computes cross rates, and writes to Firestore.
 - `index.js`: Compiled output (ignored by Git). Do not commit build artifacts.
-- `test/`: Jest tests, helpers, and XML fixtures (`test/samples/`).
+- `test/`: Vitest tests, helpers, and XML fixtures (`test/samples/`).
 - Config: `tsconfig*.json`, `eslint.config.mjs`, `babel.config.js`, `.editorconfig`, `.nvmrc`, `.github/workflows/ci.yml`.
 
 ## Build, Test, and Development
 - Package manager: PNPM. Install dependencies with `pnpm install` (recommend `corepack enable`).
 - Node version: if a different Node.js version is active, run `nvm use` to switch to the version from `.nvmrc`.
 - `pnpm compile`: Compile TypeScript using `tsconfig.build.json` to `index.js`.
-- `pnpm test`: Compile first, run Jest under the Firestore emulator via Firebase CLI, then lint.
+- `pnpm test`: Run Vitest (can be wrapped with Firestore emulator if configured), then lint.
 - `pnpm start`: Run locally with Functions Framework on `:8081`.
   Example: `GCP_PROJECT_ID=forex-api-daily pnpm start`
 - Lint/format: `pnpm lint`, `pnpm format`, or `pnpm lint --fix`.
@@ -24,15 +30,15 @@
 - Tests: `*.test.ts` under `test/`.
 
 ## Testing Guidelines
-- Framework: Jest + `ts-jest`.
+- Framework: Vitest.
 - Location: `test/**/*.ts`; fixtures in `test/samples/`.
-- Run: `yarn test` (spins up Firestore emulator automatically). Local server in tests uses Functions Framework with `TEST=1` to read fixtures.
+- Run: `pnpm test` (may run under Firestore emulator if configured). Tests start a local Functions Framework instance with `TEST=1` to read fixtures.
 - Aim for fast, deterministic tests that validate Firestore writes and response payloads.
 
 ## Commit & Pull Requests
 - Commits: concise, imperative subject (≤72 chars). Example: "Add Firestore cleanup for stale dates".
 - PRs: include summary, rationale, verification steps (commands), and linked issues.
-- Requirements: CI must pass (`yarn test`). Do not commit secrets or build artifacts.
+- Requirements: CI must pass (`pnpm test`). Do not commit secrets or build artifacts.
 - Screenshots/logs: include only when clarifying behavior or responses.
 
 ## Security & Configuration
