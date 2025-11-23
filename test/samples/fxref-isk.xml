@@ -6,95 +6,95 @@
 <description>The reference rates are based on the regular daily concertation procedure between central banks within and outside the European System of Central Banks, which normally takes place at 2.15 p.m. (14:15) ECB time.</description>
 <items>
 <rdf:Seq>
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-isk.en.html?date=2023-02-17&amp;rate=154.10" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-isk.en.html?date=2023-02-16&amp;rate=154.30" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-isk.en.html?date=2023-02-15&amp;rate=153.90" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-isk.en.html?date=2023-02-14&amp;rate=153.30" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-isk.en.html?date=2023-02-13&amp;rate=153.10" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-isk.en.html?date=2025-11-21&amp;rate=147.20" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-isk.en.html?date=2025-11-20&amp;rate=146.80" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-isk.en.html?date=2025-11-19&amp;rate=146.82" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-isk.en.html?date=2025-11-18&amp;rate=147.20" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-isk.en.html?date=2025-11-17&amp;rate=147.20" />
 </rdf:Seq>
 </items>
 <dc:publisher>European Central Bank</dc:publisher>
 <dcterms:license>http://www.ecb.europa.eu/home/html/disclaimer.en.html</dcterms:license>
 </channel>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-isk.en.html?date=2023-02-17&amp;rate=154.10">
-<title xml:lang="en">154.10 ISK = 1 EUR 2023-02-17 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-isk.en.html?date=2023-02-17&amp;rate=154.10</link>
-<description xml:lang="en">1 EUR buys 154.10 Icelandic krona (ISK) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2023-02-17T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-isk.en.html?date=2025-11-21&amp;rate=147.20">
+<title xml:lang="en">147.20 ISK = 1 EUR 2025-11-21 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-isk.en.html?date=2025-11-21&amp;rate=147.20</link>
+<description xml:lang="en">1 EUR buys 147.20 Icelandic krona (ISK) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-11-21T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="2">154.10</cb:value>
+<cb:value frequency="daily" decimals="2">147.20</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>ISK</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
 </cb:exchangeRate>
 </cb:statistics>
 </item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-isk.en.html?date=2023-02-16&amp;rate=154.30">
-<title xml:lang="en">154.30 ISK = 1 EUR 2023-02-16 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-isk.en.html?date=2023-02-16&amp;rate=154.30</link>
-<description xml:lang="en">1 EUR buys 154.30 Icelandic krona (ISK) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2023-02-16T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-isk.en.html?date=2025-11-20&amp;rate=146.80">
+<title xml:lang="en">146.80 ISK = 1 EUR 2025-11-20 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-isk.en.html?date=2025-11-20&amp;rate=146.80</link>
+<description xml:lang="en">1 EUR buys 146.80 Icelandic krona (ISK) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-11-20T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="2">154.30</cb:value>
+<cb:value frequency="daily" decimals="2">146.80</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>ISK</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
 </cb:exchangeRate>
 </cb:statistics>
 </item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-isk.en.html?date=2023-02-15&amp;rate=153.90">
-<title xml:lang="en">153.90 ISK = 1 EUR 2023-02-15 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-isk.en.html?date=2023-02-15&amp;rate=153.90</link>
-<description xml:lang="en">1 EUR buys 153.90 Icelandic krona (ISK) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2023-02-15T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-isk.en.html?date=2025-11-19&amp;rate=146.82">
+<title xml:lang="en">146.82 ISK = 1 EUR 2025-11-19 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-isk.en.html?date=2025-11-19&amp;rate=146.82</link>
+<description xml:lang="en">1 EUR buys 146.82 Icelandic krona (ISK) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-11-19T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="2">153.90</cb:value>
+<cb:value frequency="daily" decimals="2">146.82</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>ISK</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
 </cb:exchangeRate>
 </cb:statistics>
 </item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-isk.en.html?date=2023-02-14&amp;rate=153.30">
-<title xml:lang="en">153.30 ISK = 1 EUR 2023-02-14 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-isk.en.html?date=2023-02-14&amp;rate=153.30</link>
-<description xml:lang="en">1 EUR buys 153.30 Icelandic krona (ISK) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2023-02-14T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-isk.en.html?date=2025-11-18&amp;rate=147.20">
+<title xml:lang="en">147.20 ISK = 1 EUR 2025-11-18 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-isk.en.html?date=2025-11-18&amp;rate=147.20</link>
+<description xml:lang="en">1 EUR buys 147.20 Icelandic krona (ISK) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-11-18T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="2">153.30</cb:value>
+<cb:value frequency="daily" decimals="2">147.20</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>ISK</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
 </cb:exchangeRate>
 </cb:statistics>
 </item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-isk.en.html?date=2023-02-13&amp;rate=153.10">
-<title xml:lang="en">153.10 ISK = 1 EUR 2023-02-13 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-isk.en.html?date=2023-02-13&amp;rate=153.10</link>
-<description xml:lang="en">1 EUR buys 153.10 Icelandic krona (ISK) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2023-02-13T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-isk.en.html?date=2025-11-17&amp;rate=147.20">
+<title xml:lang="en">147.20 ISK = 1 EUR 2025-11-17 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-isk.en.html?date=2025-11-17&amp;rate=147.20</link>
+<description xml:lang="en">1 EUR buys 147.20 Icelandic krona (ISK) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-11-17T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="2">153.10</cb:value>
+<cb:value frequency="daily" decimals="2">147.20</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>ISK</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>

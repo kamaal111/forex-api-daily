@@ -1,10 +1,15 @@
 import fs from 'node:fs/promises';
+import path from 'node:path';
 
 import * as functions from '@google-cloud/functions-framework';
 import { Firestore } from '@google-cloud/firestore';
 import { load as cheerioLoad } from 'cheerio';
 import { parseStringPromise } from 'xml2js';
 import z from 'zod';
+
+export const TARGETS = {
+  MAIN: 'main',
+} as const;
 
 const EXCHANGE_RATES_COLLECTION_KEY = 'exchange_rates';
 const BASE_FOREX_URL = 'https://www.ecb.europa.eu';
@@ -30,9 +35,10 @@ const CURRENCIES = [
   'SKK',
   'CHF',
   'ISK',
+  'ILS',
   'NOK',
   'HRK',
-  'RUB',
+  // 'RUB',
   'TRL',
   'TRY',
   'AUD',
@@ -52,21 +58,27 @@ const CURRENCIES = [
   'THB',
   'ZAR',
 ];
+const SAMPLES_DIRECTORY = 'test/samples';
+const SAMPLES_PAGE_CONTENT = path.join(SAMPLES_DIRECTORY, 'home');
+
+export type Target = (typeof TARGETS)[keyof typeof TARGETS];
+
+const CoercedNullishBooleanShape = z.coerce.boolean().nullish();
 
 const RequestBodySchema = z.object({
-  testing: z.coerce.boolean().nullish().default(false),
-  recordRequest: z.coerce.boolean().nullish().default(false),
+  testing: CoercedNullishBooleanShape.default(false),
+  record: CoercedNullishBooleanShape.default(false),
 });
 
-type RequestBody = z.infer<typeof RequestBodySchema>;
+export type RequestBody = z.infer<typeof RequestBodySchema>;
 
-interface ForexItemExchangeRateECBResponse {
+export interface ForexItemExchangeRateECBResponse {
   'cb:value': [{ _: string }];
   'cb:baseCurrency': [{ _: string }];
   'cb:targetCurrency': [string];
 }
 
-interface ForexItemECPResponse {
+export interface ForexItemECPResponse {
   'dc:date': [string];
   'cb:statistics': [
     {
@@ -75,19 +87,19 @@ interface ForexItemECPResponse {
   ];
 }
 
-functions.http('main', async (req, res) => {
+functions.http(TARGETS.MAIN, async (req, res) => {
   const projectId = process.env.GCP_PROJECT_ID;
   if (!projectId) {
     throw new Error('Failed to read GCP_PROJECT_ID environment variable');
   }
 
   const db = new Firestore({ projectId });
-  const batchOperations = db.batch();
   const exchangeRatesCollection = db.collection(EXCHANGE_RATES_COLLECTION_KEY);
+  const batchOperations = db.batch();
   const body = await parseRequestBody(req);
+  console.log(`request body: ${JSON.stringify(body)}`);
   const ratesStored = await fetchAndStoreExchangeRates(batchOperations, exchangeRatesCollection, body);
   const ratesRemoved = await cleanStaleRates(ratesStored, batchOperations, exchangeRatesCollection);
-
   if (ratesStored.length > 0 || (ratesRemoved?.size ?? 0) > 0) {
     await batchOperations.commit();
   }
@@ -149,7 +161,7 @@ async function storeExchangeRates(
   batchOperations: FirebaseFirestore.WriteBatch,
   exchangeRatesCollection: FirebaseFirestore.CollectionReference<FirebaseFirestore.DocumentData>,
 ) {
-  const itemsToStore = (
+  const itemsToStoreRecord = (
     await Promise.all(
       exchangeRate
         .calculateRates()
@@ -167,8 +179,13 @@ async function storeExchangeRates(
           return calculatedRate;
         }),
     )
-  ).filter(rate => rate) as ExchangeRateRecord[];
-
+  ).reduce<Record<string, ExchangeRateRecord>>((acc, item) => {
+    if (!item) {
+      return acc;
+    }
+    return { ...acc, [item.documentKey]: item };
+  }, {});
+  const itemsToStore = Object.values(itemsToStoreRecord);
   if (itemsToStore.length === 0) {
     console.log('no new data found to save');
     return [];
@@ -186,17 +203,29 @@ async function storeExchangeRates(
 async function fetchExchangeRates(urls: string[], body: RequestBody) {
   const spreadExchangeRatesResults = await Promise.allSettled(
     urls.map(async url => {
+      const urlPart = url.split('/').at(-1);
+      if (!urlPart) {
+        throw new Error('Invalid URL format');
+      }
+
+      const sampleUrl = path.join(SAMPLES_DIRECTORY, `${urlPart.split('.')[0]}.xml`);
       let content: Awaited<string | Buffer>;
       if (!body.testing) {
-        const response = await fetch(url);
+        let response: Response;
+        try {
+          response = await fetch(url);
+        } catch (error) {
+          console.error(`Failed to fetch exchange rates for '${url}'; error='${String(error)}'`);
+          throw error;
+        }
         content = await response.text();
       } else {
-        const urlPart = url.split('/').at(-1);
-        if (!urlPart) {
-          throw new Error('Invalid URL format');
-        }
-        content = await fs.readFile(`test/samples/${urlPart.split('.')[0]}.xml`);
+        content = await fs.readFile(sampleUrl);
       }
+      if (body.record) {
+        await fs.writeFile(sampleUrl, content);
+      }
+
       const contentObject = (await parseStringPromise(content)) as { 'rdf:RDF'?: { item?: ForexItemECPResponse[] } };
 
       const exchangeRates: Record<string, ExchangeRateRecord> = {};
@@ -263,7 +292,10 @@ async function getForexURLs(body: RequestBody) {
     const response = await fetch(HOME_URL);
     content = await response.text();
   } else {
-    content = await fs.readFile('test/samples/home');
+    content = await fs.readFile(SAMPLES_PAGE_CONTENT);
+  }
+  if (body.record) {
+    await fs.writeFile(SAMPLES_PAGE_CONTENT, content);
   }
 
   const urls: string[] = [];

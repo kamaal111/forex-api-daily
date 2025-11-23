@@ -16,6 +16,7 @@ pnpm install
 - Lint/format: `pnpm lint`, `pnpm format` (use `pnpm lint --fix` to auto‑fix).
 - Start locally: `GCP_PROJECT_ID=forex-api-daily pnpm start` (Functions Framework on `http://localhost:8081/main`).
 - Test: `pnpm test` (runs Vitest; may use Firestore emulator if configured). If you hit PNPM migration issues with lifecycle scripts, run build/lint directly and let us know to update scripts.
+- Start Firestore emulator: `pnpm start-db` (runs on `http://localhost:8080`).
 
 ## How It Works
 - Fetch: Scrapes ECB RSS endpoints to gather daily EUR base rates.

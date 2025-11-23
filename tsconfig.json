@@ -13,6 +13,6 @@
     "moduleResolution": "node",
     "noEmit": false
   },
-  "include": ["*.ts", "test/**/*.ts"],
+  "include": ["*.ts", "test/**/*.ts", "scripts/**/*.ts", "utils/functionFramework.ts"],
   "exclude": ["node_modules"]
 }
