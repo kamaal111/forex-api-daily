@@ -6,95 +6,95 @@
 <description>The reference rates are based on the regular daily concertation procedure between central banks within and outside the European System of Central Banks, which normally takes place at 2.15 p.m. (14:15) ECB time.</description>
 <items>
 <rdf:Seq>
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-aud.en.html?date=2023-02-17&amp;rate=1.5560" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-aud.en.html?date=2023-02-16&amp;rate=1.5500" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-aud.en.html?date=2023-02-15&amp;rate=1.5529" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-aud.en.html?date=2023-02-14&amp;rate=1.5411" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-aud.en.html?date=2023-02-13&amp;rate=1.5388" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-aud.en.html?date=2025-11-21&amp;rate=1.7873" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-aud.en.html?date=2025-11-20&amp;rate=1.7773" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-aud.en.html?date=2025-11-19&amp;rate=1.7853" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-aud.en.html?date=2025-11-18&amp;rate=1.7830" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-aud.en.html?date=2025-11-17&amp;rate=1.7798" />
 </rdf:Seq>
 </items>
 <dc:publisher>European Central Bank</dc:publisher>
 <dcterms:license>http://www.ecb.europa.eu/home/html/disclaimer.en.html</dcterms:license>
 </channel>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-aud.en.html?date=2023-02-17&amp;rate=1.5560">
-<title xml:lang="en">1.5560 AUD = 1 EUR 2023-02-17 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-aud.en.html?date=2023-02-17&amp;rate=1.5560</link>
-<description xml:lang="en">1 EUR buys 1.5560 Australian dollar (AUD) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2023-02-17T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-aud.en.html?date=2025-11-21&amp;rate=1.7873">
+<title xml:lang="en">1.7873 AUD = 1 EUR 2025-11-21 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-aud.en.html?date=2025-11-21&amp;rate=1.7873</link>
+<description xml:lang="en">1 EUR buys 1.7873 Australian dollar (AUD) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-11-21T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">1.5560</cb:value>
+<cb:value frequency="daily" decimals="4">1.7873</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>AUD</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
 </cb:exchangeRate>
 </cb:statistics>
 </item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-aud.en.html?date=2023-02-16&amp;rate=1.5500">
-<title xml:lang="en">1.5500 AUD = 1 EUR 2023-02-16 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-aud.en.html?date=2023-02-16&amp;rate=1.5500</link>
-<description xml:lang="en">1 EUR buys 1.5500 Australian dollar (AUD) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2023-02-16T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-aud.en.html?date=2025-11-20&amp;rate=1.7773">
+<title xml:lang="en">1.7773 AUD = 1 EUR 2025-11-20 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-aud.en.html?date=2025-11-20&amp;rate=1.7773</link>
+<description xml:lang="en">1 EUR buys 1.7773 Australian dollar (AUD) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-11-20T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">1.5500</cb:value>
+<cb:value frequency="daily" decimals="4">1.7773</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>AUD</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
 </cb:exchangeRate>
 </cb:statistics>
 </item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-aud.en.html?date=2023-02-15&amp;rate=1.5529">
-<title xml:lang="en">1.5529 AUD = 1 EUR 2023-02-15 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-aud.en.html?date=2023-02-15&amp;rate=1.5529</link>
-<description xml:lang="en">1 EUR buys 1.5529 Australian dollar (AUD) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2023-02-15T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-aud.en.html?date=2025-11-19&amp;rate=1.7853">
+<title xml:lang="en">1.7853 AUD = 1 EUR 2025-11-19 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-aud.en.html?date=2025-11-19&amp;rate=1.7853</link>
+<description xml:lang="en">1 EUR buys 1.7853 Australian dollar (AUD) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-11-19T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">1.5529</cb:value>
+<cb:value frequency="daily" decimals="4">1.7853</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>AUD</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
 </cb:exchangeRate>
 </cb:statistics>
 </item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-aud.en.html?date=2023-02-14&amp;rate=1.5411">
-<title xml:lang="en">1.5411 AUD = 1 EUR 2023-02-14 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-aud.en.html?date=2023-02-14&amp;rate=1.5411</link>
-<description xml:lang="en">1 EUR buys 1.5411 Australian dollar (AUD) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2023-02-14T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-aud.en.html?date=2025-11-18&amp;rate=1.7830">
+<title xml:lang="en">1.7830 AUD = 1 EUR 2025-11-18 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-aud.en.html?date=2025-11-18&amp;rate=1.7830</link>
+<description xml:lang="en">1 EUR buys 1.7830 Australian dollar (AUD) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-11-18T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">1.5411</cb:value>
+<cb:value frequency="daily" decimals="4">1.7830</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>AUD</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
 </cb:exchangeRate>
 </cb:statistics>
 </item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-aud.en.html?date=2023-02-13&amp;rate=1.5388">
-<title xml:lang="en">1.5388 AUD = 1 EUR 2023-02-13 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-aud.en.html?date=2023-02-13&amp;rate=1.5388</link>
-<description xml:lang="en">1 EUR buys 1.5388 Australian dollar (AUD) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2023-02-13T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-aud.en.html?date=2025-11-17&amp;rate=1.7798">
+<title xml:lang="en">1.7798 AUD = 1 EUR 2025-11-17 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-aud.en.html?date=2025-11-17&amp;rate=1.7798</link>
+<description xml:lang="en">1 EUR buys 1.7798 Australian dollar (AUD) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-11-17T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">1.5388</cb:value>
+<cb:value frequency="daily" decimals="4">1.7798</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>AUD</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>

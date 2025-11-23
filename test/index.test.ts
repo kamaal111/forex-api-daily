@@ -1,17 +1,18 @@
 import { afterAll, beforeAll, it, expect } from 'vitest';
 import { Firestore } from '@google-cloud/firestore';
 
-import { httpInvocation, startFunctionFramework } from './utils/functionFramework';
-import { uniques } from '../index';
+import { httpInvocation, startFunctionFramework } from '../utils/functionFramework';
+import { TARGETS, uniques } from '../index';
 
 const PORT = 8083;
+const TARGET = TARGETS.MAIN;
 
 let functionFrameworkProcess: Awaited<ReturnType<typeof startFunctionFramework>> | undefined;
 let gcpProjectID: string | undefined;
 
 beforeAll(async () => {
   gcpProjectID = `forex-api-daily-${new Date().getTime()}`;
-  functionFrameworkProcess = await startFunctionFramework('main', gcpProjectID, PORT);
+  functionFrameworkProcess = await startFunctionFramework(TARGET, gcpProjectID, PORT);
 });
 
 afterAll(() => {
@@ -21,11 +22,11 @@ afterAll(() => {
 });
 
 it('successfully saves all documents', async () => {
-  const response = await httpInvocation('main', PORT);
+  const response = await httpInvocation(TARGET, PORT);
 
-  const itemsStoredCount = 30;
+  const itemsStoredCount = 31;
   const itemsRemovedCount = 0;
-  const dateSaved = '2023-02-17';
+  const dateSaved = '2025-11-21';
 
   expect(await response.text()).toEqual(`SUCCESS ${dateSaved} ${itemsStoredCount}-${itemsRemovedCount}`);
   expect(response.status).toEqual(200);

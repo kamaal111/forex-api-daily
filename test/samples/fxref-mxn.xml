@@ -6,95 +6,95 @@
 <description>The reference rates are based on the regular daily concertation procedure between central banks within and outside the European System of Central Banks, which normally takes place at 2.15 p.m. (14:15) ECB time.</description>
 <items>
 <rdf:Seq>
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-mxn.en.html?date=2023-02-17&amp;rate=19.7313" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-mxn.en.html?date=2023-02-16&amp;rate=19.8720" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-mxn.en.html?date=2023-02-15&amp;rate=19.9732" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-mxn.en.html?date=2023-02-14&amp;rate=20.0122" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-mxn.en.html?date=2023-02-13&amp;rate=19.8946" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-mxn.en.html?date=2025-11-21&amp;rate=21.2561" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-mxn.en.html?date=2025-11-20&amp;rate=21.1527" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-mxn.en.html?date=2025-11-19&amp;rate=21.2283" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-mxn.en.html?date=2025-11-18&amp;rate=21.3761" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-mxn.en.html?date=2025-11-17&amp;rate=21.2546" />
 </rdf:Seq>
 </items>
 <dc:publisher>European Central Bank</dc:publisher>
 <dcterms:license>http://www.ecb.europa.eu/home/html/disclaimer.en.html</dcterms:license>
 </channel>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-mxn.en.html?date=2023-02-17&amp;rate=19.7313">
-<title xml:lang="en">19.7313 MXN = 1 EUR 2023-02-17 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-mxn.en.html?date=2023-02-17&amp;rate=19.7313</link>
-<description xml:lang="en">1 EUR buys 19.7313 Mexican peso (MXN) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2023-02-17T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-mxn.en.html?date=2025-11-21&amp;rate=21.2561">
+<title xml:lang="en">21.2561 MXN = 1 EUR 2025-11-21 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-mxn.en.html?date=2025-11-21&amp;rate=21.2561</link>
+<description xml:lang="en">1 EUR buys 21.2561 Mexican peso (MXN) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-11-21T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">19.7313</cb:value>
+<cb:value frequency="daily" decimals="4">21.2561</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>MXN</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
 </cb:exchangeRate>
 </cb:statistics>
 </item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-mxn.en.html?date=2023-02-16&amp;rate=19.8720">
-<title xml:lang="en">19.8720 MXN = 1 EUR 2023-02-16 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-mxn.en.html?date=2023-02-16&amp;rate=19.8720</link>
-<description xml:lang="en">1 EUR buys 19.8720 Mexican peso (MXN) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2023-02-16T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-mxn.en.html?date=2025-11-20&amp;rate=21.1527">
+<title xml:lang="en">21.1527 MXN = 1 EUR 2025-11-20 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-mxn.en.html?date=2025-11-20&amp;rate=21.1527</link>
+<description xml:lang="en">1 EUR buys 21.1527 Mexican peso (MXN) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-11-20T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">19.8720</cb:value>
+<cb:value frequency="daily" decimals="4">21.1527</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>MXN</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
 </cb:exchangeRate>
 </cb:statistics>
 </item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-mxn.en.html?date=2023-02-15&amp;rate=19.9732">
-<title xml:lang="en">19.9732 MXN = 1 EUR 2023-02-15 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-mxn.en.html?date=2023-02-15&amp;rate=19.9732</link>
-<description xml:lang="en">1 EUR buys 19.9732 Mexican peso (MXN) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2023-02-15T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-mxn.en.html?date=2025-11-19&amp;rate=21.2283">
+<title xml:lang="en">21.2283 MXN = 1 EUR 2025-11-19 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-mxn.en.html?date=2025-11-19&amp;rate=21.2283</link>
+<description xml:lang="en">1 EUR buys 21.2283 Mexican peso (MXN) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-11-19T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">19.9732</cb:value>
+<cb:value frequency="daily" decimals="4">21.2283</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>MXN</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
 </cb:exchangeRate>
 </cb:statistics>
 </item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-mxn.en.html?date=2023-02-14&amp;rate=20.0122">
-<title xml:lang="en">20.0122 MXN = 1 EUR 2023-02-14 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-mxn.en.html?date=2023-02-14&amp;rate=20.0122</link>
-<description xml:lang="en">1 EUR buys 20.0122 Mexican peso (MXN) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2023-02-14T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-mxn.en.html?date=2025-11-18&amp;rate=21.3761">
+<title xml:lang="en">21.3761 MXN = 1 EUR 2025-11-18 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-mxn.en.html?date=2025-11-18&amp;rate=21.3761</link>
+<description xml:lang="en">1 EUR buys 21.3761 Mexican peso (MXN) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-11-18T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">20.0122</cb:value>
+<cb:value frequency="daily" decimals="4">21.3761</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>MXN</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
 </cb:exchangeRate>
 </cb:statistics>
 </item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-mxn.en.html?date=2023-02-13&amp;rate=19.8946">
-<title xml:lang="en">19.8946 MXN = 1 EUR 2023-02-13 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-mxn.en.html?date=2023-02-13&amp;rate=19.8946</link>
-<description xml:lang="en">1 EUR buys 19.8946 Mexican peso (MXN) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2023-02-13T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-mxn.en.html?date=2025-11-17&amp;rate=21.2546">
+<title xml:lang="en">21.2546 MXN = 1 EUR 2025-11-17 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-mxn.en.html?date=2025-11-17&amp;rate=21.2546</link>
+<description xml:lang="en">1 EUR buys 21.2546 Mexican peso (MXN) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-11-17T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">19.8946</cb:value>
+<cb:value frequency="daily" decimals="4">21.2546</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>MXN</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>

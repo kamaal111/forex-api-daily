@@ -4,17 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "firebase emulators:exec --only firestore \"vitest --run\"",
-    "lint": "eslint .",
     "clean": "rm -rf node_modules index.js",
     "compile": "tsc -p tsconfig.build.json",
     "fix": "pnpm run format && pnpm run lint --fix",
-    "pretest": "pnpm run compile",
-    "posttest": "pnpm run lint",
-    "start-db": "gcloud emulators firestore start",
     "format": "prettier --write .",
+    "lint": "eslint .",
+    "posttest": "pnpm run lint",
+    "pretest": "pnpm run compile",
+    "quality": "pnpm run typecheck && pnpm run lint",
+    "record": "pnpm compile && firebase emulators:exec --only firestore \"tsx scripts/record.ts\"",
     "start": "GCP_PROJECT_ID=forex-api-daily functions-framework --target=main --signature-type=http --port=8081",
-    "quality": "pnpm run compile && pnpm run lint"
+    "start-db": "firebase emulators:start --only firestore --project forex-api-daily",
+    "test": "firebase emulators:exec --only firestore \"vitest --run\"",
+    "typecheck": "tsc --noEmit"
   },
   "engines": {
     "node": ">=22 <23"
@@ -47,6 +49,7 @@
     "firebase-tools": "^14.26.0",
     "globals": "^16.5.0",
     "prettier": "^3.6.2",
+    "tsx": "^4.20.6",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.47.0",
     "vitest": "^4.0.13",

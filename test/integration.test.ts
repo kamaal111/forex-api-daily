@@ -1,9 +1,11 @@
 import { afterAll, afterEach, beforeAll, describe, it, expect } from 'vitest';
 import { Firestore } from '@google-cloud/firestore';
 
-import { httpInvocation, startFunctionFramework } from './utils/functionFramework';
+import { httpInvocation, startFunctionFramework } from '../utils/functionFramework';
+import { TARGETS } from '..';
 
 const PORT = 8084;
+const TARGET = TARGETS.MAIN;
 
 let functionFrameworkProcess: Awaited<ReturnType<typeof startFunctionFramework>> | undefined;
 let gcpProjectID: string | undefined;
@@ -12,7 +14,7 @@ let db: Firestore;
 beforeAll(async () => {
   gcpProjectID = `forex-api-daily-integration-${new Date().getTime()}`;
   db = new Firestore({ projectId: gcpProjectID });
-  functionFrameworkProcess = await startFunctionFramework('main', gcpProjectID, PORT);
+  functionFrameworkProcess = await startFunctionFramework(TARGET, gcpProjectID, PORT);
 });
 
 afterEach(async () => {
@@ -34,47 +36,47 @@ afterAll(() => {
 describe('Cloud Function Integration Tests', () => {
   describe('First run - fresh database', () => {
     it('stores all exchange rates on first run', async () => {
-      const response = await httpInvocation('main', PORT);
+      const response = await httpInvocation(TARGET, PORT);
 
       expect(response.status).toBe(200);
       const text = await response.text();
-      expect(text).toMatch(/^SUCCESS 2023-02-17 30-0$/);
+      expect(text).toMatch(/^SUCCESS 2025-11-21 31-0$/);
 
       const exchangeRates = await db.collection('exchange_rates').get();
-      expect(exchangeRates.size).toBe(30);
+      expect(exchangeRates.size).toBe(31);
     });
 
     it('stores EUR-based rates', async () => {
-      await httpInvocation('main', PORT);
+      await httpInvocation(TARGET, PORT);
 
-      const eurDoc = await db.collection('exchange_rates').doc('EUR-2023-02-17').get();
+      const eurDoc = await db.collection('exchange_rates').doc('EUR-2025-11-21').get();
       expect(eurDoc.exists).toBe(true);
 
       const data = eurDoc.data() as { base: string; date: string; rates: Record<string, number> };
       expect(data.base).toBe('EUR');
-      expect(data.date).toBe('2023-02-17');
+      expect(data.date).toBe('2025-11-21');
       expect(data.rates).toBeDefined();
       expect(Object.keys(data.rates).length).toBeGreaterThan(0);
     });
 
     it('stores cross rates for USD', async () => {
-      await httpInvocation('main', PORT);
+      await httpInvocation(TARGET, PORT);
 
-      const usdDoc = await db.collection('exchange_rates').doc('USD-2023-02-17').get();
+      const usdDoc = await db.collection('exchange_rates').doc('USD-2025-11-21').get();
       expect(usdDoc.exists).toBe(true);
 
       const data = usdDoc.data() as { base: string; rates: Record<string, number> };
       expect(data.base).toBe('USD');
       expect(data.rates.EUR).toBeDefined();
-      expect(data.rates.EUR).toBeCloseTo(1 / 1.0625, 10);
+      expect(data.rates.EUR).toBeCloseTo(1 / 1.152, 10);
     });
 
     it('stores rates for all major currencies', async () => {
-      await httpInvocation('main', PORT);
+      await httpInvocation(TARGET, PORT);
 
       const currencies = ['EUR', 'USD', 'GBP', 'JPY', 'CHF', 'CAD', 'AUD'];
       const docs = await Promise.all(
-        currencies.map(currency => db.collection('exchange_rates').doc(`${currency}-2023-02-17`).get()),
+        currencies.map(currency => db.collection('exchange_rates').doc(`${currency}-2025-11-21`).get()),
       );
 
       expect(docs.every(doc => doc.exists)).toBe(true);
@@ -83,22 +85,22 @@ describe('Cloud Function Integration Tests', () => {
 
   describe('Second run - data already exists', () => {
     it('does not duplicate existing data', async () => {
-      const response1 = await httpInvocation('main', PORT);
+      const response1 = await httpInvocation(TARGET, PORT);
       const text1 = await response1.text();
-      expect(text1).toMatch(/^SUCCESS 2023-02-17 30-0$/);
+      expect(text1).toMatch(/^SUCCESS 2025-11-21 31-0$/);
 
-      const response2 = await httpInvocation('main', PORT);
+      const response2 = await httpInvocation(TARGET, PORT);
       const text2 = await response2.text();
       expect(text2).toMatch(/^SUCCESS {2}0-0$/);
 
       const exchangeRates = await db.collection('exchange_rates').get();
-      expect(exchangeRates.size).toBe(30);
+      expect(exchangeRates.size).toBe(31);
     });
 
     it('returns success even when no new data', async () => {
-      await httpInvocation('main', PORT);
+      await httpInvocation(TARGET, PORT);
 
-      const response = await httpInvocation('main', PORT);
+      const response = await httpInvocation(TARGET, PORT);
 
       expect(response.status).toBe(200);
       expect(await response.text()).toContain('SUCCESS');
@@ -107,7 +109,7 @@ describe('Cloud Function Integration Tests', () => {
 
   describe('Stale data cleanup', () => {
     it('removes old dates when new data arrives', async () => {
-      const oldDate = '2023-02-16';
+      const oldDate = '2025-11-20';
       const collection = db.collection('exchange_rates');
       const batch = db.batch();
 
@@ -127,7 +129,7 @@ describe('Cloud Function Integration Tests', () => {
       const beforeCount = (await collection.get()).size;
       expect(beforeCount).toBe(2);
 
-      await httpInvocation('main', PORT);
+      await httpInvocation(TARGET, PORT);
 
       const afterSnapshot = await collection.get();
       const dates = afterSnapshot.docs.map(doc => {
@@ -135,12 +137,12 @@ describe('Cloud Function Integration Tests', () => {
         return data.date;
       });
 
-      expect(dates.every((date: string) => date === '2023-02-17')).toBe(true);
+      expect(dates.every((date: string) => date === '2025-11-21')).toBe(true);
       expect(dates.includes(oldDate)).toBe(false);
     });
 
     it('limits cleanup to 100 documents per run', async () => {
-      const oldDate = '2023-02-15';
+      const oldDate = '2025-11-19';
       const collection = db.collection('exchange_rates');
       const batch = db.batch();
 
@@ -154,7 +156,7 @@ describe('Cloud Function Integration Tests', () => {
 
       await batch.commit();
 
-      await httpInvocation('main', PORT);
+      await httpInvocation(TARGET, PORT);
 
       const afterSnapshot = await collection.where('date', '==', oldDate).get();
       expect(afterSnapshot.size).toBe(10);
@@ -163,10 +165,10 @@ describe('Cloud Function Integration Tests', () => {
 
   describe('Data integrity', () => {
     it('stores consistent cross-rate calculations', async () => {
-      await httpInvocation('main', PORT);
+      await httpInvocation(TARGET, PORT);
 
-      const eurDoc = await db.collection('exchange_rates').doc('EUR-2023-02-17').get();
-      const usdDoc = await db.collection('exchange_rates').doc('USD-2023-02-17').get();
+      const eurDoc = await db.collection('exchange_rates').doc('EUR-2025-11-21').get();
+      const usdDoc = await db.collection('exchange_rates').doc('USD-2025-11-21').get();
 
       const eurData = eurDoc.data() as { rates: Record<string, number> };
       const usdData = usdDoc.data() as { rates: Record<string, number> };
@@ -178,7 +180,7 @@ describe('Cloud Function Integration Tests', () => {
     });
 
     it('stores all rates with same date', async () => {
-      await httpInvocation('main', PORT);
+      await httpInvocation(TARGET, PORT);
 
       const exchangeRates = await db.collection('exchange_rates').get();
       const dates = exchangeRates.docs.map(doc => {
@@ -186,11 +188,11 @@ describe('Cloud Function Integration Tests', () => {
         return data.date;
       });
 
-      expect(dates.every((date: string) => date === '2023-02-17')).toBe(true);
+      expect(dates.every((date: string) => date === '2025-11-21')).toBe(true);
     });
 
     it('stores valid numeric rates', async () => {
-      await httpInvocation('main', PORT);
+      await httpInvocation(TARGET, PORT);
 
       const exchangeRates = await db.collection('exchange_rates').get();
       const allRates = exchangeRates.docs.flatMap(doc => {
@@ -203,7 +205,7 @@ describe('Cloud Function Integration Tests', () => {
     });
 
     it('stores unique document keys', async () => {
-      await httpInvocation('main', PORT);
+      await httpInvocation(TARGET, PORT);
 
       const exchangeRates = await db.collection('exchange_rates').get();
       const ids = exchangeRates.docs.map(doc => doc.id);
@@ -214,28 +216,28 @@ describe('Cloud Function Integration Tests', () => {
 
   describe('Response format', () => {
     it('returns correct response format on success', async () => {
-      const response = await httpInvocation('main', PORT);
+      const response = await httpInvocation(TARGET, PORT);
       const text = await response.text();
 
       expect(text).toMatch(/^SUCCESS \d{4}-\d{2}-\d{2} \d+-\d+$/);
     });
 
     it('includes date in response', async () => {
-      const response = await httpInvocation('main', PORT);
+      const response = await httpInvocation(TARGET, PORT);
       const text = await response.text();
 
-      expect(text).toContain('2023-02-17');
+      expect(text).toContain('2025-11-21');
     });
 
     it('includes items stored count in response', async () => {
-      const response = await httpInvocation('main', PORT);
+      const response = await httpInvocation(TARGET, PORT);
       const text = await response.text();
 
-      expect(text).toContain('30-');
+      expect(text).toContain('31-');
     });
 
     it('includes items removed count in response', async () => {
-      const response = await httpInvocation('main', PORT);
+      const response = await httpInvocation(TARGET, PORT);
       const text = await response.text();
 
       expect(text).toMatch(/-\d+$/);

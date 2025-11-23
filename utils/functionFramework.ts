@@ -4,12 +4,12 @@ import path from 'node:path';
 
 import waitPort from 'wait-port';
 
-type Targets = 'main';
+import type { RequestBody, Target } from '..';
 
 const ONE_SECOND_IN_MS = 1000;
 const WAIT_PORT_TIMEOUT = ONE_SECOND_IN_MS * 10;
 
-export async function startFunctionFramework(target: Targets, gcpProjectID: string, port: number) {
+export async function startFunctionFramework(target: Target, gcpProjectID: string, port: number) {
   const projectRoot = process.cwd();
   const indexJsPath = path.join(projectRoot, 'index.js');
   try {
@@ -47,10 +47,10 @@ export async function startFunctionFramework(target: Targets, gcpProjectID: stri
   return functionFramework;
 }
 
-export async function httpInvocation(target: Targets, port: number, payload: object = {}) {
+export async function httpInvocation(target: Target, port: number, payload: Partial<RequestBody> = {}) {
   const baseUrl = `http://localhost:${port}`;
   console.log(`🌐 Invoking '${target}'`);
-  const body = { ...payload, testing: true };
+  const body: Partial<RequestBody> = { testing: true, ...payload };
   const requestInit = { body: JSON.stringify(body), method: 'POST' };
 
   return fetch(`${baseUrl}/${target}`, requestInit);

@@ -6,95 +6,95 @@
 <description>The reference rates are based on the regular daily concertation procedure between central banks within and outside the European System of Central Banks, which normally takes place at 2.15 p.m. (14:15) ECB time.</description>
 <items>
 <rdf:Seq>
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cad.en.html?date=2023-02-17&amp;rate=1.4366" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cad.en.html?date=2023-02-16&amp;rate=1.4334" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cad.en.html?date=2023-02-15&amp;rate=1.4356" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cad.en.html?date=2023-02-14&amp;rate=1.4332" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cad.en.html?date=2023-02-13&amp;rate=1.4263" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cad.en.html?date=2025-11-21&amp;rate=1.6226" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cad.en.html?date=2025-11-20&amp;rate=1.6194" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cad.en.html?date=2025-11-19&amp;rate=1.6230" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cad.en.html?date=2025-11-18&amp;rate=1.6257" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cad.en.html?date=2025-11-17&amp;rate=1.6270" />
 </rdf:Seq>
 </items>
 <dc:publisher>European Central Bank</dc:publisher>
 <dcterms:license>http://www.ecb.europa.eu/home/html/disclaimer.en.html</dcterms:license>
 </channel>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cad.en.html?date=2023-02-17&amp;rate=1.4366">
-<title xml:lang="en">1.4366 CAD = 1 EUR 2023-02-17 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cad.en.html?date=2023-02-17&amp;rate=1.4366</link>
-<description xml:lang="en">1 EUR buys 1.4366 Canadian dollar (CAD) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2023-02-17T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cad.en.html?date=2025-11-21&amp;rate=1.6226">
+<title xml:lang="en">1.6226 CAD = 1 EUR 2025-11-21 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cad.en.html?date=2025-11-21&amp;rate=1.6226</link>
+<description xml:lang="en">1 EUR buys 1.6226 Canadian dollar (CAD) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-11-21T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">1.4366</cb:value>
+<cb:value frequency="daily" decimals="4">1.6226</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>CAD</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
 </cb:exchangeRate>
 </cb:statistics>
 </item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cad.en.html?date=2023-02-16&amp;rate=1.4334">
-<title xml:lang="en">1.4334 CAD = 1 EUR 2023-02-16 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cad.en.html?date=2023-02-16&amp;rate=1.4334</link>
-<description xml:lang="en">1 EUR buys 1.4334 Canadian dollar (CAD) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2023-02-16T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cad.en.html?date=2025-11-20&amp;rate=1.6194">
+<title xml:lang="en">1.6194 CAD = 1 EUR 2025-11-20 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cad.en.html?date=2025-11-20&amp;rate=1.6194</link>
+<description xml:lang="en">1 EUR buys 1.6194 Canadian dollar (CAD) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-11-20T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">1.4334</cb:value>
+<cb:value frequency="daily" decimals="4">1.6194</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>CAD</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
 </cb:exchangeRate>
 </cb:statistics>
 </item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cad.en.html?date=2023-02-15&amp;rate=1.4356">
-<title xml:lang="en">1.4356 CAD = 1 EUR 2023-02-15 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cad.en.html?date=2023-02-15&amp;rate=1.4356</link>
-<description xml:lang="en">1 EUR buys 1.4356 Canadian dollar (CAD) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2023-02-15T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cad.en.html?date=2025-11-19&amp;rate=1.6230">
+<title xml:lang="en">1.6230 CAD = 1 EUR 2025-11-19 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cad.en.html?date=2025-11-19&amp;rate=1.6230</link>
+<description xml:lang="en">1 EUR buys 1.6230 Canadian dollar (CAD) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-11-19T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">1.4356</cb:value>
+<cb:value frequency="daily" decimals="4">1.6230</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>CAD</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
 </cb:exchangeRate>
 </cb:statistics>
 </item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cad.en.html?date=2023-02-14&amp;rate=1.4332">
-<title xml:lang="en">1.4332 CAD = 1 EUR 2023-02-14 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cad.en.html?date=2023-02-14&amp;rate=1.4332</link>
-<description xml:lang="en">1 EUR buys 1.4332 Canadian dollar (CAD) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2023-02-14T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cad.en.html?date=2025-11-18&amp;rate=1.6257">
+<title xml:lang="en">1.6257 CAD = 1 EUR 2025-11-18 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cad.en.html?date=2025-11-18&amp;rate=1.6257</link>
+<description xml:lang="en">1 EUR buys 1.6257 Canadian dollar (CAD) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-11-18T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">1.4332</cb:value>
+<cb:value frequency="daily" decimals="4">1.6257</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>CAD</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
 </cb:exchangeRate>
 </cb:statistics>
 </item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cad.en.html?date=2023-02-13&amp;rate=1.4263">
-<title xml:lang="en">1.4263 CAD = 1 EUR 2023-02-13 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cad.en.html?date=2023-02-13&amp;rate=1.4263</link>
-<description xml:lang="en">1 EUR buys 1.4263 Canadian dollar (CAD) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2023-02-13T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cad.en.html?date=2025-11-17&amp;rate=1.6270">
+<title xml:lang="en">1.6270 CAD = 1 EUR 2025-11-17 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cad.en.html?date=2025-11-17&amp;rate=1.6270</link>
+<description xml:lang="en">1 EUR buys 1.6270 Canadian dollar (CAD) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-11-17T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">1.4263</cb:value>
+<cb:value frequency="daily" decimals="4">1.6270</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>CAD</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
