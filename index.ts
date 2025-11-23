@@ -4,6 +4,7 @@ import * as functions from '@google-cloud/functions-framework';
 import { Firestore } from '@google-cloud/firestore';
 import { load as cheerioLoad } from 'cheerio';
 import { parseStringPromise } from 'xml2js';
+import z from 'zod';
 
 const EXCHANGE_RATES_COLLECTION_KEY = 'exchange_rates';
 const BASE_FOREX_URL = 'https://www.ecb.europa.eu';
@@ -52,6 +53,13 @@ const CURRENCIES = [
   'ZAR',
 ];
 
+const RequestBodySchema = z.object({
+  testing: z.coerce.boolean().nullish().default(false),
+  recordRequest: z.coerce.boolean().nullish().default(false),
+});
+
+type RequestBody = z.infer<typeof RequestBodySchema>;
+
 interface ForexItemExchangeRateECBResponse {
   'cb:value': [{ _: string }];
   'cb:baseCurrency': [{ _: string }];
@@ -67,7 +75,7 @@ interface ForexItemECPResponse {
   ];
 }
 
-functions.http('main', async (_req, res) => {
+functions.http('main', async (req, res) => {
   const projectId = process.env.GCP_PROJECT_ID;
   if (!projectId) {
     throw new Error('Failed to read GCP_PROJECT_ID environment variable');
@@ -76,7 +84,8 @@ functions.http('main', async (_req, res) => {
   const db = new Firestore({ projectId });
   const batchOperations = db.batch();
   const exchangeRatesCollection = db.collection(EXCHANGE_RATES_COLLECTION_KEY);
-  const ratesStored = await fetchAndStoreExchangeRates(batchOperations, exchangeRatesCollection);
+  const body = await parseRequestBody(req);
+  const ratesStored = await fetchAndStoreExchangeRates(batchOperations, exchangeRatesCollection, body);
   const ratesRemoved = await cleanStaleRates(ratesStored, batchOperations, exchangeRatesCollection);
 
   if (ratesStored.length > 0 || (ratesRemoved?.size ?? 0) > 0) {
@@ -87,6 +96,17 @@ functions.http('main', async (_req, res) => {
   console.log(message);
   res.status(200).send(message);
 });
+
+async function parseRequestBody(req: functions.Request): Promise<RequestBody> {
+  const requestBody: unknown = req.body;
+  let parsedBody: unknown;
+  if (!requestBody) parsedBody = {};
+  else if (typeof requestBody === 'string') parsedBody = JSON.parse(requestBody);
+  else if (typeof requestBody === 'object') parsedBody = requestBody;
+  else parsedBody = {};
+
+  return RequestBodySchema.parseAsync(parsedBody);
+}
 
 async function cleanStaleRates(
   ratesStored: ExchangeRateRecord[],
@@ -112,9 +132,10 @@ async function cleanStaleRates(
 async function fetchAndStoreExchangeRates(
   batchOperations: FirebaseFirestore.WriteBatch,
   exchangeRatesCollection: FirebaseFirestore.CollectionReference<FirebaseFirestore.DocumentData>,
+  body: RequestBody,
 ) {
-  const forexURLs = await getForexURLs();
-  const fetchedExchangeRates = await fetchExchangeRates(forexURLs);
+  const forexURLs = await getForexURLs(body);
+  const fetchedExchangeRates = await fetchExchangeRates(forexURLs, body);
   if (!fetchedExchangeRates || fetchedExchangeRates.ratesAreEmpty) {
     return [];
   }
@@ -162,11 +183,11 @@ async function storeExchangeRates(
   return itemsToStore;
 }
 
-async function fetchExchangeRates(urls: string[]) {
+async function fetchExchangeRates(urls: string[], body: RequestBody) {
   const spreadExchangeRatesResults = await Promise.allSettled(
     urls.map(async url => {
       let content: Awaited<string | Buffer>;
-      if (!process.env.TEST) {
+      if (!body.testing) {
         const response = await fetch(url);
         content = await response.text();
       } else {
@@ -236,9 +257,9 @@ async function fetchExchangeRates(urls: string[]) {
   return combinedExchangeRates[latestDate.getTime().toString()];
 }
 
-async function getForexURLs() {
+async function getForexURLs(body: RequestBody) {
   let content: Awaited<string | Buffer>;
-  if (!process.env.TEST) {
+  if (!body.testing) {
     const response = await fetch(HOME_URL);
     content = await response.text();
   } else {

@@ -47,9 +47,11 @@ export async function startFunctionFramework(target: Targets, gcpProjectID: stri
   return functionFramework;
 }
 
-export async function httpInvocation(target: Targets, port: number) {
+export async function httpInvocation(target: Targets, port: number, payload: object = {}) {
   const baseUrl = `http://localhost:${port}`;
   console.log(`🌐 Invoking '${target}'`);
+  const body = { ...payload, testing: true };
+  const requestInit = { body: JSON.stringify(body), method: 'POST' };
 
-  return fetch(`${baseUrl}/${target}`);
+  return fetch(`${baseUrl}/${target}`, requestInit);
 }
