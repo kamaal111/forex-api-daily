@@ -5,7 +5,7 @@ import * as functions from '@google-cloud/functions-framework';
 import { Firestore } from '@google-cloud/firestore';
 import { load as cheerioLoad } from 'cheerio';
 import { parseStringPromise } from 'xml2js';
-import z from 'zod';
+import v from 'valibot';
 
 export const TARGETS = {
   MAIN: 'main',
@@ -38,7 +38,7 @@ const CURRENCIES = [
   'ILS',
   'NOK',
   'HRK',
-  // 'RUB',
+  'RUB',
   'TRL',
   'TRY',
   'AUD',
@@ -63,37 +63,47 @@ const SAMPLES_PAGE_CONTENT = path.join(SAMPLES_DIRECTORY, 'home');
 
 export type Target = (typeof TARGETS)[keyof typeof TARGETS];
 
-const CoercedNullishBooleanShape = z.coerce.boolean().nullish();
+const CoercedOptionalBooleanShape = v.nullish(v.pipe(v.unknown(), v.toBoolean()));
 
-const RequestBodySchema = z.object({
-  testing: CoercedNullishBooleanShape.default(false),
-  record: CoercedNullishBooleanShape.default(false),
+function SingleArrayItemOptionalShape<ItemSchema extends v.BaseSchema<unknown, unknown, v.BaseIssue<unknown>>>(
+  itemSchema: ItemSchema,
+) {
+  return v.nullish(v.pipe(v.array(itemSchema), v.minLength(1)));
+}
+
+const RequestBodySchema = v.object({
+  testing: v.optional(CoercedOptionalBooleanShape, false),
+  record: v.optional(CoercedOptionalBooleanShape, false),
 });
 
-export type RequestBody = z.infer<typeof RequestBodySchema>;
+export type RequestBody = v.InferOutput<typeof RequestBodySchema>;
 
-export interface ForexItemExchangeRateECBResponse {
-  'cb:value': [{ _: string }];
-  'cb:baseCurrency': [{ _: string }];
-  'cb:targetCurrency': [string];
-}
+const ForexItemExchangeRateECBResponseSchema = v.object({
+  'cb:value': SingleArrayItemOptionalShape(v.object({ _: v.string() })),
+  'cb:baseCurrency': SingleArrayItemOptionalShape(v.object({ _: v.string() })),
+  'cb:targetCurrency': SingleArrayItemOptionalShape(v.string()),
+});
 
-export interface ForexItemECPResponse {
-  'dc:date': [string];
-  'cb:statistics': [
-    {
-      'cb:exchangeRate': [ForexItemExchangeRateECBResponse];
-    },
-  ];
-}
+export type ForexItemExchangeRateECBResponse = v.InferOutput<typeof ForexItemExchangeRateECBResponseSchema>;
+
+const ForexItemECPResponseSchema = v.object({
+  'dc:date': SingleArrayItemOptionalShape(v.string()),
+  'cb:statistics': SingleArrayItemOptionalShape(
+    v.object({ 'cb:exchangeRate': SingleArrayItemOptionalShape(ForexItemExchangeRateECBResponseSchema) }),
+  ),
+});
+
+export type ForexItemECPResponse = v.InferOutput<typeof ForexItemECPResponseSchema>;
+
+const ForexECPResponseSchema = v.object({
+  'rdf:RDF': v.nullish(v.object({ item: v.nullish(v.array(ForexItemECPResponseSchema)) })),
+});
+
+const EnvSchema = v.object({ GCP_PROJECT_ID: v.pipe(v.string(), v.minLength(1)) });
 
 functions.http(TARGETS.MAIN, async (req, res) => {
-  const projectId = process.env.GCP_PROJECT_ID;
-  if (!projectId) {
-    throw new Error('Failed to read GCP_PROJECT_ID environment variable');
-  }
-
-  const db = new Firestore({ projectId });
+  const { GCP_PROJECT_ID } = await v.parseAsync(EnvSchema, process.env);
+  const db = new Firestore({ projectId: GCP_PROJECT_ID });
   const exchangeRatesCollection = db.collection(EXCHANGE_RATES_COLLECTION_KEY);
   const batchOperations = db.batch();
   const body = await parseRequestBody(req);
@@ -117,7 +127,7 @@ async function parseRequestBody(req: functions.Request): Promise<RequestBody> {
   else if (typeof requestBody === 'object') parsedBody = requestBody;
   else parsedBody = {};
 
-  return RequestBodySchema.parseAsync(parsedBody);
+  return v.parseAsync(RequestBodySchema, parsedBody);
 }
 
 async function cleanStaleRates(
@@ -226,8 +236,8 @@ async function fetchExchangeRates(urls: string[], body: RequestBody) {
         await fs.writeFile(sampleUrl, content);
       }
 
-      const contentObject = (await parseStringPromise(content)) as { 'rdf:RDF'?: { item?: ForexItemECPResponse[] } };
-
+      const parsedContent: unknown = await parseStringPromise(content);
+      const contentObject = await v.parseAsync(ForexECPResponseSchema, parsedContent);
       const exchangeRates: Record<string, ExchangeRateRecord> = {};
       for (const contentItem of contentObject['rdf:RDF']?.item ?? []) {
         const item = ForexItem.fromECBResponse(contentItem);
@@ -427,7 +437,7 @@ export class ForexItemExchangeRate {
   }
 
   static fromECBResponse(response: ForexItemExchangeRateECBResponse) {
-    const rawValue = response['cb:value']?.at(0)?.['_'];
+    const rawValue = response['cb:value']?.at(0)?._;
     if (!rawValue) {
       return;
     }
@@ -437,7 +447,7 @@ export class ForexItemExchangeRate {
       return;
     }
 
-    const base = response['cb:baseCurrency']?.at(0)?.['_'];
+    const base = response['cb:baseCurrency']?.at(0)?._;
     if (!base) {
       return;
     }
