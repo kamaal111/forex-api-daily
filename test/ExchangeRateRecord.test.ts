@@ -35,7 +35,7 @@ describe('ExchangeRateRecord', () => {
         rates: {},
       });
 
-      expect(record.ratesAreEmpty).toBe(false);
+      expect(record.ratesAreEmpty).toBe(true);
     });
 
     it('returns false when rates object has entries', () => {
@@ -141,9 +141,9 @@ describe('ExchangeRateRecord', () => {
         rates: { USD: 1.0625 },
       });
 
-      record.addRate('USD', 1.0700);
+      record.addRate('USD', 1.07);
 
-      expect(record.rates).toEqual({ USD: 1.0700 });
+      expect(record.rates).toEqual({ USD: 1.07 });
     });
   });
 
