@@ -12,8 +12,8 @@ export const TARGETS = {
 } as const;
 
 const EXCHANGE_RATES_COLLECTION_KEY = 'exchange_rates';
-const BASE_FOREX_URL = 'https://www.ecb.europa.eu';
-const HOME_URL = `${BASE_FOREX_URL}/home/html/rss.en.html`;
+const BASE_FOREX_URL = new URL('https://www.ecb.europa.eu');
+const HOME_URL = new URL('/home/html/rss.en.html', BASE_FOREX_URL);
 const CURRENCIES = [
   'USD',
   'JPY',
@@ -210,10 +210,10 @@ async function storeExchangeRates(
   return itemsToStore;
 }
 
-async function fetchExchangeRates(urls: string[], body: RequestBody) {
+async function fetchExchangeRates(urls: URL[], body: RequestBody) {
   const spreadExchangeRatesResults = await Promise.allSettled(
     urls.map(async url => {
-      const urlPart = url.split('/').at(-1);
+      const urlPart = url.toString().split('/').at(-1);
       if (!urlPart) {
         throw new Error('Invalid URL format');
       }
@@ -296,7 +296,7 @@ async function fetchExchangeRates(urls: string[], body: RequestBody) {
   return combinedExchangeRates[latestDate.getTime().toString()];
 }
 
-async function getForexURLs(body: RequestBody) {
+async function getForexURLs(body: RequestBody): Promise<URL[]> {
   let content: Awaited<string | Buffer>;
   if (!body.testing) {
     const response = await fetch(HOME_URL);
@@ -308,13 +308,13 @@ async function getForexURLs(body: RequestBody) {
     await fs.writeFile(SAMPLES_PAGE_CONTENT, content);
   }
 
-  const urls: string[] = [];
+  const urls: URL[] = [];
   cheerioLoad(content)('a').each((_index, element) => {
     const link = element.attribs.href;
     if (!link || !link.includes('/rss/fxref') || link.includes('eek')) {
       return;
     }
-    urls.push(`${BASE_FOREX_URL}${link}`);
+    urls.push(new URL(link, BASE_FOREX_URL));
   });
   return urls;
 }
