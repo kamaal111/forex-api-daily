@@ -66,7 +66,7 @@ describe('ForexItemExchangeRate', () => {
 
       const rate = ForexItemExchangeRate.fromECBResponse(response);
 
-      expect(rate).toBeUndefined();
+      expect(rate).toBeNull();
     });
 
     it('returns undefined when value is NaN', () => {
@@ -78,7 +78,7 @@ describe('ForexItemExchangeRate', () => {
 
       const rate = ForexItemExchangeRate.fromECBResponse(response);
 
-      expect(rate).toBeUndefined();
+      expect(rate).toBeNull();
     });
 
     it('returns undefined when base currency._ is missing', () => {
@@ -90,7 +90,7 @@ describe('ForexItemExchangeRate', () => {
 
       const rate = ForexItemExchangeRate.fromECBResponse(response);
 
-      expect(rate).toBeUndefined();
+      expect(rate).toBeNull();
     });
 
     it('parses decimal values correctly', () => {
@@ -180,7 +180,7 @@ describe('ForexItem', () => {
 
       const item = ForexItem.fromECBResponse(response);
 
-      expect(item).toBeUndefined();
+      expect(item).toBeNull();
     });
 
     it('returns undefined when rate parsing fails', () => {
@@ -201,7 +201,7 @@ describe('ForexItem', () => {
 
       const item = ForexItem.fromECBResponse(response);
 
-      expect(item).toBeUndefined();
+      expect(item).toBeNull();
     });
 
     it('parses multiple date formats', () => {

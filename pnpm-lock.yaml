@@ -14,6 +14,9 @@ importers:
       '@google-cloud/functions-framework':
         specifier: ^4.0.1
         version: 4.0.1
+      '@kamaalio/kamaal':
+        specifier: ^0.7.8
+        version: 0.7.8
       cheerio:
         specifier: ^1.1.2
         version: 1.1.2
@@ -545,6 +548,10 @@ packages:
 
   '@jsdevtools/ono@7.1.3':
     resolution: {integrity: sha512-4JQNk+3mVzK3xh2rqd6RB4J46qUR19azEHBneZyTZM+c456qOrbbM/5xcR8huNCCcbVt7+UmizG6GuUvPvKUYg==}
+
+  '@kamaalio/kamaal@0.7.8':
+    resolution: {integrity: sha512-G/hWpOEjku48AF8exsc9RmaJ62gXMSdxQC1f4Dr1xAgW0pLh/Ut2RirtbvBFqLWU0+JxhaGenvGix4bvXmmggw==}
+    engines: {node: '>=21'}
 
   '@kamaalio/prettier-config@0.1.2':
     resolution: {integrity: sha512-1WW8H1y4np7QYimWFKkF4sm3BpMVYFE43fWWpuSLwP1gmdcy8+DxP7VPqpzP5f7HEtqd2WieqUzwLUnS6foDFw==}
@@ -4186,6 +4193,8 @@ snapshots:
   '@js-sdsl/ordered-map@4.4.2': {}
 
   '@jsdevtools/ono@7.1.3': {}
+
+  '@kamaalio/kamaal@0.7.8': {}
 
   '@kamaalio/prettier-config@0.1.2': {}
 

@@ -6,6 +6,7 @@ import { Firestore } from '@google-cloud/firestore';
 import { load as cheerioLoad } from 'cheerio';
 import { parseStringPromise } from 'xml2js';
 import v from 'valibot';
+import { asserts } from '@kamaalio/kamaal';
 
 export const TARGETS = {
   MAIN: 'main',
@@ -14,7 +15,9 @@ export const TARGETS = {
 const EXCHANGE_RATES_COLLECTION_KEY = 'exchange_rates';
 const BASE_FOREX_URL = new URL('https://www.ecb.europa.eu');
 const HOME_URL = new URL('/home/html/rss.en.html', BASE_FOREX_URL);
-const CURRENCIES = [
+const BASE_CURRENCY = 'EUR';
+const CURRENCIES = new Set([
+  BASE_CURRENCY,
   'USD',
   'JPY',
   'BGN',
@@ -57,13 +60,15 @@ const CURRENCIES = [
   'SGD',
   'THB',
   'ZAR',
-];
+] as const);
 const SAMPLES_DIRECTORY = 'test/samples';
 const SAMPLES_PAGE_CONTENT = path.join(SAMPLES_DIRECTORY, 'home');
 
+type Currency = typeof CURRENCIES extends Set<infer T> ? T : never;
+
 export type Target = (typeof TARGETS)[keyof typeof TARGETS];
 
-const CoercedOptionalBooleanShape = v.nullish(v.pipe(v.unknown(), v.toBoolean()));
+const CoercedOptionalBooleanShape = v.nullish(v.pipe(v.unknown(), v.toBoolean()), undefined);
 
 function SingleArrayItemOptionalShape<ItemSchema extends v.BaseSchema<unknown, unknown, v.BaseIssue<unknown>>>(
   itemSchema: ItemSchema,
@@ -162,8 +167,7 @@ async function fetchAndStoreExchangeRates(
     return [];
   }
 
-  const ratesStored = await storeExchangeRates(fetchedExchangeRates, batchOperations, exchangeRatesCollection);
-  return ratesStored;
+  return storeExchangeRates(fetchedExchangeRates, batchOperations, exchangeRatesCollection);
 }
 
 async function storeExchangeRates(
@@ -245,7 +249,7 @@ async function fetchExchangeRates(urls: URL[], body: RequestBody) {
           continue;
         }
 
-        if (!CURRENCIES.includes(item.rate.target)) {
+        if (!CURRENCIES.has(item.rate.target)) {
           continue;
         }
 
@@ -281,10 +285,10 @@ async function fetchExchangeRates(urls: URL[], body: RequestBody) {
       if (combinedExchangeRates[key] === undefined) {
         combinedExchangeRates[key] = exchangeRate;
       } else {
-        combinedExchangeRates[key].rates = {
+        combinedExchangeRates[key].setRates({
           ...combinedExchangeRates[key].rates,
           ...exchangeRate.rates,
-        };
+        });
       }
     }
   }
@@ -323,31 +327,47 @@ export function uniques<Element>(array: Element[]) {
   return [...new Set(array)];
 }
 
-export class ExchangeRateRecord {
-  date: Date;
-  base: string;
-  rates: Record<string, number>;
+function isCurrency(value: string): value is Currency {
+  return CURRENCIES.has(value as Currency);
+}
 
-  constructor({ date, base, rates }: { date: Date; base: string; rates: Record<string, number> }) {
+export class ExchangeRateRecord {
+  readonly date: Date;
+  readonly base: string;
+  private _rates: Partial<Record<Currency, number>>;
+
+  constructor({ date, base, rates }: { date: Date; base: string; rates: Partial<Record<Currency, number>> }) {
     this.date = date;
     this.base = base;
-    this.rates = rates;
+    this._rates = rates;
   }
 
-  get ratesAreEmpty() {
-    return this.rates.length === 0;
+  get rates(): Partial<Record<Currency, number>> {
+    return this._rates;
   }
 
-  get documentKey() {
+  get ratesAreEmpty(): boolean {
+    return Object.keys(this.rates).length === 0;
+  }
+
+  get documentKey(): string {
     return `${this.base}-${this.dateString}`;
   }
 
-  get dateString() {
+  get dateString(): string {
     return this.date.toISOString().split('T')[0];
   }
 
-  addRate(currency: string, value: number) {
-    this.rates[currency] = value;
+  setRates(rates: Partial<Record<Currency, number>>): void {
+    this._rates = rates;
+  }
+
+  addRate(currency: Currency, value: number): void {
+    this.setRates({ ...this.rates, [currency]: value });
+  }
+
+  getRate(currency: Currency): number | undefined {
+    return this.rates[currency];
   }
 
   toDocumentObject() {
@@ -358,67 +378,73 @@ export class ExchangeRateRecord {
     };
   }
 
-  calculateRates() {
-    const newExchangeRates: ExchangeRateRecord[] = [];
+  calculateRates(): ExchangeRateRecord[] {
+    const ratesCurrencies = Object.keys(this.rates);
+    const calculatedRates: ExchangeRateRecord[] = [];
     for (const newBaseCurrency of CURRENCIES) {
-      if (newBaseCurrency === 'EUR') {
+      if (newBaseCurrency === BASE_CURRENCY) {
         continue;
       }
 
-      const ratesCurrencies = Object.keys(this.rates);
       if (!ratesCurrencies.includes(newBaseCurrency)) {
         continue;
       }
 
+      const newBaseCurrencyRate = this.getRate(newBaseCurrency);
+      asserts.invariant(newBaseCurrencyRate != null);
+
       const newExchangeRate = new ExchangeRateRecord({
         date: this.date,
         base: newBaseCurrency,
-        rates: { EUR: 1 / this.rates[newBaseCurrency] },
+        rates: { EUR: 1 / newBaseCurrencyRate },
       });
       for (const currency of CURRENCIES) {
         if (!ratesCurrencies.includes(currency) || currency === newBaseCurrency) {
           continue;
         }
 
-        newExchangeRate.addRate(currency, this.rates[currency] / this.rates[newBaseCurrency]);
+        const currencyRate = this.getRate(currency);
+        asserts.invariant(currencyRate != null);
+
+        newExchangeRate.addRate(currency, currencyRate / newBaseCurrencyRate);
       }
 
-      newExchangeRates.push(newExchangeRate);
+      calculatedRates.push(newExchangeRate);
     }
 
-    return newExchangeRates;
+    return calculatedRates;
   }
 }
 
 export class ForexItem {
-  rate: ForexItemExchangeRate;
-  date: Date;
+  readonly rate: ForexItemExchangeRate;
+  readonly date: Date;
 
   constructor({ rate, date }: { rate: ForexItemExchangeRate; date: Date }) {
     this.rate = rate;
     this.date = date;
   }
 
-  static fromECBResponse(response: ForexItemECPResponse) {
+  static fromECBResponse(response: ForexItemECPResponse): ForexItem | null {
     const rawDate = response['dc:date']?.at(0);
     if (!rawDate) {
-      return;
+      return null;
     }
 
     const date = new Date(rawDate);
     const dateTime = date.getTime();
     if (dateTime === 0 || Number.isNaN(dateTime)) {
-      return;
+      return null;
     }
 
     const rawRate = response['cb:statistics']?.at(0)?.['cb:exchangeRate']?.at(0);
     if (!rawRate) {
-      return;
+      return null;
     }
 
     const rate = ForexItemExchangeRate.fromECBResponse(rawRate);
     if (!rate) {
-      return;
+      return null;
     }
 
     return new ForexItem({ rate, date });
@@ -426,35 +452,35 @@ export class ForexItem {
 }
 
 export class ForexItemExchangeRate {
-  value: number;
-  base: string;
-  target: string;
+  readonly value: number;
+  readonly base: Currency;
+  readonly target: Currency;
 
-  constructor({ value, base, target }: { value: number; base: string; target: string }) {
+  constructor({ value, base, target }: { value: number; base: Currency; target: Currency }) {
     this.value = value;
     this.base = base;
     this.target = target;
   }
 
-  static fromECBResponse(response: ForexItemExchangeRateECBResponse) {
+  static fromECBResponse(response: ForexItemExchangeRateECBResponse): ForexItemExchangeRate | null {
     const rawValue = response['cb:value']?.at(0)?._;
     if (!rawValue) {
-      return;
+      return null;
     }
 
     const value = Number(rawValue);
     if (Number.isNaN(value)) {
-      return;
+      return null;
     }
 
     const base = response['cb:baseCurrency']?.at(0)?._;
-    if (!base) {
-      return;
+    if (!base || !isCurrency(base)) {
+      return null;
     }
 
     const target = response['cb:targetCurrency']?.at(0);
-    if (!target) {
-      return;
+    if (!target || !isCurrency(target)) {
+      return null;
     }
 
     return new ForexItemExchangeRate({ value, base, target });
