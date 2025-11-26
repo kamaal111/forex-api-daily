@@ -55,5 +55,3 @@ describe('Network Request Blocking', () => {
     await expect(fetch('https://httpbin.org/get')).rejects.toThrow(/Network request blocked in test/);
   });
 });
-
-

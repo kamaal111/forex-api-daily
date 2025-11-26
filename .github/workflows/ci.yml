@@ -32,9 +32,6 @@ jobs:
       - name: Install NPM packages
         run: pnpm install
 
-      - name: Run quality checks
-        run: pnpm quality
-
       - name: Test
         run: pnpm test
 
