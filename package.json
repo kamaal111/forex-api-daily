@@ -14,8 +14,7 @@
     "pretest": "pnpm run compile",
     "quality": "pnpm run format:check && pnpm run lint && pnpm run typecheck",
     "record": "pnpm compile && firebase emulators:exec --only firestore \"tsx scripts/record.ts\"",
-    "start": "GCP_PROJECT_ID=forex-api-daily functions-framework --target=main --signature-type=http --port=8081",
-    "start-db": "firebase emulators:start --only firestore --project forex-api-daily",
+    "start": "firebase emulators:exec --only firestore \"GCP_PROJECT_ID=forex-api-daily functions-framework --target=main --signature-type=http --port=8081\"",
     "test": "firebase emulators:exec --only firestore \"vitest --run\"",
     "typecheck": "tsc --noEmit"
   },
@@ -27,7 +26,7 @@
     "url": "git+https://github.com/kamaal111/forex-api-daily.git"
   },
   "author": "Kamaal",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/kamaal111/forex-api-daily/issues"
   },
