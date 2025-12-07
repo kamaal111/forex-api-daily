@@ -315,7 +315,7 @@ async function getForexURLs(body: RequestBody): Promise<URL[]> {
   const urls: URL[] = [];
   cheerioLoad(content)('a').each((_index, element) => {
     const link = element.attribs.href;
-    if (!link || !link.includes('/rss/fxref') || link.includes('eek')) {
+    if (!link || !link.includes('/rss/fxref')) {
       return;
     }
     urls.push(new URL(link, BASE_FOREX_URL));

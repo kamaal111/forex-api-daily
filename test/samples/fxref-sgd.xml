@@ -6,95 +6,95 @@
 <description>The reference rates are based on the regular daily concertation procedure between central banks within and outside the European System of Central Banks, which normally takes place at 2.15 p.m. (14:15) ECB time.</description>
 <items>
 <rdf:Seq>
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-sgd.en.html?date=2025-11-21&amp;rate=1.5065" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-sgd.en.html?date=2025-11-20&amp;rate=1.5055" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-sgd.en.html?date=2025-11-19&amp;rate=1.5104" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-sgd.en.html?date=2025-11-18&amp;rate=1.5093" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-sgd.en.html?date=2025-11-17&amp;rate=1.5099" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-sgd.en.html?date=2025-12-05&amp;rate=1.5084" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-sgd.en.html?date=2025-12-04&amp;rate=1.5115" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-sgd.en.html?date=2025-12-03&amp;rate=1.5101" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-sgd.en.html?date=2025-12-02&amp;rate=1.5072" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-sgd.en.html?date=2025-12-01&amp;rate=1.5065" />
 </rdf:Seq>
 </items>
 <dc:publisher>European Central Bank</dc:publisher>
 <dcterms:license>http://www.ecb.europa.eu/home/html/disclaimer.en.html</dcterms:license>
 </channel>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-sgd.en.html?date=2025-11-21&amp;rate=1.5065">
-<title xml:lang="en">1.5065 SGD = 1 EUR 2025-11-21 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-sgd.en.html?date=2025-11-21&amp;rate=1.5065</link>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-sgd.en.html?date=2025-12-05&amp;rate=1.5084">
+<title xml:lang="en">1.5084 SGD = 1 EUR 2025-12-05 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-sgd.en.html?date=2025-12-05&amp;rate=1.5084</link>
+<description xml:lang="en">1 EUR buys 1.5084 Singapore dollar (SGD) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-12-05T14:15:00+01:00</dc:date>
+<dc:language>en</dc:language>
+<cb:statistics>
+<cb:country>U2</cb:country>
+<cb:institutionAbbrev>ECB</cb:institutionAbbrev>
+<cb:exchangeRate>
+<cb:value frequency="daily" decimals="4">1.5084</cb:value>
+<cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
+<cb:targetCurrency>SGD</cb:targetCurrency>
+<cb:rateType>Reference rate</cb:rateType>
+</cb:exchangeRate>
+</cb:statistics>
+</item>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-sgd.en.html?date=2025-12-04&amp;rate=1.5115">
+<title xml:lang="en">1.5115 SGD = 1 EUR 2025-12-04 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-sgd.en.html?date=2025-12-04&amp;rate=1.5115</link>
+<description xml:lang="en">1 EUR buys 1.5115 Singapore dollar (SGD) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-12-04T14:15:00+01:00</dc:date>
+<dc:language>en</dc:language>
+<cb:statistics>
+<cb:country>U2</cb:country>
+<cb:institutionAbbrev>ECB</cb:institutionAbbrev>
+<cb:exchangeRate>
+<cb:value frequency="daily" decimals="4">1.5115</cb:value>
+<cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
+<cb:targetCurrency>SGD</cb:targetCurrency>
+<cb:rateType>Reference rate</cb:rateType>
+</cb:exchangeRate>
+</cb:statistics>
+</item>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-sgd.en.html?date=2025-12-03&amp;rate=1.5101">
+<title xml:lang="en">1.5101 SGD = 1 EUR 2025-12-03 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-sgd.en.html?date=2025-12-03&amp;rate=1.5101</link>
+<description xml:lang="en">1 EUR buys 1.5101 Singapore dollar (SGD) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-12-03T14:15:00+01:00</dc:date>
+<dc:language>en</dc:language>
+<cb:statistics>
+<cb:country>U2</cb:country>
+<cb:institutionAbbrev>ECB</cb:institutionAbbrev>
+<cb:exchangeRate>
+<cb:value frequency="daily" decimals="4">1.5101</cb:value>
+<cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
+<cb:targetCurrency>SGD</cb:targetCurrency>
+<cb:rateType>Reference rate</cb:rateType>
+</cb:exchangeRate>
+</cb:statistics>
+</item>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-sgd.en.html?date=2025-12-02&amp;rate=1.5072">
+<title xml:lang="en">1.5072 SGD = 1 EUR 2025-12-02 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-sgd.en.html?date=2025-12-02&amp;rate=1.5072</link>
+<description xml:lang="en">1 EUR buys 1.5072 Singapore dollar (SGD) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-12-02T14:15:00+01:00</dc:date>
+<dc:language>en</dc:language>
+<cb:statistics>
+<cb:country>U2</cb:country>
+<cb:institutionAbbrev>ECB</cb:institutionAbbrev>
+<cb:exchangeRate>
+<cb:value frequency="daily" decimals="4">1.5072</cb:value>
+<cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
+<cb:targetCurrency>SGD</cb:targetCurrency>
+<cb:rateType>Reference rate</cb:rateType>
+</cb:exchangeRate>
+</cb:statistics>
+</item>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-sgd.en.html?date=2025-12-01&amp;rate=1.5065">
+<title xml:lang="en">1.5065 SGD = 1 EUR 2025-12-01 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-sgd.en.html?date=2025-12-01&amp;rate=1.5065</link>
 <description xml:lang="en">1 EUR buys 1.5065 Singapore dollar (SGD) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2025-11-21T14:15:00+01:00</dc:date>
+<dc:date>2025-12-01T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
 <cb:value frequency="daily" decimals="4">1.5065</cb:value>
-<cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
-<cb:targetCurrency>SGD</cb:targetCurrency>
-<cb:rateType>Reference rate</cb:rateType>
-</cb:exchangeRate>
-</cb:statistics>
-</item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-sgd.en.html?date=2025-11-20&amp;rate=1.5055">
-<title xml:lang="en">1.5055 SGD = 1 EUR 2025-11-20 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-sgd.en.html?date=2025-11-20&amp;rate=1.5055</link>
-<description xml:lang="en">1 EUR buys 1.5055 Singapore dollar (SGD) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2025-11-20T14:15:00+01:00</dc:date>
-<dc:language>en</dc:language>
-<cb:statistics>
-<cb:country>U2</cb:country>
-<cb:institutionAbbrev>ECB</cb:institutionAbbrev>
-<cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">1.5055</cb:value>
-<cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
-<cb:targetCurrency>SGD</cb:targetCurrency>
-<cb:rateType>Reference rate</cb:rateType>
-</cb:exchangeRate>
-</cb:statistics>
-</item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-sgd.en.html?date=2025-11-19&amp;rate=1.5104">
-<title xml:lang="en">1.5104 SGD = 1 EUR 2025-11-19 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-sgd.en.html?date=2025-11-19&amp;rate=1.5104</link>
-<description xml:lang="en">1 EUR buys 1.5104 Singapore dollar (SGD) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2025-11-19T14:15:00+01:00</dc:date>
-<dc:language>en</dc:language>
-<cb:statistics>
-<cb:country>U2</cb:country>
-<cb:institutionAbbrev>ECB</cb:institutionAbbrev>
-<cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">1.5104</cb:value>
-<cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
-<cb:targetCurrency>SGD</cb:targetCurrency>
-<cb:rateType>Reference rate</cb:rateType>
-</cb:exchangeRate>
-</cb:statistics>
-</item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-sgd.en.html?date=2025-11-18&amp;rate=1.5093">
-<title xml:lang="en">1.5093 SGD = 1 EUR 2025-11-18 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-sgd.en.html?date=2025-11-18&amp;rate=1.5093</link>
-<description xml:lang="en">1 EUR buys 1.5093 Singapore dollar (SGD) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2025-11-18T14:15:00+01:00</dc:date>
-<dc:language>en</dc:language>
-<cb:statistics>
-<cb:country>U2</cb:country>
-<cb:institutionAbbrev>ECB</cb:institutionAbbrev>
-<cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">1.5093</cb:value>
-<cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
-<cb:targetCurrency>SGD</cb:targetCurrency>
-<cb:rateType>Reference rate</cb:rateType>
-</cb:exchangeRate>
-</cb:statistics>
-</item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-sgd.en.html?date=2025-11-17&amp;rate=1.5099">
-<title xml:lang="en">1.5099 SGD = 1 EUR 2025-11-17 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-sgd.en.html?date=2025-11-17&amp;rate=1.5099</link>
-<description xml:lang="en">1 EUR buys 1.5099 Singapore dollar (SGD) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2025-11-17T14:15:00+01:00</dc:date>
-<dc:language>en</dc:language>
-<cb:statistics>
-<cb:country>U2</cb:country>
-<cb:institutionAbbrev>ECB</cb:institutionAbbrev>
-<cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">1.5099</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>SGD</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>

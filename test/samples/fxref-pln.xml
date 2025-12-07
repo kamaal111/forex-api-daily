@@ -6,95 +6,95 @@
 <description>The reference rates are based on the regular daily concertation procedure between central banks within and outside the European System of Central Banks, which normally takes place at 2.15 p.m. (14:15) ECB time.</description>
 <items>
 <rdf:Seq>
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-pln.en.html?date=2025-11-21&amp;rate=4.2448" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-pln.en.html?date=2025-11-20&amp;rate=4.2320" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-pln.en.html?date=2025-11-19&amp;rate=4.2283" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-pln.en.html?date=2025-11-18&amp;rate=4.2440" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-pln.en.html?date=2025-11-17&amp;rate=4.2228" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-pln.en.html?date=2025-12-05&amp;rate=4.2323" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-pln.en.html?date=2025-12-04&amp;rate=4.2313" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-pln.en.html?date=2025-12-03&amp;rate=4.2318" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-pln.en.html?date=2025-12-02&amp;rate=4.2380" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-pln.en.html?date=2025-12-01&amp;rate=4.2283" />
 </rdf:Seq>
 </items>
 <dc:publisher>European Central Bank</dc:publisher>
 <dcterms:license>http://www.ecb.europa.eu/home/html/disclaimer.en.html</dcterms:license>
 </channel>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-pln.en.html?date=2025-11-21&amp;rate=4.2448">
-<title xml:lang="en">4.2448 PLN = 1 EUR 2025-11-21 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-pln.en.html?date=2025-11-21&amp;rate=4.2448</link>
-<description xml:lang="en">1 EUR buys 4.2448 Polish zloty (PLN) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2025-11-21T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-pln.en.html?date=2025-12-05&amp;rate=4.2323">
+<title xml:lang="en">4.2323 PLN = 1 EUR 2025-12-05 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-pln.en.html?date=2025-12-05&amp;rate=4.2323</link>
+<description xml:lang="en">1 EUR buys 4.2323 Polish zloty (PLN) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-12-05T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">4.2448</cb:value>
+<cb:value frequency="daily" decimals="4">4.2323</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>PLN</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
 </cb:exchangeRate>
 </cb:statistics>
 </item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-pln.en.html?date=2025-11-20&amp;rate=4.2320">
-<title xml:lang="en">4.2320 PLN = 1 EUR 2025-11-20 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-pln.en.html?date=2025-11-20&amp;rate=4.2320</link>
-<description xml:lang="en">1 EUR buys 4.2320 Polish zloty (PLN) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2025-11-20T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-pln.en.html?date=2025-12-04&amp;rate=4.2313">
+<title xml:lang="en">4.2313 PLN = 1 EUR 2025-12-04 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-pln.en.html?date=2025-12-04&amp;rate=4.2313</link>
+<description xml:lang="en">1 EUR buys 4.2313 Polish zloty (PLN) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-12-04T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">4.2320</cb:value>
+<cb:value frequency="daily" decimals="4">4.2313</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>PLN</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
 </cb:exchangeRate>
 </cb:statistics>
 </item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-pln.en.html?date=2025-11-19&amp;rate=4.2283">
-<title xml:lang="en">4.2283 PLN = 1 EUR 2025-11-19 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-pln.en.html?date=2025-11-19&amp;rate=4.2283</link>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-pln.en.html?date=2025-12-03&amp;rate=4.2318">
+<title xml:lang="en">4.2318 PLN = 1 EUR 2025-12-03 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-pln.en.html?date=2025-12-03&amp;rate=4.2318</link>
+<description xml:lang="en">1 EUR buys 4.2318 Polish zloty (PLN) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-12-03T14:15:00+01:00</dc:date>
+<dc:language>en</dc:language>
+<cb:statistics>
+<cb:country>U2</cb:country>
+<cb:institutionAbbrev>ECB</cb:institutionAbbrev>
+<cb:exchangeRate>
+<cb:value frequency="daily" decimals="4">4.2318</cb:value>
+<cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
+<cb:targetCurrency>PLN</cb:targetCurrency>
+<cb:rateType>Reference rate</cb:rateType>
+</cb:exchangeRate>
+</cb:statistics>
+</item>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-pln.en.html?date=2025-12-02&amp;rate=4.2380">
+<title xml:lang="en">4.2380 PLN = 1 EUR 2025-12-02 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-pln.en.html?date=2025-12-02&amp;rate=4.2380</link>
+<description xml:lang="en">1 EUR buys 4.2380 Polish zloty (PLN) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-12-02T14:15:00+01:00</dc:date>
+<dc:language>en</dc:language>
+<cb:statistics>
+<cb:country>U2</cb:country>
+<cb:institutionAbbrev>ECB</cb:institutionAbbrev>
+<cb:exchangeRate>
+<cb:value frequency="daily" decimals="4">4.2380</cb:value>
+<cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
+<cb:targetCurrency>PLN</cb:targetCurrency>
+<cb:rateType>Reference rate</cb:rateType>
+</cb:exchangeRate>
+</cb:statistics>
+</item>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-pln.en.html?date=2025-12-01&amp;rate=4.2283">
+<title xml:lang="en">4.2283 PLN = 1 EUR 2025-12-01 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-pln.en.html?date=2025-12-01&amp;rate=4.2283</link>
 <description xml:lang="en">1 EUR buys 4.2283 Polish zloty (PLN) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2025-11-19T14:15:00+01:00</dc:date>
+<dc:date>2025-12-01T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
 <cb:value frequency="daily" decimals="4">4.2283</cb:value>
-<cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
-<cb:targetCurrency>PLN</cb:targetCurrency>
-<cb:rateType>Reference rate</cb:rateType>
-</cb:exchangeRate>
-</cb:statistics>
-</item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-pln.en.html?date=2025-11-18&amp;rate=4.2440">
-<title xml:lang="en">4.2440 PLN = 1 EUR 2025-11-18 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-pln.en.html?date=2025-11-18&amp;rate=4.2440</link>
-<description xml:lang="en">1 EUR buys 4.2440 Polish zloty (PLN) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2025-11-18T14:15:00+01:00</dc:date>
-<dc:language>en</dc:language>
-<cb:statistics>
-<cb:country>U2</cb:country>
-<cb:institutionAbbrev>ECB</cb:institutionAbbrev>
-<cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">4.2440</cb:value>
-<cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
-<cb:targetCurrency>PLN</cb:targetCurrency>
-<cb:rateType>Reference rate</cb:rateType>
-</cb:exchangeRate>
-</cb:statistics>
-</item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-pln.en.html?date=2025-11-17&amp;rate=4.2228">
-<title xml:lang="en">4.2228 PLN = 1 EUR 2025-11-17 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-pln.en.html?date=2025-11-17&amp;rate=4.2228</link>
-<description xml:lang="en">1 EUR buys 4.2228 Polish zloty (PLN) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2025-11-17T14:15:00+01:00</dc:date>
-<dc:language>en</dc:language>
-<cb:statistics>
-<cb:country>U2</cb:country>
-<cb:institutionAbbrev>ECB</cb:institutionAbbrev>
-<cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">4.2228</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>PLN</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
