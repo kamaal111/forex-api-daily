@@ -3,6 +3,7 @@ import { Firestore } from '@google-cloud/firestore';
 
 import { httpInvocation, startFunctionFramework } from '../utils/functionFramework';
 import { TARGETS } from '..';
+import { TEST_DATE } from './constants';
 
 const PORT = 8084;
 const TARGET = TARGETS.MAIN;
@@ -40,7 +41,7 @@ describe('Cloud Function Integration Tests', () => {
 
       expect(response.status).toBe(200);
       const text = await response.text();
-      expect(text).toMatch(/^SUCCESS 2025-11-21 31-0$/);
+      expect(text).toMatch(new RegExp(`^SUCCESS ${TEST_DATE} 31-0$`));
 
       const exchangeRates = await db.collection('exchange_rates').get();
       expect(exchangeRates.size).toBe(31);
@@ -49,12 +50,12 @@ describe('Cloud Function Integration Tests', () => {
     it('stores EUR-based rates', async () => {
       await httpInvocation(TARGET, PORT);
 
-      const eurDoc = await db.collection('exchange_rates').doc('EUR-2025-11-21').get();
+      const eurDoc = await db.collection('exchange_rates').doc(`EUR-${TEST_DATE}`).get();
       expect(eurDoc.exists).toBe(true);
 
       const data = eurDoc.data() as { base: string; date: string; rates: Record<string, number> };
       expect(data.base).toBe('EUR');
-      expect(data.date).toBe('2025-11-21');
+      expect(data.date).toBe(TEST_DATE);
       expect(data.rates).toBeDefined();
       expect(Object.keys(data.rates).length).toBeGreaterThan(0);
     });
@@ -62,13 +63,13 @@ describe('Cloud Function Integration Tests', () => {
     it('stores cross rates for USD', async () => {
       await httpInvocation(TARGET, PORT);
 
-      const usdDoc = await db.collection('exchange_rates').doc('USD-2025-11-21').get();
+      const usdDoc = await db.collection('exchange_rates').doc(`USD-${TEST_DATE}`).get();
       expect(usdDoc.exists).toBe(true);
 
       const data = usdDoc.data() as { base: string; rates: Record<string, number> };
       expect(data.base).toBe('USD');
       expect(data.rates.EUR).toBeDefined();
-      expect(data.rates.EUR).toBeCloseTo(1 / 1.152, 10);
+      expect(data.rates.EUR).toBeCloseTo(1 / 1.1645, 10);
     });
 
     it('stores rates for all major currencies', async () => {
@@ -76,7 +77,7 @@ describe('Cloud Function Integration Tests', () => {
 
       const currencies = ['EUR', 'USD', 'GBP', 'JPY', 'CHF', 'CAD', 'AUD'];
       const docs = await Promise.all(
-        currencies.map(currency => db.collection('exchange_rates').doc(`${currency}-2025-11-21`).get()),
+        currencies.map(currency => db.collection('exchange_rates').doc(`${currency}-${TEST_DATE}`).get()),
       );
 
       expect(docs.every(doc => doc.exists)).toBe(true);
@@ -87,7 +88,7 @@ describe('Cloud Function Integration Tests', () => {
     it('does not duplicate existing data', async () => {
       const response1 = await httpInvocation(TARGET, PORT);
       const text1 = await response1.text();
-      expect(text1).toMatch(/^SUCCESS 2025-11-21 31-0$/);
+      expect(text1).toMatch(new RegExp(`^SUCCESS ${TEST_DATE} 31-0$`));
 
       const response2 = await httpInvocation(TARGET, PORT);
       const text2 = await response2.text();
@@ -137,7 +138,7 @@ describe('Cloud Function Integration Tests', () => {
         return data.date;
       });
 
-      expect(dates.every((date: string) => date === '2025-11-21')).toBe(true);
+      expect(dates.every((date: string) => date === TEST_DATE)).toBe(true);
       expect(dates.includes(oldDate)).toBe(false);
     });
 
@@ -167,8 +168,8 @@ describe('Cloud Function Integration Tests', () => {
     it('stores consistent cross-rate calculations', async () => {
       await httpInvocation(TARGET, PORT);
 
-      const eurDoc = await db.collection('exchange_rates').doc('EUR-2025-11-21').get();
-      const usdDoc = await db.collection('exchange_rates').doc('USD-2025-11-21').get();
+      const eurDoc = await db.collection('exchange_rates').doc(`EUR-${TEST_DATE}`).get();
+      const usdDoc = await db.collection('exchange_rates').doc(`USD-${TEST_DATE}`).get();
 
       const eurData = eurDoc.data() as { rates: Record<string, number> };
       const usdData = usdDoc.data() as { rates: Record<string, number> };
@@ -188,7 +189,7 @@ describe('Cloud Function Integration Tests', () => {
         return data.date;
       });
 
-      expect(dates.every((date: string) => date === '2025-11-21')).toBe(true);
+      expect(dates.every((date: string) => date === TEST_DATE)).toBe(true);
     });
 
     it('stores valid numeric rates', async () => {
@@ -226,7 +227,7 @@ describe('Cloud Function Integration Tests', () => {
       const response = await httpInvocation(TARGET, PORT);
       const text = await response.text();
 
-      expect(text).toContain('2025-11-21');
+      expect(text).toContain(TEST_DATE);
     });
 
     it('includes items stored count in response', async () => {

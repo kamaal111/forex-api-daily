@@ -6,95 +6,95 @@
 <description>The reference rates are based on the regular daily concertation procedure between central banks within and outside the European System of Central Banks, which normally takes place at 2.15 p.m. (14:15) ECB time.</description>
 <items>
 <rdf:Seq>
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-idr.en.html?date=2025-11-21&amp;rate=19258.85" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-idr.en.html?date=2025-11-20&amp;rate=19284.68" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-idr.en.html?date=2025-11-19&amp;rate=19364.34" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-idr.en.html?date=2025-11-18&amp;rate=19420.32" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-idr.en.html?date=2025-11-17&amp;rate=19401.29" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-idr.en.html?date=2025-12-05&amp;rate=19413.67" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-idr.en.html?date=2025-12-04&amp;rate=19429.55" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-idr.en.html?date=2025-12-03&amp;rate=19395.72" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-idr.en.html?date=2025-12-02&amp;rate=19308.16" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-idr.en.html?date=2025-12-01&amp;rate=19320.71" />
 </rdf:Seq>
 </items>
 <dc:publisher>European Central Bank</dc:publisher>
 <dcterms:license>http://www.ecb.europa.eu/home/html/disclaimer.en.html</dcterms:license>
 </channel>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-idr.en.html?date=2025-11-21&amp;rate=19258.85">
-<title xml:lang="en">19258.85 IDR = 1 EUR 2025-11-21 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-idr.en.html?date=2025-11-21&amp;rate=19258.85</link>
-<description xml:lang="en">1 EUR buys 19258.85 Indonesian rupiah (IDR) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2025-11-21T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-idr.en.html?date=2025-12-05&amp;rate=19413.67">
+<title xml:lang="en">19413.67 IDR = 1 EUR 2025-12-05 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-idr.en.html?date=2025-12-05&amp;rate=19413.67</link>
+<description xml:lang="en">1 EUR buys 19413.67 Indonesian rupiah (IDR) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-12-05T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="2">19258.85</cb:value>
+<cb:value frequency="daily" decimals="2">19413.67</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>IDR</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
 </cb:exchangeRate>
 </cb:statistics>
 </item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-idr.en.html?date=2025-11-20&amp;rate=19284.68">
-<title xml:lang="en">19284.68 IDR = 1 EUR 2025-11-20 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-idr.en.html?date=2025-11-20&amp;rate=19284.68</link>
-<description xml:lang="en">1 EUR buys 19284.68 Indonesian rupiah (IDR) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2025-11-20T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-idr.en.html?date=2025-12-04&amp;rate=19429.55">
+<title xml:lang="en">19429.55 IDR = 1 EUR 2025-12-04 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-idr.en.html?date=2025-12-04&amp;rate=19429.55</link>
+<description xml:lang="en">1 EUR buys 19429.55 Indonesian rupiah (IDR) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-12-04T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="2">19284.68</cb:value>
+<cb:value frequency="daily" decimals="2">19429.55</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>IDR</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
 </cb:exchangeRate>
 </cb:statistics>
 </item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-idr.en.html?date=2025-11-19&amp;rate=19364.34">
-<title xml:lang="en">19364.34 IDR = 1 EUR 2025-11-19 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-idr.en.html?date=2025-11-19&amp;rate=19364.34</link>
-<description xml:lang="en">1 EUR buys 19364.34 Indonesian rupiah (IDR) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2025-11-19T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-idr.en.html?date=2025-12-03&amp;rate=19395.72">
+<title xml:lang="en">19395.72 IDR = 1 EUR 2025-12-03 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-idr.en.html?date=2025-12-03&amp;rate=19395.72</link>
+<description xml:lang="en">1 EUR buys 19395.72 Indonesian rupiah (IDR) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-12-03T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="2">19364.34</cb:value>
+<cb:value frequency="daily" decimals="2">19395.72</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>IDR</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
 </cb:exchangeRate>
 </cb:statistics>
 </item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-idr.en.html?date=2025-11-18&amp;rate=19420.32">
-<title xml:lang="en">19420.32 IDR = 1 EUR 2025-11-18 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-idr.en.html?date=2025-11-18&amp;rate=19420.32</link>
-<description xml:lang="en">1 EUR buys 19420.32 Indonesian rupiah (IDR) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2025-11-18T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-idr.en.html?date=2025-12-02&amp;rate=19308.16">
+<title xml:lang="en">19308.16 IDR = 1 EUR 2025-12-02 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-idr.en.html?date=2025-12-02&amp;rate=19308.16</link>
+<description xml:lang="en">1 EUR buys 19308.16 Indonesian rupiah (IDR) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-12-02T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="2">19420.32</cb:value>
+<cb:value frequency="daily" decimals="2">19308.16</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>IDR</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
 </cb:exchangeRate>
 </cb:statistics>
 </item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-idr.en.html?date=2025-11-17&amp;rate=19401.29">
-<title xml:lang="en">19401.29 IDR = 1 EUR 2025-11-17 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-idr.en.html?date=2025-11-17&amp;rate=19401.29</link>
-<description xml:lang="en">1 EUR buys 19401.29 Indonesian rupiah (IDR) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2025-11-17T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-idr.en.html?date=2025-12-01&amp;rate=19320.71">
+<title xml:lang="en">19320.71 IDR = 1 EUR 2025-12-01 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-idr.en.html?date=2025-12-01&amp;rate=19320.71</link>
+<description xml:lang="en">1 EUR buys 19320.71 Indonesian rupiah (IDR) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-12-01T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="2">19401.29</cb:value>
+<cb:value frequency="daily" decimals="2">19320.71</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>IDR</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>

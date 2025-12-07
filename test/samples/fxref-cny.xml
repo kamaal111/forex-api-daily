@@ -6,95 +6,95 @@
 <description>The reference rates are based on the regular daily concertation procedure between central banks within and outside the European System of Central Banks, which normally takes place at 2.15 p.m. (14:15) ECB time.</description>
 <items>
 <rdf:Seq>
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cny.en.html?date=2025-11-21&amp;rate=8.1905" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cny.en.html?date=2025-11-20&amp;rate=8.1908" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cny.en.html?date=2025-11-19&amp;rate=8.2359" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cny.en.html?date=2025-11-18&amp;rate=8.2410" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cny.en.html?date=2025-11-17&amp;rate=8.2398" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cny.en.html?date=2025-12-05&amp;rate=8.2333" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cny.en.html?date=2025-12-04&amp;rate=8.2498" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cny.en.html?date=2025-12-03&amp;rate=8.2421" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cny.en.html?date=2025-12-02&amp;rate=8.2123" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cny.en.html?date=2025-12-01&amp;rate=8.2358" />
 </rdf:Seq>
 </items>
 <dc:publisher>European Central Bank</dc:publisher>
 <dcterms:license>http://www.ecb.europa.eu/home/html/disclaimer.en.html</dcterms:license>
 </channel>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cny.en.html?date=2025-11-21&amp;rate=8.1905">
-<title xml:lang="en">8.1905 CNY = 1 EUR 2025-11-21 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cny.en.html?date=2025-11-21&amp;rate=8.1905</link>
-<description xml:lang="en">1 EUR buys 8.1905 Chinese yuan renminbi (CNY) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2025-11-21T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cny.en.html?date=2025-12-05&amp;rate=8.2333">
+<title xml:lang="en">8.2333 CNY = 1 EUR 2025-12-05 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cny.en.html?date=2025-12-05&amp;rate=8.2333</link>
+<description xml:lang="en">1 EUR buys 8.2333 Chinese yuan renminbi (CNY) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-12-05T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">8.1905</cb:value>
+<cb:value frequency="daily" decimals="4">8.2333</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>CNY</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
 </cb:exchangeRate>
 </cb:statistics>
 </item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cny.en.html?date=2025-11-20&amp;rate=8.1908">
-<title xml:lang="en">8.1908 CNY = 1 EUR 2025-11-20 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cny.en.html?date=2025-11-20&amp;rate=8.1908</link>
-<description xml:lang="en">1 EUR buys 8.1908 Chinese yuan renminbi (CNY) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2025-11-20T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cny.en.html?date=2025-12-04&amp;rate=8.2498">
+<title xml:lang="en">8.2498 CNY = 1 EUR 2025-12-04 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cny.en.html?date=2025-12-04&amp;rate=8.2498</link>
+<description xml:lang="en">1 EUR buys 8.2498 Chinese yuan renminbi (CNY) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-12-04T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">8.1908</cb:value>
+<cb:value frequency="daily" decimals="4">8.2498</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>CNY</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
 </cb:exchangeRate>
 </cb:statistics>
 </item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cny.en.html?date=2025-11-19&amp;rate=8.2359">
-<title xml:lang="en">8.2359 CNY = 1 EUR 2025-11-19 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cny.en.html?date=2025-11-19&amp;rate=8.2359</link>
-<description xml:lang="en">1 EUR buys 8.2359 Chinese yuan renminbi (CNY) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2025-11-19T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cny.en.html?date=2025-12-03&amp;rate=8.2421">
+<title xml:lang="en">8.2421 CNY = 1 EUR 2025-12-03 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cny.en.html?date=2025-12-03&amp;rate=8.2421</link>
+<description xml:lang="en">1 EUR buys 8.2421 Chinese yuan renminbi (CNY) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-12-03T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">8.2359</cb:value>
+<cb:value frequency="daily" decimals="4">8.2421</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>CNY</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
 </cb:exchangeRate>
 </cb:statistics>
 </item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cny.en.html?date=2025-11-18&amp;rate=8.2410">
-<title xml:lang="en">8.2410 CNY = 1 EUR 2025-11-18 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cny.en.html?date=2025-11-18&amp;rate=8.2410</link>
-<description xml:lang="en">1 EUR buys 8.2410 Chinese yuan renminbi (CNY) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2025-11-18T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cny.en.html?date=2025-12-02&amp;rate=8.2123">
+<title xml:lang="en">8.2123 CNY = 1 EUR 2025-12-02 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cny.en.html?date=2025-12-02&amp;rate=8.2123</link>
+<description xml:lang="en">1 EUR buys 8.2123 Chinese yuan renminbi (CNY) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-12-02T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">8.2410</cb:value>
+<cb:value frequency="daily" decimals="4">8.2123</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>CNY</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
 </cb:exchangeRate>
 </cb:statistics>
 </item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cny.en.html?date=2025-11-17&amp;rate=8.2398">
-<title xml:lang="en">8.2398 CNY = 1 EUR 2025-11-17 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cny.en.html?date=2025-11-17&amp;rate=8.2398</link>
-<description xml:lang="en">1 EUR buys 8.2398 Chinese yuan renminbi (CNY) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2025-11-17T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cny.en.html?date=2025-12-01&amp;rate=8.2358">
+<title xml:lang="en">8.2358 CNY = 1 EUR 2025-12-01 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-cny.en.html?date=2025-12-01&amp;rate=8.2358</link>
+<description xml:lang="en">1 EUR buys 8.2358 Chinese yuan renminbi (CNY) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-12-01T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">8.2398</cb:value>
+<cb:value frequency="daily" decimals="4">8.2358</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>CNY</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>

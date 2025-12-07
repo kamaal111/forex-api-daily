@@ -6,95 +6,95 @@
 <description>The reference rates are based on the regular daily concertation procedure between central banks within and outside the European System of Central Banks, which normally takes place at 2.15 p.m. (14:15) ECB time.</description>
 <items>
 <rdf:Seq>
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-dkk.en.html?date=2025-11-21&amp;rate=7.4687" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-dkk.en.html?date=2025-11-20&amp;rate=7.4691" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-dkk.en.html?date=2025-11-19&amp;rate=7.4691" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-dkk.en.html?date=2025-11-18&amp;rate=7.4684" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-dkk.en.html?date=2025-11-17&amp;rate=7.4683" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-dkk.en.html?date=2025-12-05&amp;rate=7.4689" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-dkk.en.html?date=2025-12-04&amp;rate=7.4686" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-dkk.en.html?date=2025-12-03&amp;rate=7.4689" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-dkk.en.html?date=2025-12-02&amp;rate=7.4686" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-dkk.en.html?date=2025-12-01&amp;rate=7.4687" />
 </rdf:Seq>
 </items>
 <dc:publisher>European Central Bank</dc:publisher>
 <dcterms:license>http://www.ecb.europa.eu/home/html/disclaimer.en.html</dcterms:license>
 </channel>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-dkk.en.html?date=2025-11-21&amp;rate=7.4687">
-<title xml:lang="en">7.4687 DKK = 1 EUR 2025-11-21 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-dkk.en.html?date=2025-11-21&amp;rate=7.4687</link>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-dkk.en.html?date=2025-12-05&amp;rate=7.4689">
+<title xml:lang="en">7.4689 DKK = 1 EUR 2025-12-05 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-dkk.en.html?date=2025-12-05&amp;rate=7.4689</link>
+<description xml:lang="en">1 EUR buys 7.4689 Danish krone (DKK) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-12-05T14:15:00+01:00</dc:date>
+<dc:language>en</dc:language>
+<cb:statistics>
+<cb:country>U2</cb:country>
+<cb:institutionAbbrev>ECB</cb:institutionAbbrev>
+<cb:exchangeRate>
+<cb:value frequency="daily" decimals="4">7.4689</cb:value>
+<cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
+<cb:targetCurrency>DKK</cb:targetCurrency>
+<cb:rateType>Reference rate</cb:rateType>
+</cb:exchangeRate>
+</cb:statistics>
+</item>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-dkk.en.html?date=2025-12-04&amp;rate=7.4686">
+<title xml:lang="en">7.4686 DKK = 1 EUR 2025-12-04 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-dkk.en.html?date=2025-12-04&amp;rate=7.4686</link>
+<description xml:lang="en">1 EUR buys 7.4686 Danish krone (DKK) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-12-04T14:15:00+01:00</dc:date>
+<dc:language>en</dc:language>
+<cb:statistics>
+<cb:country>U2</cb:country>
+<cb:institutionAbbrev>ECB</cb:institutionAbbrev>
+<cb:exchangeRate>
+<cb:value frequency="daily" decimals="4">7.4686</cb:value>
+<cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
+<cb:targetCurrency>DKK</cb:targetCurrency>
+<cb:rateType>Reference rate</cb:rateType>
+</cb:exchangeRate>
+</cb:statistics>
+</item>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-dkk.en.html?date=2025-12-03&amp;rate=7.4689">
+<title xml:lang="en">7.4689 DKK = 1 EUR 2025-12-03 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-dkk.en.html?date=2025-12-03&amp;rate=7.4689</link>
+<description xml:lang="en">1 EUR buys 7.4689 Danish krone (DKK) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-12-03T14:15:00+01:00</dc:date>
+<dc:language>en</dc:language>
+<cb:statistics>
+<cb:country>U2</cb:country>
+<cb:institutionAbbrev>ECB</cb:institutionAbbrev>
+<cb:exchangeRate>
+<cb:value frequency="daily" decimals="4">7.4689</cb:value>
+<cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
+<cb:targetCurrency>DKK</cb:targetCurrency>
+<cb:rateType>Reference rate</cb:rateType>
+</cb:exchangeRate>
+</cb:statistics>
+</item>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-dkk.en.html?date=2025-12-02&amp;rate=7.4686">
+<title xml:lang="en">7.4686 DKK = 1 EUR 2025-12-02 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-dkk.en.html?date=2025-12-02&amp;rate=7.4686</link>
+<description xml:lang="en">1 EUR buys 7.4686 Danish krone (DKK) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-12-02T14:15:00+01:00</dc:date>
+<dc:language>en</dc:language>
+<cb:statistics>
+<cb:country>U2</cb:country>
+<cb:institutionAbbrev>ECB</cb:institutionAbbrev>
+<cb:exchangeRate>
+<cb:value frequency="daily" decimals="4">7.4686</cb:value>
+<cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
+<cb:targetCurrency>DKK</cb:targetCurrency>
+<cb:rateType>Reference rate</cb:rateType>
+</cb:exchangeRate>
+</cb:statistics>
+</item>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-dkk.en.html?date=2025-12-01&amp;rate=7.4687">
+<title xml:lang="en">7.4687 DKK = 1 EUR 2025-12-01 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-dkk.en.html?date=2025-12-01&amp;rate=7.4687</link>
 <description xml:lang="en">1 EUR buys 7.4687 Danish krone (DKK) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2025-11-21T14:15:00+01:00</dc:date>
+<dc:date>2025-12-01T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
 <cb:value frequency="daily" decimals="4">7.4687</cb:value>
-<cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
-<cb:targetCurrency>DKK</cb:targetCurrency>
-<cb:rateType>Reference rate</cb:rateType>
-</cb:exchangeRate>
-</cb:statistics>
-</item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-dkk.en.html?date=2025-11-20&amp;rate=7.4691">
-<title xml:lang="en">7.4691 DKK = 1 EUR 2025-11-20 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-dkk.en.html?date=2025-11-20&amp;rate=7.4691</link>
-<description xml:lang="en">1 EUR buys 7.4691 Danish krone (DKK) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2025-11-20T14:15:00+01:00</dc:date>
-<dc:language>en</dc:language>
-<cb:statistics>
-<cb:country>U2</cb:country>
-<cb:institutionAbbrev>ECB</cb:institutionAbbrev>
-<cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">7.4691</cb:value>
-<cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
-<cb:targetCurrency>DKK</cb:targetCurrency>
-<cb:rateType>Reference rate</cb:rateType>
-</cb:exchangeRate>
-</cb:statistics>
-</item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-dkk.en.html?date=2025-11-19&amp;rate=7.4691">
-<title xml:lang="en">7.4691 DKK = 1 EUR 2025-11-19 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-dkk.en.html?date=2025-11-19&amp;rate=7.4691</link>
-<description xml:lang="en">1 EUR buys 7.4691 Danish krone (DKK) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2025-11-19T14:15:00+01:00</dc:date>
-<dc:language>en</dc:language>
-<cb:statistics>
-<cb:country>U2</cb:country>
-<cb:institutionAbbrev>ECB</cb:institutionAbbrev>
-<cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">7.4691</cb:value>
-<cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
-<cb:targetCurrency>DKK</cb:targetCurrency>
-<cb:rateType>Reference rate</cb:rateType>
-</cb:exchangeRate>
-</cb:statistics>
-</item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-dkk.en.html?date=2025-11-18&amp;rate=7.4684">
-<title xml:lang="en">7.4684 DKK = 1 EUR 2025-11-18 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-dkk.en.html?date=2025-11-18&amp;rate=7.4684</link>
-<description xml:lang="en">1 EUR buys 7.4684 Danish krone (DKK) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2025-11-18T14:15:00+01:00</dc:date>
-<dc:language>en</dc:language>
-<cb:statistics>
-<cb:country>U2</cb:country>
-<cb:institutionAbbrev>ECB</cb:institutionAbbrev>
-<cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">7.4684</cb:value>
-<cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
-<cb:targetCurrency>DKK</cb:targetCurrency>
-<cb:rateType>Reference rate</cb:rateType>
-</cb:exchangeRate>
-</cb:statistics>
-</item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-dkk.en.html?date=2025-11-17&amp;rate=7.4683">
-<title xml:lang="en">7.4683 DKK = 1 EUR 2025-11-17 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-dkk.en.html?date=2025-11-17&amp;rate=7.4683</link>
-<description xml:lang="en">1 EUR buys 7.4683 Danish krone (DKK) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2025-11-17T14:15:00+01:00</dc:date>
-<dc:language>en</dc:language>
-<cb:statistics>
-<cb:country>U2</cb:country>
-<cb:institutionAbbrev>ECB</cb:institutionAbbrev>
-<cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">7.4683</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>DKK</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>

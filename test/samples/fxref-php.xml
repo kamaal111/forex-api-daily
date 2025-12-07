@@ -6,95 +6,95 @@
 <description>The reference rates are based on the regular daily concertation procedure between central banks within and outside the European System of Central Banks, which normally takes place at 2.15 p.m. (14:15) ECB time.</description>
 <items>
 <rdf:Seq>
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-php.en.html?date=2025-11-21&amp;rate=67.817" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-php.en.html?date=2025-11-20&amp;rate=67.988" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-php.en.html?date=2025-11-19&amp;rate=68.206" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-php.en.html?date=2025-11-18&amp;rate=68.182" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-php.en.html?date=2025-11-17&amp;rate=68.355" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-php.en.html?date=2025-12-05&amp;rate=68.719" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-php.en.html?date=2025-12-04&amp;rate=68.868" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-php.en.html?date=2025-12-03&amp;rate=68.800" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-php.en.html?date=2025-12-02&amp;rate=68.140" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-php.en.html?date=2025-12-01&amp;rate=68.110" />
 </rdf:Seq>
 </items>
 <dc:publisher>European Central Bank</dc:publisher>
 <dcterms:license>http://www.ecb.europa.eu/home/html/disclaimer.en.html</dcterms:license>
 </channel>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-php.en.html?date=2025-11-21&amp;rate=67.817">
-<title xml:lang="en">67.817 PHP = 1 EUR 2025-11-21 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-php.en.html?date=2025-11-21&amp;rate=67.817</link>
-<description xml:lang="en">1 EUR buys 67.817 Philippine peso (PHP) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2025-11-21T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-php.en.html?date=2025-12-05&amp;rate=68.719">
+<title xml:lang="en">68.719 PHP = 1 EUR 2025-12-05 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-php.en.html?date=2025-12-05&amp;rate=68.719</link>
+<description xml:lang="en">1 EUR buys 68.719 Philippine peso (PHP) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-12-05T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="3">67.817</cb:value>
+<cb:value frequency="daily" decimals="3">68.719</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>PHP</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
 </cb:exchangeRate>
 </cb:statistics>
 </item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-php.en.html?date=2025-11-20&amp;rate=67.988">
-<title xml:lang="en">67.988 PHP = 1 EUR 2025-11-20 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-php.en.html?date=2025-11-20&amp;rate=67.988</link>
-<description xml:lang="en">1 EUR buys 67.988 Philippine peso (PHP) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2025-11-20T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-php.en.html?date=2025-12-04&amp;rate=68.868">
+<title xml:lang="en">68.868 PHP = 1 EUR 2025-12-04 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-php.en.html?date=2025-12-04&amp;rate=68.868</link>
+<description xml:lang="en">1 EUR buys 68.868 Philippine peso (PHP) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-12-04T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="3">67.988</cb:value>
+<cb:value frequency="daily" decimals="3">68.868</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>PHP</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
 </cb:exchangeRate>
 </cb:statistics>
 </item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-php.en.html?date=2025-11-19&amp;rate=68.206">
-<title xml:lang="en">68.206 PHP = 1 EUR 2025-11-19 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-php.en.html?date=2025-11-19&amp;rate=68.206</link>
-<description xml:lang="en">1 EUR buys 68.206 Philippine peso (PHP) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2025-11-19T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-php.en.html?date=2025-12-03&amp;rate=68.800">
+<title xml:lang="en">68.800 PHP = 1 EUR 2025-12-03 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-php.en.html?date=2025-12-03&amp;rate=68.800</link>
+<description xml:lang="en">1 EUR buys 68.800 Philippine peso (PHP) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-12-03T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="3">68.206</cb:value>
+<cb:value frequency="daily" decimals="3">68.800</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>PHP</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
 </cb:exchangeRate>
 </cb:statistics>
 </item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-php.en.html?date=2025-11-18&amp;rate=68.182">
-<title xml:lang="en">68.182 PHP = 1 EUR 2025-11-18 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-php.en.html?date=2025-11-18&amp;rate=68.182</link>
-<description xml:lang="en">1 EUR buys 68.182 Philippine peso (PHP) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2025-11-18T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-php.en.html?date=2025-12-02&amp;rate=68.140">
+<title xml:lang="en">68.140 PHP = 1 EUR 2025-12-02 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-php.en.html?date=2025-12-02&amp;rate=68.140</link>
+<description xml:lang="en">1 EUR buys 68.140 Philippine peso (PHP) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-12-02T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="3">68.182</cb:value>
+<cb:value frequency="daily" decimals="3">68.140</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>PHP</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
 </cb:exchangeRate>
 </cb:statistics>
 </item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-php.en.html?date=2025-11-17&amp;rate=68.355">
-<title xml:lang="en">68.355 PHP = 1 EUR 2025-11-17 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-php.en.html?date=2025-11-17&amp;rate=68.355</link>
-<description xml:lang="en">1 EUR buys 68.355 Philippine peso (PHP) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2025-11-17T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-php.en.html?date=2025-12-01&amp;rate=68.110">
+<title xml:lang="en">68.110 PHP = 1 EUR 2025-12-01 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-php.en.html?date=2025-12-01&amp;rate=68.110</link>
+<description xml:lang="en">1 EUR buys 68.110 Philippine peso (PHP) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-12-01T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="3">68.355</cb:value>
+<cb:value frequency="daily" decimals="3">68.110</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>PHP</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>

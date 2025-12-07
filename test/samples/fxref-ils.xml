@@ -6,95 +6,95 @@
 <description>The reference rates are based on the regular daily concertation procedure between central banks within and outside the European System of Central Banks, which normally takes place at 2.15 p.m. (14:15) ECB time.</description>
 <items>
 <rdf:Seq>
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-ils.en.html?date=2025-11-21&amp;rate=3.7816" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-ils.en.html?date=2025-11-20&amp;rate=3.7499" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-ils.en.html?date=2025-11-19&amp;rate=3.7847" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-ils.en.html?date=2025-11-18&amp;rate=3.7915" />
-<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-ils.en.html?date=2025-11-17&amp;rate=3.7595" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-ils.en.html?date=2025-12-05&amp;rate=3.7632" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-ils.en.html?date=2025-12-04&amp;rate=3.7754" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-ils.en.html?date=2025-12-03&amp;rate=3.7651" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-ils.en.html?date=2025-12-02&amp;rate=3.7793" />
+<rdf:li rdf:resource="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-ils.en.html?date=2025-12-01&amp;rate=3.8018" />
 </rdf:Seq>
 </items>
 <dc:publisher>European Central Bank</dc:publisher>
 <dcterms:license>http://www.ecb.europa.eu/home/html/disclaimer.en.html</dcterms:license>
 </channel>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-ils.en.html?date=2025-11-21&amp;rate=3.7816">
-<title xml:lang="en">3.7816 ILS = 1 EUR 2025-11-21 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-ils.en.html?date=2025-11-21&amp;rate=3.7816</link>
-<description xml:lang="en">1 EUR buys 3.7816 Israeli shekel (ILS) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2025-11-21T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-ils.en.html?date=2025-12-05&amp;rate=3.7632">
+<title xml:lang="en">3.7632 ILS = 1 EUR 2025-12-05 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-ils.en.html?date=2025-12-05&amp;rate=3.7632</link>
+<description xml:lang="en">1 EUR buys 3.7632 Israeli shekel (ILS) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-12-05T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">3.7816</cb:value>
+<cb:value frequency="daily" decimals="4">3.7632</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>ILS</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
 </cb:exchangeRate>
 </cb:statistics>
 </item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-ils.en.html?date=2025-11-20&amp;rate=3.7499">
-<title xml:lang="en">3.7499 ILS = 1 EUR 2025-11-20 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-ils.en.html?date=2025-11-20&amp;rate=3.7499</link>
-<description xml:lang="en">1 EUR buys 3.7499 Israeli shekel (ILS) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2025-11-20T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-ils.en.html?date=2025-12-04&amp;rate=3.7754">
+<title xml:lang="en">3.7754 ILS = 1 EUR 2025-12-04 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-ils.en.html?date=2025-12-04&amp;rate=3.7754</link>
+<description xml:lang="en">1 EUR buys 3.7754 Israeli shekel (ILS) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-12-04T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">3.7499</cb:value>
+<cb:value frequency="daily" decimals="4">3.7754</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>ILS</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
 </cb:exchangeRate>
 </cb:statistics>
 </item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-ils.en.html?date=2025-11-19&amp;rate=3.7847">
-<title xml:lang="en">3.7847 ILS = 1 EUR 2025-11-19 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-ils.en.html?date=2025-11-19&amp;rate=3.7847</link>
-<description xml:lang="en">1 EUR buys 3.7847 Israeli shekel (ILS) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2025-11-19T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-ils.en.html?date=2025-12-03&amp;rate=3.7651">
+<title xml:lang="en">3.7651 ILS = 1 EUR 2025-12-03 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-ils.en.html?date=2025-12-03&amp;rate=3.7651</link>
+<description xml:lang="en">1 EUR buys 3.7651 Israeli shekel (ILS) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-12-03T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">3.7847</cb:value>
+<cb:value frequency="daily" decimals="4">3.7651</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>ILS</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
 </cb:exchangeRate>
 </cb:statistics>
 </item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-ils.en.html?date=2025-11-18&amp;rate=3.7915">
-<title xml:lang="en">3.7915 ILS = 1 EUR 2025-11-18 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-ils.en.html?date=2025-11-18&amp;rate=3.7915</link>
-<description xml:lang="en">1 EUR buys 3.7915 Israeli shekel (ILS) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2025-11-18T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-ils.en.html?date=2025-12-02&amp;rate=3.7793">
+<title xml:lang="en">3.7793 ILS = 1 EUR 2025-12-02 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-ils.en.html?date=2025-12-02&amp;rate=3.7793</link>
+<description xml:lang="en">1 EUR buys 3.7793 Israeli shekel (ILS) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-12-02T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">3.7915</cb:value>
+<cb:value frequency="daily" decimals="4">3.7793</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>ILS</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
 </cb:exchangeRate>
 </cb:statistics>
 </item>
-<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-ils.en.html?date=2025-11-17&amp;rate=3.7595">
-<title xml:lang="en">3.7595 ILS = 1 EUR 2025-11-17 ECB Reference rate</title>
-<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-ils.en.html?date=2025-11-17&amp;rate=3.7595</link>
-<description xml:lang="en">1 EUR buys 3.7595 Israeli shekel (ILS) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
-<dc:date>2025-11-17T14:15:00+01:00</dc:date>
+<item rdf:about="http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-ils.en.html?date=2025-12-01&amp;rate=3.8018">
+<title xml:lang="en">3.8018 ILS = 1 EUR 2025-12-01 ECB Reference rate</title>
+<link>http://www.ecb.europa.eu/stats/exchange/eurofxref/html/eurofxref-graph-ils.en.html?date=2025-12-01&amp;rate=3.8018</link>
+<description xml:lang="en">1 EUR buys 3.8018 Israeli shekel (ILS) - The reference exchange rates are published both by electronic market information providers and on the ECB's website shortly after the concertation procedure has been completed. Reference rates are published according to the same  calendar as the TARGET system.</description>
+<dc:date>2025-12-01T14:15:00+01:00</dc:date>
 <dc:language>en</dc:language>
 <cb:statistics>
 <cb:country>U2</cb:country>
 <cb:institutionAbbrev>ECB</cb:institutionAbbrev>
 <cb:exchangeRate>
-<cb:value frequency="daily" decimals="4">3.7595</cb:value>
+<cb:value frequency="daily" decimals="4">3.8018</cb:value>
 <cb:baseCurrency unit_mult="0">EUR</cb:baseCurrency>
 <cb:targetCurrency>ILS</cb:targetCurrency>
 <cb:rateType>Reference rate</cb:rateType>
