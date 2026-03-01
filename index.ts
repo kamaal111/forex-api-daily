@@ -13,6 +13,8 @@ export const TARGETS = {
 } as const;
 
 const EXCHANGE_RATES_COLLECTION_KEY = 'exchange_rates';
+const SYMBOLS_COLLECTION_KEY = 'symbols';
+const SYMBOLS_DOCUMENT_KEY = 'available';
 const BASE_FOREX_URL = new URL('https://www.ecb.europa.eu');
 const HOME_URL = new URL('/home/html/rss.en.html', BASE_FOREX_URL);
 const BASE_CURRENCY = 'EUR';
@@ -110,11 +112,13 @@ functions.http(TARGETS.MAIN, async (req, res) => {
   const { GCP_PROJECT_ID } = await v.parseAsync(EnvSchema, process.env);
   const db = new Firestore({ projectId: GCP_PROJECT_ID });
   const exchangeRatesCollection = db.collection(EXCHANGE_RATES_COLLECTION_KEY);
+  const symbolsCollection = db.collection(SYMBOLS_COLLECTION_KEY);
   const batchOperations = db.batch();
   const body = await parseRequestBody(req);
   console.log(`request body: ${JSON.stringify(body)}`);
   const ratesStored = await fetchAndStoreExchangeRates(batchOperations, exchangeRatesCollection, body);
   const ratesRemoved = await cleanStaleRates(ratesStored, batchOperations, exchangeRatesCollection);
+  storeSymbols(ratesStored, batchOperations, symbolsCollection);
   if (ratesStored.length > 0 || (ratesRemoved?.size ?? 0) > 0) {
     await batchOperations.commit();
   }
@@ -133,6 +137,20 @@ async function parseRequestBody(req: functions.Request): Promise<RequestBody> {
   else parsedBody = {};
 
   return v.parseAsync(RequestBodySchema, parsedBody);
+}
+
+function storeSymbols(
+  ratesStored: ExchangeRateRecord[],
+  batchOperations: FirebaseFirestore.WriteBatch,
+  symbolsCollection: FirebaseFirestore.CollectionReference<FirebaseFirestore.DocumentData>,
+) {
+  if (ratesStored.length === 0) {
+    return;
+  }
+
+  const symbols = uniques(ratesStored.map(rate => rate.base)).sort();
+  const symbolsDocument = symbolsCollection.doc(SYMBOLS_DOCUMENT_KEY);
+  batchOperations.set(symbolsDocument, { symbols });
 }
 
 async function cleanStaleRates(

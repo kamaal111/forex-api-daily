@@ -19,11 +19,15 @@ beforeAll(async () => {
 });
 
 afterEach(async () => {
-  const collection = db.collection('exchange_rates');
-  const snapshot = await collection.get();
   const batch = db.batch();
-  snapshot.docs.forEach(doc => batch.delete(doc.ref));
-  if (snapshot.size > 0) {
+
+  const exchangeRatesSnapshot = await db.collection('exchange_rates').get();
+  exchangeRatesSnapshot.docs.forEach(doc => batch.delete(doc.ref));
+
+  const symbolsSnapshot = await db.collection('symbols').get();
+  symbolsSnapshot.docs.forEach(doc => batch.delete(doc.ref));
+
+  if (exchangeRatesSnapshot.size > 0 || symbolsSnapshot.size > 0) {
     await batch.commit();
   }
 });
@@ -242,6 +246,50 @@ describe('Cloud Function Integration Tests', () => {
       const text = await response.text();
 
       expect(text).toMatch(/-\d+$/);
+    });
+  });
+
+  describe('Symbols collection', () => {
+    it('stores available symbols on first run', async () => {
+      await httpInvocation(TARGET, PORT);
+
+      const symbolsDoc = await db.collection('symbols').doc('available').get();
+      expect(symbolsDoc.exists).toBe(true);
+
+      const data = symbolsDoc.data() as { symbols: string[] };
+      expect(Array.isArray(data.symbols)).toBe(true);
+      expect(data.symbols.length).toBeGreaterThan(0);
+    });
+
+    it('symbols match the base currencies of stored exchange rates', async () => {
+      await httpInvocation(TARGET, PORT);
+
+      const exchangeRates = await db.collection('exchange_rates').get();
+      const bases = exchangeRates.docs.map(doc => (doc.data() as { base: string }).base).sort();
+
+      const symbolsDoc = await db.collection('symbols').doc('available').get();
+      const { symbols } = symbolsDoc.data() as { symbols: string[] };
+
+      expect(symbols).toEqual(bases);
+    });
+
+    it('does not create symbols document when no new rates are stored', async () => {
+      await httpInvocation(TARGET, PORT);
+      await db.collection('symbols').doc('available').delete();
+
+      await httpInvocation(TARGET, PORT);
+
+      const symbolsDoc = await db.collection('symbols').doc('available').get();
+      expect(symbolsDoc.exists).toBe(false);
+    });
+
+    it('symbols are sorted alphabetically', async () => {
+      await httpInvocation(TARGET, PORT);
+
+      const symbolsDoc = await db.collection('symbols').doc('available').get();
+      const { symbols } = symbolsDoc.data() as { symbols: string[] };
+
+      expect(symbols).toEqual([...symbols].sort());
     });
   });
 });

@@ -25,7 +25,7 @@ pnpm install
 
 - Fetch: Scrapes ECB RSS endpoints to gather daily EUR base rates.
 - Process: Combines latest day’s rates and derives cross rates for other bases.
-- Store: Writes documents to the `exchange_rates` collection; periodically removes stale dates.
+- Store: Writes documents to the `exchange_rates` collection; periodically removes stale dates. After storing new rates, writes the list of available currency symbols to `symbols/available` for efficient client lookups.
 
 ## CI/CD
 
