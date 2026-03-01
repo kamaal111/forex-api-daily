@@ -121,14 +121,23 @@ functions.http(TARGETS.MAIN, async (req, res) => {
   const batchOperations = db.batch();
   const body = await parseRequestBody(req);
   console.log(`request body: ${JSON.stringify(body)}`);
-  const ratesStored = await fetchAndStoreExchangeRates(batchOperations, exchangeRatesCollection, body);
-  const ratesRemoved = await cleanStaleRates(ratesStored, batchOperations, exchangeRatesCollection, symbolsCollection);
-  storeSymbols(ratesStored, batchOperations, symbolsCollection);
-  if (ratesStored.length > 0 || (ratesRemoved?.size ?? 0) > 0) {
+  const ratesStored = await fetchAndStoreExchangeRates(exchangeRatesCollection, body);
+  for (const rate of ratesStored) {
+    batchOperations.set(exchangeRatesCollection.doc(rate.documentKey), rate.toDocumentObject());
+  }
+  const { refsToDelete, removedCount } = await cleanStaleRates(ratesStored, exchangeRatesCollection, symbolsCollection);
+  for (const ref of refsToDelete) {
+    batchOperations.delete(ref);
+  }
+  const symbolsToStore = storeSymbols(ratesStored);
+  for (const { date, symbols } of symbolsToStore) {
+    batchOperations.set(symbolsCollection.doc(date), { symbols, date });
+  }
+  if (ratesStored.length > 0 || removedCount > 0) {
     await batchOperations.commit();
   }
 
-  const message = `SUCCESS ${ratesStored.at(0)?.dateString ?? ''} ${ratesStored.length}-${ratesRemoved?.size ?? 0}`;
+  const message = `SUCCESS ${ratesStored.at(0)?.dateString ?? ''} ${ratesStored.length}-${removedCount}`;
   console.log(message);
   res.status(200).send(message);
 });
@@ -144,13 +153,9 @@ async function parseRequestBody(req: functions.Request): Promise<RequestBody> {
   return v.parseAsync(RequestBodySchema, parsedBody);
 }
 
-function storeSymbols(
-  ratesStored: ExchangeRateRecord[],
-  batchOperations: FirebaseFirestore.WriteBatch,
-  symbolsCollection: FirebaseFirestore.CollectionReference<FirebaseFirestore.DocumentData>,
-) {
+function storeSymbols(ratesStored: ExchangeRateRecord[]) {
   if (ratesStored.length === 0) {
-    return;
+    return [];
   }
 
   const symbolsByDate = new Map<string, string[]>();
@@ -163,20 +168,16 @@ function storeSymbols(
     }
   }
 
-  for (const [date, bases] of symbolsByDate) {
-    const symbols = uniques(bases).sort();
-    batchOperations.set(symbolsCollection.doc(date), { symbols, date });
-  }
+  return [...symbolsByDate.entries()].map(([date, bases]) => ({ date, symbols: uniques(bases).sort() }));
 }
 
 async function cleanStaleRates(
   ratesStored: ExchangeRateRecord[],
-  batchOperations: FirebaseFirestore.WriteBatch,
   exchangeRatesCollection: FirebaseFirestore.CollectionReference<FirebaseFirestore.DocumentData>,
   symbolsCollection: FirebaseFirestore.CollectionReference<FirebaseFirestore.DocumentData>,
 ) {
   if (ratesStored.length === 0) {
-    return null;
+    return { refsToDelete: [], removedCount: 0 };
   }
 
   const previouslyStoredItems = await exchangeRatesCollection
@@ -186,8 +187,9 @@ async function cleanStaleRates(
 
   const staleDates = new Set<string>();
   const deletedCountsByDate = new Map<string, number>();
+  const refsToDelete: FirebaseFirestore.DocumentReference[] = [];
   for (const itemToDelete of previouslyStoredItems.docs) {
-    batchOperations.delete(itemToDelete.ref);
+    refsToDelete.push(itemToDelete.ref);
     const { date } = v.parse(ExchangeRateDocumentSchema, itemToDelete.data());
     staleDates.add(date);
     deletedCountsByDate.set(date, (deletedCountsByDate.get(date) ?? 0) + 1);
@@ -199,16 +201,15 @@ async function cleanStaleRates(
       const totalForDate = totalForDateSnapshot.size;
       const deletedForDate = deletedCountsByDate.get(staleDate) ?? 0;
       if (totalForDate === deletedForDate) {
-        batchOperations.delete(symbolsCollection.doc(staleDate));
+        refsToDelete.push(symbolsCollection.doc(staleDate));
       }
     }),
   );
 
-  return previouslyStoredItems;
+  return { refsToDelete, removedCount: previouslyStoredItems.size };
 }
 
 async function fetchAndStoreExchangeRates(
-  batchOperations: FirebaseFirestore.WriteBatch,
   exchangeRatesCollection: FirebaseFirestore.CollectionReference<FirebaseFirestore.DocumentData>,
   body: RequestBody,
 ) {
@@ -218,12 +219,11 @@ async function fetchAndStoreExchangeRates(
     return [];
   }
 
-  return storeExchangeRates(fetchedExchangeRates, batchOperations, exchangeRatesCollection);
+  return storeExchangeRates(fetchedExchangeRates, exchangeRatesCollection);
 }
 
 async function storeExchangeRates(
   exchangeRate: ExchangeRateRecord,
-  batchOperations: FirebaseFirestore.WriteBatch,
   exchangeRatesCollection: FirebaseFirestore.CollectionReference<FirebaseFirestore.DocumentData>,
 ) {
   const itemsToStoreRecord = (
@@ -257,10 +257,6 @@ async function storeExchangeRates(
   }
 
   console.log(`saving ${itemsToStore.length} items to firestore in batch`);
-  for (const itemToStore of itemsToStore) {
-    const newDocument = exchangeRatesCollection.doc(itemToStore.documentKey);
-    batchOperations.set(newDocument, itemToStore.toDocumentObject());
-  }
 
   return itemsToStore;
 }
