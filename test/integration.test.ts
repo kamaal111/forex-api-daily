@@ -19,11 +19,15 @@ beforeAll(async () => {
 });
 
 afterEach(async () => {
-  const collection = db.collection('exchange_rates');
-  const snapshot = await collection.get();
   const batch = db.batch();
-  snapshot.docs.forEach(doc => batch.delete(doc.ref));
-  if (snapshot.size > 0) {
+
+  const exchangeRatesSnapshot = await db.collection('exchange_rates').get();
+  exchangeRatesSnapshot.docs.forEach(doc => batch.delete(doc.ref));
+
+  const symbolsSnapshot = await db.collection('symbols').get();
+  symbolsSnapshot.docs.forEach(doc => batch.delete(doc.ref));
+
+  if (exchangeRatesSnapshot.size > 0 || symbolsSnapshot.size > 0) {
     await batch.commit();
   }
 });
@@ -242,6 +246,70 @@ describe('Cloud Function Integration Tests', () => {
       const text = await response.text();
 
       expect(text).toMatch(/-\d+$/);
+    });
+  });
+
+  describe('Symbols collection', () => {
+    it('stores symbols document keyed by date on first run', async () => {
+      await httpInvocation(TARGET, PORT);
+
+      const symbolsDoc = await db.collection('symbols').doc(TEST_DATE).get();
+      expect(symbolsDoc.exists).toBe(true);
+
+      const data = symbolsDoc.data() as { symbols: string[]; date: string };
+      expect(Array.isArray(data.symbols)).toBe(true);
+      expect(data.symbols.length).toBeGreaterThan(0);
+      expect(data.date).toBe(TEST_DATE);
+    });
+
+    it('symbols match the base currencies of stored exchange rates for the same date', async () => {
+      await httpInvocation(TARGET, PORT);
+
+      const exchangeRates = await db.collection('exchange_rates').get();
+      const bases = exchangeRates.docs.map(doc => (doc.data() as { base: string }).base).sort();
+
+      const symbolsDoc = await db.collection('symbols').doc(TEST_DATE).get();
+      const { symbols } = symbolsDoc.data() as { symbols: string[] };
+
+      expect(symbols).toEqual(bases);
+    });
+
+    it('does not create symbols document when no new rates are stored', async () => {
+      await httpInvocation(TARGET, PORT);
+      await db.collection('symbols').doc(TEST_DATE).delete();
+
+      await httpInvocation(TARGET, PORT);
+
+      const symbolsDoc = await db.collection('symbols').doc(TEST_DATE).get();
+      expect(symbolsDoc.exists).toBe(false);
+    });
+
+    it('symbols are sorted alphabetically', async () => {
+      await httpInvocation(TARGET, PORT);
+
+      const symbolsDoc = await db.collection('symbols').doc(TEST_DATE).get();
+      const { symbols } = symbolsDoc.data() as { symbols: string[] };
+
+      expect(symbols).toEqual([...symbols].sort());
+    });
+
+    it('removes stale symbols document when its date is cleaned up', async () => {
+      const oldDate = '2025-11-21';
+      const symbolsCollection = db.collection('symbols');
+      const batch = db.batch();
+
+      batch.set(symbolsCollection.doc(oldDate), { symbols: ['EUR', 'USD'], date: oldDate });
+      batch.set(db.collection('exchange_rates').doc(`EUR-${oldDate}`), {
+        date: oldDate,
+        base: 'EUR',
+        rates: { USD: 1.07 },
+      });
+      await batch.commit();
+
+      await httpInvocation(TARGET, PORT);
+
+      const oldSymbolsDoc = await symbolsCollection.doc(oldDate).get();
+      expect(oldSymbolsDoc.exists).toBe(false);
     });
   });
 });
