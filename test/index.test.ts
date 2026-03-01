@@ -38,8 +38,9 @@ it('successfully saves all documents', async () => {
   expect(exchangeRateObjects.map(({ date }) => date)).toEqual([...Array<string>(exchangeRates.size)].fill(TEST_DATE));
   expect(uniques(exchangeRateObjects.map(({ base }) => base)).length).toEqual(itemsStoredCount);
 
-  const symbolsDoc = await db.collection('symbols').doc('available').get();
+  const symbolsDoc = await db.collection('symbols').doc(TEST_DATE).get();
   expect(symbolsDoc.exists).toBe(true);
-  const symbolsData = symbolsDoc.data() as { symbols: string[] };
+  const symbolsData = symbolsDoc.data() as { symbols: string[]; date: string };
   expect(symbolsData.symbols.length).toEqual(itemsStoredCount);
+  expect(symbolsData.date).toBe(TEST_DATE);
 });

@@ -14,7 +14,6 @@ export const TARGETS = {
 
 const EXCHANGE_RATES_COLLECTION_KEY = 'exchange_rates';
 const SYMBOLS_COLLECTION_KEY = 'symbols';
-const SYMBOLS_DOCUMENT_KEY = 'available';
 const BASE_FOREX_URL = new URL('https://www.ecb.europa.eu');
 const HOME_URL = new URL('/home/html/rss.en.html', BASE_FOREX_URL);
 const BASE_CURRENCY = 'EUR';
@@ -117,7 +116,7 @@ functions.http(TARGETS.MAIN, async (req, res) => {
   const body = await parseRequestBody(req);
   console.log(`request body: ${JSON.stringify(body)}`);
   const ratesStored = await fetchAndStoreExchangeRates(batchOperations, exchangeRatesCollection, body);
-  const ratesRemoved = await cleanStaleRates(ratesStored, batchOperations, exchangeRatesCollection);
+  const ratesRemoved = await cleanStaleRates(ratesStored, batchOperations, exchangeRatesCollection, symbolsCollection);
   storeSymbols(ratesStored, batchOperations, symbolsCollection);
   if (ratesStored.length > 0 || (ratesRemoved?.size ?? 0) > 0) {
     await batchOperations.commit();
@@ -148,15 +147,27 @@ function storeSymbols(
     return;
   }
 
-  const symbols = uniques(ratesStored.map(rate => rate.base)).sort();
-  const symbolsDocument = symbolsCollection.doc(SYMBOLS_DOCUMENT_KEY);
-  batchOperations.set(symbolsDocument, { symbols });
+  const symbolsByDate = new Map<string, string[]>();
+  for (const rate of ratesStored) {
+    const existing = symbolsByDate.get(rate.dateString);
+    if (existing) {
+      existing.push(rate.base);
+    } else {
+      symbolsByDate.set(rate.dateString, [rate.base]);
+    }
+  }
+
+  for (const [date, bases] of symbolsByDate) {
+    const symbols = uniques(bases).sort();
+    batchOperations.set(symbolsCollection.doc(date), { symbols, date });
+  }
 }
 
 async function cleanStaleRates(
   ratesStored: ExchangeRateRecord[],
   batchOperations: FirebaseFirestore.WriteBatch,
   exchangeRatesCollection: FirebaseFirestore.CollectionReference<FirebaseFirestore.DocumentData>,
+  symbolsCollection: FirebaseFirestore.CollectionReference<FirebaseFirestore.DocumentData>,
 ) {
   if (ratesStored.length === 0) {
     return null;
@@ -167,8 +178,14 @@ async function cleanStaleRates(
     .limit(100)
     .get();
 
+  const staleDates = new Set<string>();
   for (const itemToDelete of previouslyStoredItems.docs) {
     batchOperations.delete(itemToDelete.ref);
+    staleDates.add((itemToDelete.data() as { date: string }).date);
+  }
+
+  for (const staleDate of staleDates) {
+    batchOperations.delete(symbolsCollection.doc(staleDate));
   }
 
   return previouslyStoredItems;
