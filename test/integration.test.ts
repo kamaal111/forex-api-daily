@@ -1,8 +1,9 @@
 import { afterAll, afterEach, beforeAll, describe, it, expect } from 'vitest';
 import { Firestore } from '@google-cloud/firestore';
+import v from 'valibot';
 
 import { httpInvocation, startFunctionFramework } from '../utils/functionFramework';
-import { TARGETS } from '..';
+import { TARGETS, ExchangeRateDocumentSchema } from '..';
 import { TEST_DATE } from './constants';
 
 const PORT = 8084;
@@ -165,6 +166,17 @@ describe('Cloud Function Integration Tests', () => {
 
       const afterSnapshot = await collection.where('date', '==', oldDate).get();
       expect(afterSnapshot.size).toBe(10);
+    });
+
+    it('exchange rate documents stored in Firestore match the validated document schema', async () => {
+      await httpInvocation(TARGET, PORT);
+
+      const exchangeRates = await db.collection('exchange_rates').get();
+      expect(exchangeRates.size).toBeGreaterThan(0);
+
+      for (const doc of exchangeRates.docs) {
+        expect(() => v.parse(ExchangeRateDocumentSchema, doc.data())).not.toThrow();
+      }
     });
   });
 

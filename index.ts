@@ -107,6 +107,15 @@ const ForexECPResponseSchema = v.object({
 
 const EnvSchema = v.object({ GCP_PROJECT_ID: v.pipe(v.string(), v.minLength(1)) });
 
+const ExchangeRateDocumentSchema = v.object({
+  date: v.string(),
+  base: v.string(),
+  rates: v.record(v.string(), v.number()),
+});
+
+export { ExchangeRateDocumentSchema };
+export type ExchangeRateDocument = v.InferOutput<typeof ExchangeRateDocumentSchema>;
+
 functions.http(TARGETS.MAIN, async (req, res) => {
   const { GCP_PROJECT_ID } = await v.parseAsync(EnvSchema, process.env);
   const db = new Firestore({ projectId: GCP_PROJECT_ID });
@@ -182,7 +191,7 @@ async function cleanStaleRates(
   const deletedCountsByDate = new Map<string, number>();
   for (const itemToDelete of previouslyStoredItems.docs) {
     batchOperations.delete(itemToDelete.ref);
-    const date = (itemToDelete.data() as { date: string }).date;
+    const { date } = v.parse(ExchangeRateDocumentSchema, itemToDelete.data());
     staleDates.add(date);
     deletedCountsByDate.set(date, (deletedCountsByDate.get(date) ?? 0) + 1);
   }
