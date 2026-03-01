@@ -179,14 +179,24 @@ async function cleanStaleRates(
     .get();
 
   const staleDates = new Set<string>();
+  const deletedCountsByDate = new Map<string, number>();
   for (const itemToDelete of previouslyStoredItems.docs) {
     batchOperations.delete(itemToDelete.ref);
-    staleDates.add((itemToDelete.data() as { date: string }).date);
+    const date = (itemToDelete.data() as { date: string }).date;
+    staleDates.add(date);
+    deletedCountsByDate.set(date, (deletedCountsByDate.get(date) ?? 0) + 1);
   }
 
-  for (const staleDate of staleDates) {
-    batchOperations.delete(symbolsCollection.doc(staleDate));
-  }
+  await Promise.all(
+    [...staleDates].map(async staleDate => {
+      const totalForDateSnapshot = await exchangeRatesCollection.where('date', '==', staleDate).get();
+      const totalForDate = totalForDateSnapshot.size;
+      const deletedForDate = deletedCountsByDate.get(staleDate) ?? 0;
+      if (totalForDate === deletedForDate) {
+        batchOperations.delete(symbolsCollection.doc(staleDate));
+      }
+    }),
+  );
 
   return previouslyStoredItems;
 }

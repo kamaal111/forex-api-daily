@@ -25,7 +25,28 @@ pnpm install
 
 - Fetch: Scrapes ECB RSS endpoints to gather daily EUR base rates.
 - Process: Combines latest day’s rates and derives cross rates for other bases.
-- Store: Writes documents to the `exchange_rates` collection; periodically removes stale dates. After storing new rates, writes the list of available currency symbols to `symbols/available` for efficient client lookups.
+- Store: Writes documents to the `exchange_rates` collection; periodically removes stale dates. After storing new rates, writes the list of available currency symbols to per-date documents under the `symbols` collection (e.g. `symbols/2025-12-05`) for efficient client lookups.
+
+## Querying Available Symbols
+
+Each run stores a `symbols/{YYYY-MM-DD}` document (e.g. `symbols/2025-12-05`) containing the base currency codes available for that date:
+
+```json
+{ "date": "2025-12-05", "symbols": ["AUD", "BGN", "BRL", "..."] }
+```
+
+To retrieve the **latest** available symbols, query the `symbols` collection ordered by `date` descending and take the first document:
+
+```js
+const snapshot = await db
+  .collection('symbols')
+  .orderBy('date', 'desc')
+  .limit(1)
+  .get();
+if (!snapshot.empty) {
+  const { date, symbols } = snapshot.docs[0].data();
+}
+```
 
 ## CI/CD
 
