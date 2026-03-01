@@ -113,9 +113,6 @@ const ExchangeRateDocumentSchema = v.object({
   rates: v.record(v.string(), v.number()),
 });
 
-export { ExchangeRateDocumentSchema };
-export type ExchangeRateDocument = v.InferOutput<typeof ExchangeRateDocumentSchema>;
-
 functions.http(TARGETS.MAIN, async (req, res) => {
   const { GCP_PROJECT_ID } = await v.parseAsync(EnvSchema, process.env);
   const db = new Firestore({ projectId: GCP_PROJECT_ID });
