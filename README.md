@@ -38,11 +38,7 @@ Each run stores a `symbols/{YYYY-MM-DD}` document (e.g. `symbols/2025-12-05`) co
 To retrieve the **latest** available symbols, query the `symbols` collection ordered by `date` descending and take the first document:
 
 ```js
-const snapshot = await db
-  .collection('symbols')
-  .orderBy('date', 'desc')
-  .limit(1)
-  .get();
+const snapshot = await db.collection('symbols').orderBy('date', 'desc').limit(1).get();
 if (!snapshot.empty) {
   const { date, symbols } = snapshot.docs[0].data();
 }
